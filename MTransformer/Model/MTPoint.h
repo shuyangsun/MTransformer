@@ -32,6 +32,16 @@
 
 //************************ Property ***************************//
 
+//************************ Initializers  ***************************//
+
+/** 
+ @method Initialize the point with a name.
+ @param theName Name of the point.
+ */
+-(id)initWithName: (NSString *)theName;
+
+//************************ Initializers  ***************************//
+
 //************************ Methods ***************************//
 
 /**
