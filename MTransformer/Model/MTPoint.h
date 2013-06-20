@@ -18,6 +18,9 @@
 
 //************************ Property ***************************//
 
+/** The name of the point. */
+@property (copy, nonatomic) NSString *name;
+
 /** A vector holding the positon of point in the space. */
 @property (strong, nonatomic) MTVector *vector;
 
@@ -42,6 +45,12 @@
  @param points Points this point connecting to. (Should be a collection)
  */
 -(void)connectToPoints: (id) points; // WARNING! points should be a collection!
+
+/** 
+ @method Get the array version of pointsConnectingToProperty.
+ @return A NSArray containing all the points connecting to.
+ */
+-(NSArray *)pointsConnectingToAsArray;
 
 //************************ Methods ***************************//
 
