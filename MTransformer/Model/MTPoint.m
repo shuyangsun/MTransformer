@@ -11,9 +11,6 @@
 
 @interface MTPoint() // Class extension
 
-// Array of points holding the points it connects to. (readonly in interface file, readwrite in class extension)
-@property (readwrite, strong, nonatomic) NSMutableArray *connectedPoints;
-
 @end
 
 @implementation MTPoint

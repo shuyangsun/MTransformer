@@ -23,7 +23,7 @@
 /**
  Array of points holding the points it connects to.
  */
-@property (readonly, strong, nonatomic) NSArray *connectedPoints;
+@property (strong, nonatomic) NSMutableArray *connectedPoints;
 /**
  If the point is vistied during the graph traversal.
  */
