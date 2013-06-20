@@ -35,12 +35,22 @@
 /** 
  @method Get the float value of entry at certain index as a float value.
  @param index Index of entry.
+ @return The float value of entry.
  */
--(float) entryAsFloatAtIndex: (int) index;
+-(float)entryAsFloatAtIndex: (int) index;
 
 /**
  @method Get a pointer to a float variable represents the first element of the array, the array is the entries' values.
+ @return A pointer to float array.
  */
--(float *) entriesAsFloatArray;
+-(float *)entriesAsFloatArray;
+
+/**
+ @method A method replaces certain entry at index with a float value.
+ @param index The index of entry to replace.
+ @param fValue The float number to replace with.
+ @return If the operation succeed or not. (If the index value is not valid, it will return false.)
+ */
+-(BOOL)replaceEntryAtIndex: (int) index withFloatValue: (float) fValue;
 
 @end
