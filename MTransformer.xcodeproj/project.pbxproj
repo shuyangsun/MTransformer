@@ -1,0 +1,496 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		042BBCA61772A22F00844878 /* MTVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 042BBCA51772A22F00844878 /* MTVector.m */; };
+		042BBCA71772A22F00844878 /* MTVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 042BBCA51772A22F00844878 /* MTVector.m */; };
+		04ED3CB21772A1D700C1005F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ED3CB11772A1D700C1005F /* Foundation.framework */; };
+		04ED3CB41772A1D700C1005F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ED3CB31772A1D700C1005F /* CoreGraphics.framework */; };
+		04ED3CB61772A1D700C1005F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ED3CB51772A1D700C1005F /* UIKit.framework */; };
+		04ED3CBC1772A1D700C1005F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04ED3CBA1772A1D700C1005F /* InfoPlist.strings */; };
+		04ED3CBE1772A1D700C1005F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED3CBD1772A1D700C1005F /* main.m */; };
+		04ED3CC21772A1D700C1005F /* MTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED3CC11772A1D700C1005F /* MTAppDelegate.m */; };
+		04ED3CC51772A1D700C1005F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04ED3CC31772A1D700C1005F /* Main.storyboard */; };
+		04ED3CC81772A1D700C1005F /* MTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED3CC71772A1D700C1005F /* MTViewController.m */; };
+		04ED3CCA1772A1D700C1005F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04ED3CC91772A1D700C1005F /* Images.xcassets */; };
+		04ED3CD11772A1D700C1005F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ED3CD01772A1D700C1005F /* XCTest.framework */; };
+		04ED3CD21772A1D700C1005F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ED3CB11772A1D700C1005F /* Foundation.framework */; };
+		04ED3CD31772A1D700C1005F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ED3CB51772A1D700C1005F /* UIKit.framework */; };
+		04ED3CDB1772A1D700C1005F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04ED3CD91772A1D700C1005F /* InfoPlist.strings */; };
+		04ED3CDD1772A1D700C1005F /* MTransformerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED3CDC1772A1D700C1005F /* MTransformerTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		04ED3CD41772A1D700C1005F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04ED3CA61772A1D700C1005F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04ED3CAD1772A1D700C1005F;
+			remoteInfo = MTransformer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		042BBCA41772A22F00844878 /* MTVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTVector.h; path = Model/MTVector.h; sourceTree = "<group>"; };
+		042BBCA51772A22F00844878 /* MTVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTVector.m; path = Model/MTVector.m; sourceTree = "<group>"; };
+		04ED3CAE1772A1D700C1005F /* MTransformer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTransformer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04ED3CB11772A1D700C1005F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		04ED3CB31772A1D700C1005F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		04ED3CB51772A1D700C1005F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		04ED3CB91772A1D700C1005F /* MTransformer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MTransformer-Info.plist"; sourceTree = "<group>"; };
+		04ED3CBB1772A1D700C1005F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		04ED3CBD1772A1D700C1005F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		04ED3CBF1772A1D700C1005F /* MTransformer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MTransformer-Prefix.pch"; sourceTree = "<group>"; };
+		04ED3CC01772A1D700C1005F /* MTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTAppDelegate.h; sourceTree = "<group>"; };
+		04ED3CC11772A1D700C1005F /* MTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTAppDelegate.m; sourceTree = "<group>"; };
+		04ED3CC41772A1D700C1005F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		04ED3CC61772A1D700C1005F /* MTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTViewController.h; sourceTree = "<group>"; };
+		04ED3CC71772A1D700C1005F /* MTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTViewController.m; sourceTree = "<group>"; };
+		04ED3CC91772A1D700C1005F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		04ED3CCF1772A1D700C1005F /* MTransformerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MTransformerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04ED3CD01772A1D700C1005F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		04ED3CD81772A1D700C1005F /* MTransformerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MTransformerTests-Info.plist"; sourceTree = "<group>"; };
+		04ED3CDA1772A1D700C1005F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		04ED3CDC1772A1D700C1005F /* MTransformerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTransformerTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		04ED3CAB1772A1D700C1005F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04ED3CB41772A1D700C1005F /* CoreGraphics.framework in Frameworks */,
+				04ED3CB61772A1D700C1005F /* UIKit.framework in Frameworks */,
+				04ED3CB21772A1D700C1005F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04ED3CCC1772A1D700C1005F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04ED3CD11772A1D700C1005F /* XCTest.framework in Frameworks */,
+				04ED3CD31772A1D700C1005F /* UIKit.framework in Frameworks */,
+				04ED3CD21772A1D700C1005F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		042BBCA81772A23100844878 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				042BBCA91772A23800844878 /* Vector */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		042BBCA91772A23800844878 /* Vector */ = {
+			isa = PBXGroup;
+			children = (
+				042BBCA41772A22F00844878 /* MTVector.h */,
+				042BBCA51772A22F00844878 /* MTVector.m */,
+			);
+			name = Vector;
+			sourceTree = "<group>";
+		};
+		04ED3CA51772A1D700C1005F = {
+			isa = PBXGroup;
+			children = (
+				04ED3CB71772A1D700C1005F /* MTransformer */,
+				04ED3CD61772A1D700C1005F /* MTransformerTests */,
+				04ED3CB01772A1D700C1005F /* Frameworks */,
+				04ED3CAF1772A1D700C1005F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		04ED3CAF1772A1D700C1005F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04ED3CAE1772A1D700C1005F /* MTransformer.app */,
+				04ED3CCF1772A1D700C1005F /* MTransformerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		04ED3CB01772A1D700C1005F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04ED3CB11772A1D700C1005F /* Foundation.framework */,
+				04ED3CB31772A1D700C1005F /* CoreGraphics.framework */,
+				04ED3CB51772A1D700C1005F /* UIKit.framework */,
+				04ED3CD01772A1D700C1005F /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		04ED3CB71772A1D700C1005F /* MTransformer */ = {
+			isa = PBXGroup;
+			children = (
+				04ED3CC01772A1D700C1005F /* MTAppDelegate.h */,
+				04ED3CC11772A1D700C1005F /* MTAppDelegate.m */,
+				04ED3CC31772A1D700C1005F /* Main.storyboard */,
+				04ED3CC61772A1D700C1005F /* MTViewController.h */,
+				04ED3CC71772A1D700C1005F /* MTViewController.m */,
+				042BBCA81772A23100844878 /* Model */,
+				04ED3CC91772A1D700C1005F /* Images.xcassets */,
+				04ED3CB81772A1D700C1005F /* Supporting Files */,
+			);
+			path = MTransformer;
+			sourceTree = "<group>";
+		};
+		04ED3CB81772A1D700C1005F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				04ED3CB91772A1D700C1005F /* MTransformer-Info.plist */,
+				04ED3CBA1772A1D700C1005F /* InfoPlist.strings */,
+				04ED3CBD1772A1D700C1005F /* main.m */,
+				04ED3CBF1772A1D700C1005F /* MTransformer-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		04ED3CD61772A1D700C1005F /* MTransformerTests */ = {
+			isa = PBXGroup;
+			children = (
+				04ED3CDC1772A1D700C1005F /* MTransformerTests.m */,
+				04ED3CD71772A1D700C1005F /* Supporting Files */,
+			);
+			path = MTransformerTests;
+			sourceTree = "<group>";
+		};
+		04ED3CD71772A1D700C1005F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				04ED3CD81772A1D700C1005F /* MTransformerTests-Info.plist */,
+				04ED3CD91772A1D700C1005F /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		04ED3CAD1772A1D700C1005F /* MTransformer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04ED3CE01772A1D700C1005F /* Build configuration list for PBXNativeTarget "MTransformer" */;
+			buildPhases = (
+				04ED3CAA1772A1D700C1005F /* Sources */,
+				04ED3CAB1772A1D700C1005F /* Frameworks */,
+				04ED3CAC1772A1D700C1005F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MTransformer;
+			productName = MTransformer;
+			productReference = 04ED3CAE1772A1D700C1005F /* MTransformer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		04ED3CCE1772A1D700C1005F /* MTransformerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04ED3CE31772A1D700C1005F /* Build configuration list for PBXNativeTarget "MTransformerTests" */;
+			buildPhases = (
+				04ED3CCB1772A1D700C1005F /* Sources */,
+				04ED3CCC1772A1D700C1005F /* Frameworks */,
+				04ED3CCD1772A1D700C1005F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04ED3CD51772A1D700C1005F /* PBXTargetDependency */,
+			);
+			name = MTransformerTests;
+			productName = MTransformerTests;
+			productReference = 04ED3CCF1772A1D700C1005F /* MTransformerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		04ED3CA61772A1D700C1005F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MT;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Shuyang Sun";
+				TargetAttributes = {
+					04ED3CCE1772A1D700C1005F = {
+						TestTargetID = 04ED3CAD1772A1D700C1005F;
+					};
+				};
+			};
+			buildConfigurationList = 04ED3CA91772A1D700C1005F /* Build configuration list for PBXProject "MTransformer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 04ED3CA51772A1D700C1005F;
+			productRefGroup = 04ED3CAF1772A1D700C1005F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				04ED3CAD1772A1D700C1005F /* MTransformer */,
+				04ED3CCE1772A1D700C1005F /* MTransformerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		04ED3CAC1772A1D700C1005F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04ED3CCA1772A1D700C1005F /* Images.xcassets in Resources */,
+				04ED3CBC1772A1D700C1005F /* InfoPlist.strings in Resources */,
+				04ED3CC51772A1D700C1005F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04ED3CCD1772A1D700C1005F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04ED3CDB1772A1D700C1005F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		04ED3CAA1772A1D700C1005F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04ED3CBE1772A1D700C1005F /* main.m in Sources */,
+				042BBCA61772A22F00844878 /* MTVector.m in Sources */,
+				04ED3CC81772A1D700C1005F /* MTViewController.m in Sources */,
+				04ED3CC21772A1D700C1005F /* MTAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04ED3CCB1772A1D700C1005F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04ED3CDD1772A1D700C1005F /* MTransformerTests.m in Sources */,
+				042BBCA71772A22F00844878 /* MTVector.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		04ED3CD51772A1D700C1005F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04ED3CAD1772A1D700C1005F /* MTransformer */;
+			targetProxy = 04ED3CD41772A1D700C1005F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		04ED3CBA1772A1D700C1005F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04ED3CBB1772A1D700C1005F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		04ED3CC31772A1D700C1005F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04ED3CC41772A1D700C1005F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		04ED3CD91772A1D700C1005F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04ED3CDA1772A1D700C1005F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		04ED3CDE1772A1D700C1005F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		04ED3CDF1772A1D700C1005F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		04ED3CE11772A1D700C1005F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MTransformer/MTransformer-Prefix.pch";
+				INFOPLIST_FILE = "MTransformer/MTransformer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		04ED3CE21772A1D700C1005F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MTransformer/MTransformer-Prefix.pch";
+				INFOPLIST_FILE = "MTransformer/MTransformer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		04ED3CE41772A1D700C1005F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MTransformer.app/MTransformer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Xcode5-DP.app/Contents/Developer/Library/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MTransformer/MTransformer-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MTransformerTests/MTransformerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		04ED3CE51772A1D700C1005F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MTransformer.app/MTransformer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Xcode5-DP.app/Contents/Developer/Library/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MTransformer/MTransformer-Prefix.pch";
+				INFOPLIST_FILE = "MTransformerTests/MTransformerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		04ED3CA91772A1D700C1005F /* Build configuration list for PBXProject "MTransformer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04ED3CDE1772A1D700C1005F /* Debug */,
+				04ED3CDF1772A1D700C1005F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04ED3CE01772A1D700C1005F /* Build configuration list for PBXNativeTarget "MTransformer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04ED3CE11772A1D700C1005F /* Debug */,
+				04ED3CE21772A1D700C1005F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04ED3CE31772A1D700C1005F /* Build configuration list for PBXNativeTarget "MTransformerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04ED3CE41772A1D700C1005F /* Debug */,
+				04ED3CE51772A1D700C1005F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 04ED3CA61772A1D700C1005F /* Project object */;
+}
