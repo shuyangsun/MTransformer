@@ -191,7 +191,7 @@
 {
 	NSMutableString *res = [NSMutableString stringWithFormat:@"%luD vector: (", [self entryCount]];
 	for (int i = 0; i < [self entryCount]; ++i) {
-		NSMutableString *appending = [NSMutableString stringWithFormat:@"%g", [[self objectAtIndex:i] floatValue]];
+		NSMutableString *appending = [NSMutableString stringWithFormat:@"%.1f", [[self objectAtIndex:i] floatValue]];
 		if (i < [self entryCount] - 1) { // If this is not the last element, add coma and space.
 			[appending appendString:@", "];
 		}
