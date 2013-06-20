@@ -6,10 +6,8 @@
 //  Copyright (c) 2013 Shuyang Sun. All rights reserved.
 //
 
-#import "MTVector.h"\
-
-#define ZERO 0 // Global macro ZERO, replaceing number "0" in vectors.
-#define ONE 1 // Global macro ONE, replaceing number "1" in vectors.
+#import "MTVector.h"
+#include "GlobalMacro.h"
 
 @interface MTVector()
 
