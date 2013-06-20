@@ -25,7 +25,7 @@
 @property (strong, nonatomic) NSMutableSet *pointsConnectingTo;
 
 /** Whether the point is vistied during the graph traversal. */
-@property (nonatomic) BOOL visited;
+@property (nonatomic, getter = isVisited) BOOL visited;
 
 //************************ Property ***************************//
 
