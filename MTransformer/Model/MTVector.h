@@ -16,13 +16,16 @@
  Other init methods will generate a vector with #n 0 entires.
  */
 
-@interface MTVector : NSObject
+@interface MTVector : NSMutableArray
 
-/** Entries holding entry values. */
-@property (copy, nonatomic) NSMutableArray *entries;
+/** Property representing number of entry in the vector, including 0 entry. */
+@property (readonly, nonatomic) unsigned long entryCount;
+/** Property representing dimension of entry. */
+@property (readonly, nonatomic) unsigned long dimension;
 
-/** 
+/**
  @method Create a vector with certain number of entries, all entries are initialized with 0.
+ @param The number of entries need to be initialized in the vector, including 0 entries.
  */
 -(id)initWithNumberOfEntries: (int) numberOfEntries;
 
@@ -52,5 +55,72 @@
  @return If the operation succeed or not. (If the index value is not valid, it will return false.)
  */
 -(BOOL)replaceEntryAtIndex: (int) index withFloatValue: (float) fValue;
+
+/**
+ @method Clear the entries to zero. (Change this vector to a zero vector).
+ */
+-(void)clearToZeroVector;
+
+/**
+ @method Replace current entry value at certain index with number 0.
+ @param index The index of entry to replace.
+ */
+-(void)clearEntryAtIndexToZero: (int) index;
+
+/**
+ @method Remove the first entry in the vector.
+ */
+-(void)removeFirstEntry;
+
+/**
+ @method Remove the last entry in the vector.
+ */
+-(void)removeLastEntry;
+
+/**
+ @method Add an entry with float value to the last rwo of vector.
+ */
+-(void)addEntryWithFloatValue: (float) fValue;
+
+/**
+ @method Change current vector to its homogeneous vector.
+ */
+-(void)toHomogeneousVector;
+
+/**
+ @method Get homogeneous vector of current vector. (make a copy, then add entry with value 1 to the vector)
+ @return The homogeneous vector of current vector.
+ */
+-(MTVector *)getHomogeneousVector;
+
+/**
+ @method Remove entries in certain range.
+ @param range Range of entries to remove.
+ */
+-(void)removeEntriesInRange: (NSRange) range;
+
+/**
+ @method Get entries in certain range.
+ @param range Range of entries want to get.
+ @return Array containing entries in range.
+ */
+-(NSMutableArray *)entriesInRange: (NSRange) range;
+
+/**
+ @method Remove entires not int the range.
+ @param range Range of entries to keep.
+ */
+-(void)removeOtherEntiresInVector: (NSRange) range;
+
+/**
+ @method Add values in array to vector.
+ @param entriesToAdd Enties' value to add to vector.
+ */
+-(void)addEntries: (NSArray *) entriesToAdd;
+
+/**
+ @method Remove entries under the first two row.
+ */
+-(void)removeEntriesUnderTheFirstTwoRow;
 
 @end
