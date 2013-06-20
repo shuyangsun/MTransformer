@@ -18,10 +18,16 @@
 
 @interface MTVector : NSMutableArray
 
+//************************ Property ***************************//
+
 /** Property representing number of entry in the vector, including 0 entry. */
 @property (readonly, nonatomic) unsigned long entryCount;
 /** Property representing dimension of entry. */
 @property (readonly, nonatomic) unsigned long dimension;
+
+//************************ Property ***************************//
+
+//************************ Methods ***************************//
 
 /**
  @method Create a vector with certain number of entries, all entries are initialized with 0.
@@ -122,5 +128,7 @@
  @method Remove entries under the first two row.
  */
 -(void)removeEntriesUnderTheFirstTwoRow;
+
+//************************ Methods ***************************//
 
 @end
