@@ -184,5 +184,19 @@
 	return res;
 }
 
+// Overriding description
+-(NSString *)description
+{
+	NSMutableString *res = [NSMutableString stringWithFormat:@"%luD vector: (", [self entryCount]];
+	for (int i = 0; i < [self entryCount]; ++i) {
+		NSMutableString *appending = [NSMutableString stringWithFormat:@"%g", [[self objectAtIndex:i] floatValue]];
+		if (i < [self entryCount] - 1) { // If this is not the last element, add coma and space.
+			[appending appendString:@", "];
+		}
+		[res appendString:appending];
+	}
+	return res;
+}
+
 @end
 
