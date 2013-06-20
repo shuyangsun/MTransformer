@@ -15,35 +15,37 @@
 
 @implementation MTVector
 
+// Initialize with a certain amount of entires, values are ZERO.
 -(id)initWithNumberOfEntries:(int)numberOfEntries
 {
 	self = [super init];
 	if (self) {
 		if (numberOfEntries > 0) { // Check if number of entries is more than 0.
-			for (int i = 0; i < numberOfEntries; ++i) { // Initialize entries with 0's.
-				[self addObject:@(ZERO)]; // Initialize with 0's.
+			for (int i = 0; i < numberOfEntries; ++i) { // Initialize entries with ZEROs.
+				[self addObject:@(ZERO)]; // Initialize with ZEROs.
 			}
 		}
 	}
 	return self;
 }
 
--(id)initWithArray:(NSArray *)entriesOfVector
+// Init vector with a array containing all the etnries' values.
+-(id)initWithEntriesArray:(NSArray *)entriesOfVector
 {
 	self = [super init];
 	if (self) {
 		if ([entriesOfVector count] > 0) { // If there is element in the array.
 			for (int i = 0; i < [entriesOfVector count]; ++i) {
-				if ([[entriesOfVector objectAtIndex:i] isKindOfClass:[NSNumber class]]) { // If it is a NSNumber, get the float value
-					[self addObject:[entriesOfVector objectAtIndex:i]];
-				} else { // If it is not a NSNumber, add 0 to it. (to guarantee the number of entry)
-					[self addObject:@(ZERO)];
-					NSLog(@"Object initializing vector is not a NSNumber.\nclass name: %@", [[self objectAtIndex:i] class]);
+				if ([[entriesOfVector objectAtIndex:i] isKindOfClass:[NSNumber class]]) { // If it is a NSNumber.
+					[self addObject:[entriesOfVector objectAtIndex:i]]; // Add the object to the entries property.
+				} else { // If it is not a NSNumber.
+					[self addObject:@(ZERO)]; // Add ZERO to it. (to guarantee the number of entry)
+					NSLog(@"Object initializing vector is not a NSNumber.\nclass name: %@", [[self objectAtIndex:i] class]); // Generate log message.
 				}
 			}
-		} else { // If there is not any elements, generate log message, init it to a zero vector.
-			self = [self initWithNumberOfEntries:1];
-			NSLog(@"No element in initialize array.");
+		} else { // If there is not any elements, generate log message, init it to a ZERO vector.
+			self = [self initWithNumberOfEntries:1]; // Init as a ZERO vector.
+			NSLog(@"No element in initialize array."); // Generate log message
 		}
 	}
 	return self;
@@ -52,10 +54,10 @@
 // Designated initializer.
 -(id)init
 {
-	return [self initWithNumberOfEntries:1];
+	return [self initWithNumberOfEntries:1]; // Initialize with a ZERO vector.
 }
 
-
+// return entry value as float number.
 -(float)entryAsFloatAtIndex:(int)index
 {
 	float res = ZERO;
