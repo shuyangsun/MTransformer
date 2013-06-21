@@ -58,13 +58,13 @@
 }
 
 // return entry value as float number.
--(float)entryAsFloatAtIndex:(int)index
+-(float)entryAtIndexAsFloat:(int)index
 {
 	float res = ZERO;
-	if (index > 0 && index < [self count]) {
+	if (index > 0 && index < [self entryCount]) {
 		res = [[self objectAtIndex:index] floatValue];
 	} else { // If index is invalid, generate log message.
-		NSLog(@"Invalid index.\nentires length: %d\nrequested index: %d", [self count], index);
+		NSLog(@"Invalid index.\nentires length: %u\nrequested index: %d", [self entryCount], index);
 	}
 	return res;
 }
@@ -72,8 +72,8 @@
 // Return an C float pointer to a float array.
 -(void)entriesAsFloatArray: (float *) arr length: (NSUInteger *) len
 {
-	float *res = NULL;
-	for (int i = 0; i < [self count]; ++i) {
+	float *res = NULL; // Initialize res to NULL.
+	for (int i = 0; i < [self entryCount]; ++i) {
 		if ([[self objectAtIndex:i] isKindOfClass:[NSNumber class]]) { // Check if it's a NSNumber.
 			*(res + i) = [[self objectAtIndex:i] floatValue];
 		} else { // If it's not an NSNumber, replace value with 0, generate log message.
@@ -84,25 +84,25 @@
 	if (arr != NULL) // If arr is not NULL:
 		arr = res; // Assign res to arr.
 	if (len != NULL) // If pointer to len is not NULL:
-		*len = (NSUInteger)[self count]; // Get the length of array.
+		*len = (NSUInteger)[self entryCount]; // Get the number of entry.
 }
 
 
 -(BOOL)replaceEntryAtIndex:(int)index withFloatValue:(float)fValue
 {
 	BOOL res = NO;
-	if (index > 0 && index < [self count]) { // If it's a valid index.
+	if (index > 0 && index < [self entryCount]) { // If it's a valid index.
 		[self replaceObjectAtIndex:index withObject:@(fValue)];
 		res = YES;
 	} else { // If it's not a valid index, generate log message and return false.
-		NSLog(@"Invalid index.\nentires length: %d\nrequested index: %d", [self count], index);
+		NSLog(@"Invalid index.\nentires length: %d\nrequested index: %d", [self entryCount], index);
 	}
 	return res;
 }
 
 -(void)clearToZeroVector
 {
-	for (int i = 0; i < [self count]; ++i) {
+	for (int i = 0; i < [self entryCount]; ++i) {
 		[self replaceEntryAtIndex:i withFloatValue:ZERO];
 	}
 }
@@ -174,16 +174,16 @@
 }
 
 // Overriding entryCount getter method.
--(unsigned long)entryCount
+-(NSUInteger)entryCount
 {
-	return [self count];
+	return [self count]; // The only place where should use [self count] other places should be [self entryCount].
 }
 
 // Overriding dimension getter method.
--(unsigned long)dimension
+-(NSUInteger)dimension
 {
 	unsigned long res = 0;
-	for (int i = 0; i < [self count]; ++i) {
+	for (int i = 0; i < [self entryCount]; ++i) {
 		if ([[self objectAtIndex:i] isKindOfClass:[NSNumber class]] && [[self objectAtIndex:i] floatValue] != ZERO) {
 			++res;
 		}
@@ -194,7 +194,7 @@
 // Overriding description
 -(NSString *)description
 {
-	NSMutableString *res = [NSMutableString stringWithFormat:@"%luD vector: (", [self entryCount]];
+	NSMutableString *res = [NSMutableString stringWithFormat:@"%uD vector: (", [self entryCount]];
 	for (int i = 0; i < [self entryCount]; ++i) {
 		NSMutableString *appending = [NSMutableString stringWithFormat:@"%.1f", [[self objectAtIndex:i] floatValue]];
 		if (i < [self entryCount] - 1) { // If this is not the last element, add coma and space.

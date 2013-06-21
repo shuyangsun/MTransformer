@@ -20,10 +20,10 @@
 
 //************************ Property ***************************//
 
-/** Property representing number of entry in the vector, including 0 entry. */
-@property (readonly, nonatomic) unsigned long entryCount;
-/** Property representing dimension of entry. */
-@property (readonly, nonatomic) unsigned long dimension;
+/** Property representing number of entry in the vector, including 0 entry. (Simply returning [self count] inside method)*/
+@property (readonly, nonatomic) NSUInteger entryCount;
+/** Property representing dimension of entry. (Returning number of none-ZERO entries) */
+@property (readonly, nonatomic) NSUInteger dimension;
 
 //************************ Property ***************************//
 
@@ -46,12 +46,14 @@
  @param index Index of entry.
  @return The float value of entry.
  */
--(float)entryAsFloatAtIndex: (int) index;
+-(float)entryAtIndexAsFloat:(int)index;
 
 /**
  @method Get a pointer to a float variable represents the first element of the array, the array is the entries' values. Store, the length in the pointer to len.
+ @param arr Address of array, which will store the float values.
+ @param len Pointer to NSUInteger variable, which will store the length of arr (number of entries).
  */
--(void)entriesAsFloatArray: (float *) arr length: (NSUInteger *) len;
+-(void)entriesAsFloatArray: (float *) arr length: (NSUInteger *) len; // C involved.
 
 /**
  @method A method replaces certain entry at index with a float value.
@@ -84,6 +86,7 @@
 
 /**
  @method Add an entry with float value to the last rwo of vector.
+ @param fValue Float value of entry adding to vector.
  */
 -(void)addEntryWithFloatValue: (float) fValue;
 
