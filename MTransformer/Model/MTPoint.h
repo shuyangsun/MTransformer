@@ -15,7 +15,7 @@
  */
 @interface MTPoint : MTVector
 
-//************************ Property ***************************//
+//************************ Properties ***************************//
 
 /** The name of the point. */
 @property (copy, nonatomic) NSString *name;
@@ -26,7 +26,7 @@
 /** Whether the point is vistied during the graph traversal. */
 @property (nonatomic, getter = isVisited) BOOL visited;
 
-//************************ Property ***************************//
+//************************ Properties ***************************//
 
 //************************ Initializers  ***************************//
 
