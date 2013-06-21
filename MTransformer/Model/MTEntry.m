@@ -13,7 +13,7 @@
 // Generate a entry with a float value.
 +(NSNumber *)entryWithFloat:(float)value
 {
-	return [self numberWithFloat:value];
+	return [self numberWithFloat:value]; // The same as class method: numberWithFloat:
 }
 
 @end
