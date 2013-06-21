@@ -8,6 +8,10 @@
 
 #import "MTEntry.h"
 
+@interface MTEntry() // Class extension
+
+@end
+
 @implementation MTEntry
 
 // Generate a entry with a float value.
