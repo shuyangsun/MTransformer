@@ -8,6 +8,10 @@
 
 #import "MTMatrix.h"
 
+@interface MTMatrix() // Class extensions.
+
+@end
+
 @implementation MTMatrix
 
 @end
