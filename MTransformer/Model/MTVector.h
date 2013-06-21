@@ -32,16 +32,22 @@
 //************************ Methods ***************************//
 
 /**
- Create a vector with certain number of entries, all entries are initialized with 0.
+ Initialize vector with certain number of entries, all entries are initialized with 0.
  @param numberOfEntries The number of entries need to be initialized in the vector, including 0 entries.
  */
 -(id)initWithNumberOfEntries: (int) numberOfEntries;
 
 /**
- Initialize entries with an array contains all the values.
+ Initialize vector with an array contains all the values.
  @param entriesOfVector  Array containing entries of vector.
  */
 -(id)initWithEntriesArray: (NSArray *) entriesOfVector;
+
+/** 
+ Initialize vector with given C style float array.
+ @param fArr C style float array containg values of entries.
+ */
+-(id)initWithFloatArray: (float *) fArr;
 
 /** 
  Get the float value of entry at certain index as a float value.

@@ -66,6 +66,20 @@
 	return self;
 }
 
+// Initialize vector with given C style float array.
+-(id)initWithFloatArray:(float *)fArr
+{
+	self = [super init];
+	if (self) {
+		if (fArr != NULL) { // If given C style float array is not NULL:
+			for (size_t i = 0; i < (size_t)arrlen(fArr); ++i) { // Iterate through array.
+				[self addObject:[MTEntry entryWithFloat:*(fArr + i)]]; // Add entry to the list.
+			}
+		}
+	}
+	return self; // Return self.
+}
+
 // Designated initializer.
 -(id)init
 {
