@@ -8,13 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@class MTVector; // Define class MTVector
-
+#import "MTVector.h" // Import MTVector header file for super class.
 
 /**
  @interface A MTPoint object that holds a vector representing the posistion in the space, and other data such as the points it connects to, and the visit information for graph triversal.
  */
-@interface MTPoint : NSObject
+@interface MTPoint : MTVector
 
 //************************ Property ***************************//
 

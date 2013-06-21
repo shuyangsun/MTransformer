@@ -7,7 +7,6 @@
 //
 
 #import "MTPoint.h"
-#import "MTVector.h"
 
 #include "GlobalMacro.h" // Global macro definition.
 
