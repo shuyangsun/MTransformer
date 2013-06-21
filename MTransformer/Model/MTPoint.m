@@ -21,9 +21,9 @@
 {
 	self = [super init];
     if (self) {
-		self.pointsConnectingTo = [NSMutableSet set];
-		self.name = theName;
-		self.visited = NO;
+		self.pointsConnectingTo = [[NSMutableSet alloc] init]; // Initialize pointsConnectingTo as a empty set.
+		self.name = theName; // Initialize the name.
+		self.visited = NO; // Not visited yet.
 	}
 	return self;
 }
@@ -31,7 +31,7 @@
 // Designated initializer.
 - (id)init
 {
-    return [self initWithName:@"N/A"];
+    return [self initWithName:@"N/A"]; // Return a Point with default name @"N/A"
 }
 
 // Connect to single point.
@@ -64,21 +64,21 @@
 // Overriding getter method of pointsConnectingTo, using lazy instantiation
 -(NSMutableSet *)pointsConnectingTo
 {
-	if (!_pointsConnectingTo) _pointsConnectingTo = [NSMutableSet set];
-	return _pointsConnectingTo;
+	if (!_pointsConnectingTo) _pointsConnectingTo = [NSMutableSet set]; // Lazy instantiation.
+	return _pointsConnectingTo; // Return _pointsConnectingTo.
 }
 
 // Overriding getter method of name, using laze instantiation, return @"N/A" if the name is not initialized.
 -(NSString *)name
 {
-	if (!_name) _name = @"N/A";
-	return _name;
+	if (!_name) _name = @"N/A"; // Lazy instantiation, initialize with default name @"N/A"
+	return _name; // Return _name.
 }
 
 // Overriding description.
 -(NSString *)description
 {
-	NSMutableString *res = [NSMutableString stringWithFormat:@"point %@: ", self.name];
+	NSMutableString *res = [NSMutableString stringWithFormat:@"point %@: ", self.name]; // The result string to return later.
 
 	//************************** Appending Vector Information *****************************//
 	if (self.entryCount > 0){ // If there are entries in this point, add the point position.
