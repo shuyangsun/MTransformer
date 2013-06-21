@@ -10,4 +10,10 @@
 
 @interface MTEntry : NSNumber
 
+/** 
+ Generate a entry with specific float value.
+ @param value Float value assigning to entry.
+ */
++(NSNumber *)entryWithFloat:(float)value;
+
 @end

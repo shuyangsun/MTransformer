@@ -10,4 +10,10 @@
 
 @implementation MTEntry
 
+// Generate a entry with a float value.
++(NSNumber *)entryWithFloat:(float)value
+{
+	return [self numberWithFloat:value];
+}
+
 @end
