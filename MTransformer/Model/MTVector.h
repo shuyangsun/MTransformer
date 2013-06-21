@@ -22,7 +22,7 @@
 
 /** Property representing number of entry in the vector, including 0 entry. (Simply returning [self count] inside method)*/
 @property (readonly, nonatomic) NSUInteger entryCount;
-/** Property representing dimension of entry. (Returning number of none-ZERO entries) */
+/** Property representing dimension of entry, homogeneous entry doesn't count. (Returning number of none-ZERO entries) */
 @property (readonly, nonatomic) NSUInteger dimension;
 /** Property indicating whether this vector is a homogeneous vector. */
 @property (readonly, nonatomic, getter = isHomogeneous) BOOL homogeneous;

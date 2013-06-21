@@ -245,6 +245,9 @@
 			++res; // Add one to res.
 		}
 	}
+	if (self.homogeneous == YES){ // If this is a homogeneous vector:
+		--res; // Decrease result by one. !!!(Homogeneous entry doesn't count!)!!!
+	}
 	return res; // Return the result.
 }
 
