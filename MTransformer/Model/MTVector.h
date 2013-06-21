@@ -24,6 +24,8 @@
 @property (readonly, nonatomic) NSUInteger entryCount;
 /** Property representing dimension of entry. (Returning number of none-ZERO entries) */
 @property (readonly, nonatomic) NSUInteger dimension;
+/** Property indicating whether this vector is a homogeneous vector. */
+@property (readonly, nonatomic, getter = isHomogeneous) BOOL homogeneous;
 
 //************************ Properties ***************************//
 

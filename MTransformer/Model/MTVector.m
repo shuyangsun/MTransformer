@@ -19,6 +19,9 @@
  */
 -(void)generateInvalidIndexMessage: (NSUInteger) maxIndex withRequiredIndex: (int) requiredIndex;
 
+/** Property indicating whether this vector is a homogeneous vector. (readonly in header file)*/
+@property (readwrite, nonatomic, getter = isHomogeneous) BOOL homogeneous; // Redefine as readwrite inside implementation file.
+
 @end
 
 @implementation MTVector
@@ -140,6 +143,7 @@
 -(void)toHomogeneousVector
 {
 	[self addEntryWithFloatValue:ONE];
+	self.homogeneous = YES;
 }
 
 -(MTVector *)getHomogeneousVector
