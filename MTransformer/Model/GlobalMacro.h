@@ -11,6 +11,8 @@
 
 #define ZERO 0 // Global macro ZERO, replaceing number "0" in vectors.
 #define ONE 1 // Global macro ONE, replaceing number "1" in vectors.
-#define arrlen(arr) (sizeof(arr)/sizeof(arr[0])) // Global macro definition to calculate length of a C style array.
+
+#define arrlen(arr) (sizeof(arr)/sizeof(arr[0])) // Global macro definition, calculate length of a C style array.
+#define VECTORIZATION_SIZE 4 // Global macro definition, using LLVM 5 to optimize loops through vectorization.
 
 #endif
