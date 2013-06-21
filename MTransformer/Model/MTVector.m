@@ -7,7 +7,8 @@
 //
 
 #import "MTVector.h"
-#include "GlobalMacro.h"
+
+#include "GlobalMacro.h" // Global macro definition.
 
 @interface MTVector()
 
