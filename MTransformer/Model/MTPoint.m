@@ -21,10 +21,9 @@
 {
 	self = [super init];
     if (self) {
-		MTVector *vector = [[MTVector alloc] init]; // Initialize a one dimension vector.
-		self.vector = vector;
 		self.pointsConnectingTo = [NSMutableSet set];
 		self.name = theName;
+		self.visited = NO;
 	}
 	return self;
 }
@@ -62,13 +61,6 @@
 	return [self.pointsConnectingTo allObjects]; // All objects in the NSSet.
 }
 
-// Overriding getter method of vector, using lazy instantiation
--(MTVector *)vector
-{
-	if (!_vector) _vector = [[MTVector alloc] init];
-	return _vector;
-}
-
 // Overriding getter method of pointsConnectingTo, using lazy instantiation
 -(NSMutableSet *)pointsConnectingTo
 {
@@ -89,13 +81,13 @@
 	NSMutableString *res = [NSMutableString stringWithFormat:@"point %@: ", self.name];
 
 	//************************** Appending Vector Information *****************************//
-	if (self.vector.entryCount > 0){ // If there are entries in vector of this point, add the point position.
+	if (self.entryCount > 0){ // If there are entries in this point, add the point position.
 		[res appendString:@"("]; // Add opening parenthesis.
-		for (int i = 0; i < [self.vector entryCount]; ++i) {
-			if (i < [self.vector entryCount] - 1){ // If this is NOT the last entry
-				[res appendFormat:@"%.1f, ", [self.vector entryAtIndexAsFloat:i]]; // Append the float value and comma.
+		for (int i = 0; i < [self entryCount]; ++i) {
+			if (i < [self entryCount] - 1){ // If this is NOT the last entry
+				[res appendFormat:@"%.1f, ", [self entryAtIndexAsFloat:i]]; // Append the float value and comma.
 			} else { // If this is the last entry
-				[res appendFormat:@"%.1f", [self.vector entryAtIndexAsFloat:i]]; // Append the float value.
+				[res appendFormat:@"%.1f", [self entryAtIndexAsFloat:i]]; // Append the float value.
 			}
 		}
 		[res appendString:@")"]; // Add closing parenthesis.

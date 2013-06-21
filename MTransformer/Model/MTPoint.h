@@ -20,9 +20,6 @@
 /** The name of the point. */
 @property (copy, nonatomic) NSString *name;
 
-/** A vector holding the positon of point in the space. */
-@property (strong, nonatomic) MTVector *vector;
-
 /** Mutable set of points holding the points it connects to. */
 @property (strong, nonatomic) NSMutableSet *pointsConnectingTo;
 
