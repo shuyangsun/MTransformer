@@ -34,7 +34,7 @@
 	self = [super init];
 	if (self) {
 		if (numberOfEntries > 0) { // Check if number of entries is more than 0.
-			for (int i = 0; i < numberOfEntries; ++i) { // Initialize entries with ZEROs.
+			for (size_t i = 0; i < (size_t)numberOfEntries; ++i) { // Initialize entries with ZEROs.
 				[self addObject:@(ZERO)]; // Initialize with ZEROs.
 			}
 		}
@@ -49,7 +49,7 @@
 	self = [super init];
 	if (self) {
 		if ([entriesOfVector count] > 0) { // If there is element in the array.
-			for (int i = 0; i < [entriesOfVector count]; ++i) {
+			for (size_t i = 0; i < (size_t)[entriesOfVector count]; ++i) {
 				if ([[entriesOfVector objectAtIndex:i] isKindOfClass:[NSNumber class]]) { // If it is a NSNumber.
 					[self addObject:[entriesOfVector objectAtIndex:i]]; // Add the object to the entries property.
 				} else { // If it is not a NSNumber.
@@ -88,7 +88,7 @@
 -(void)entriesAsFloatArray: (float *) arr length: (NSUInteger *) len
 {
 	float *res = NULL; // Initialize res to NULL.
-	for (int i = 0; i < [self entryCount]; ++i) { // Iterate through the entries:
+	for (size_t i = 0; i < (size_t)[self entryCount]; ++i) { // Iterate through the entries:
 		if ([[self objectAtIndex:i] isKindOfClass:[NSNumber class]]) { // Check if it's a NSNumber.
 			*(res + i) = [[self objectAtIndex:i] floatValue]; // Set the value in float array to float value of entry.
 		} else { // If it's not an NSNumber, replace value with 0, generate log message.
@@ -124,7 +124,7 @@
 // Change all entries's value to 0.
 -(void)clearToZeroVector
 {
-	for (int i = 0; i < [self entryCount]; ++i) { // Iterate through entries:
+	for (size_t i = 0; i < (size_t)[self entryCount]; ++i) { // Iterate through entries:
 		[self replaceEntryAtIndex:i withFloatValue:ZERO]; // Change the value of entry to ZERO.
 	}
 }
@@ -240,7 +240,7 @@
 -(NSUInteger)dimension
 {
 	NSUInteger res = 0; // Create a result to return later, initialize it to 0.
-	for (int i = 0; i < [self entryCount]; ++i) { // Iterate through the loop, find none ZERO vectors.
+	for (size_t i = 0; i < (size_t)[self entryCount]; ++i) { // Iterate through the loop, find none ZERO vectors.
 		if ([[self objectAtIndex:i] isKindOfClass:[NSNumber class]] && [[self objectAtIndex:i] floatValue] != ZERO) { // If current entry is a NSNumber and is a none ZERO vector.
 			++res; // Add one to res.
 		}
@@ -255,7 +255,7 @@
 -(NSString *)description
 {
 	NSMutableString *res = [NSMutableString stringWithFormat:@"%uD vector: (", [self entryCount]]; // Description should contain the dimension of vector, and entries.
-	for (int i = 0; i < [self entryCount]; ++i) { // Loop through all the entries:
+	for (size_t i = 0; i < (size_t)[self entryCount]; ++i) { // Loop through all the entries:
 		NSMutableString *appending = [NSMutableString stringWithFormat:@"%.1f", [[self objectAtIndex:i] floatValue]]; // Append the value of entry.
 		if (i < [self entryCount] - 1) { // If this is not the last element, add coma and space.
 			[appending appendString:@", "]; // Append comma and space.
