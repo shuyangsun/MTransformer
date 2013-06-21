@@ -49,10 +49,9 @@
 -(float)entryAsFloatAtIndex: (int) index;
 
 /**
- @method Get a pointer to a float variable represents the first element of the array, the array is the entries' values.
- @return A pointer to float array.
+ @method Get a pointer to a float variable represents the first element of the array, the array is the entries' values. Store, the length in the pointer to len.
  */
--(float *)entriesAsFloatArray;
+-(void)entriesAsFloatArray: (float *) arr length: (NSUInteger *) len;
 
 /**
  @method A method replaces certain entry at index with a float value.

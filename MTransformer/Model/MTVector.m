@@ -69,19 +69,24 @@
 	return res;
 }
 
--(float *)entriesAsFloatArray
+// Return an C float pointer to a float array.
+-(void)entriesAsFloatArray: (float *) arr length: (NSUInteger *) len
 {
 	float *res = NULL;
 	for (int i = 0; i < [self count]; ++i) {
 		if ([[self objectAtIndex:i] isKindOfClass:[NSNumber class]]) { // Check if it's a NSNumber.
 			*(res + i) = [[self objectAtIndex:i] floatValue];
 		} else { // If it's not an NSNumber, replace value with 0, generate log message.
-			*(res + i) = ZERO;
+			*(res + i) = ZERO; // Assign the value ZERO.
 			NSLog(@"Invalid object in entires.");
 		}
 	}
-	return res;
+	if (arr != NULL) // If arr is not NULL:
+		arr = res; // Assign res to arr.
+	if (len != NULL) // If pointer to len is not NULL:
+		*len = (NSUInteger)[self count]; // Get the length of array.
 }
+
 
 -(BOOL)replaceEntryAtIndex:(int)index withFloatValue:(float)fValue
 {
