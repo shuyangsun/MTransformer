@@ -12,6 +12,13 @@
 
 @interface MTVector()
 
+/** 
+ @method A method generate invalid index warning message.
+ @param maxIndex Maximun index value available.
+ @param requiredIndex Required index value.
+ */
+-(void)generateInvalidIndexMessage: (NSUInteger) maxIndex withRequiredIndex: (int) requiredIndex;
+
 @end
 
 @implementation MTVector
@@ -62,10 +69,10 @@
 -(float)entryAtIndexAsFloat:(int)index
 {
 	float res = ZERO;
-	if (index > 0 && index < [self entryCount]) {
+	if (index >= 0 && index < [self entryCount]) {
 		res = [[self objectAtIndex:index] floatValue];
 	} else { // If index is invalid, generate log message.
-		NSLog(@"Invalid index.\nentires length: %u\nrequested index: %d", [self entryCount], index);
+		[self generateInvalidIndexMessage:[self entryCount] withRequiredIndex:index]; // Generate warning message for invalid index.
 	}
 	return res;
 }
@@ -92,11 +99,11 @@
 -(BOOL)replaceEntryAtIndex:(int)index withFloatValue:(float)fValue
 {
 	BOOL res = NO;
-	if (index > 0 && index < [self entryCount]) { // If it's a valid index.
+	if (index >= 0 && index < [self entryCount]) { // If it's a valid index.
 		[self replaceObjectAtIndex:index withObject:@(fValue)];
 		res = YES;
 	} else { // If it's not a valid index, generate log message and return false.
-		NSLog(@"Invalid index.\nentires length: %d\nrequested index: %d", [self entryCount], index);
+		[self generateInvalidIndexMessage:[self entryCount] withRequiredIndex:index]; // Generate warning message for invalid index.
 	}
 	return res;
 }
@@ -140,6 +147,19 @@
 	MTVector *res = [self mutableCopy];
 	[res toHomogeneousVector];
 	return res;
+}
+
+-(void)removeEntryAtIndex:(int)index
+{
+	if (index >= 0 && index < [self entryCount]) { // It it is a valid index number:
+		if ([self entryCount] - 1 > 0){ // If it has more than 1 entries:
+			[self removeObjectAtIndex:index]; // Remove this entry. (length should be one less.)
+		} else { // If it has less than 1 entry:
+			NSLog(@"Cannot remove entry, vector length is not enough."); // Generate warning message indicate vector length is not enought to remove a entry.
+		}
+	} else { // If it's a invalid index
+		[self generateInvalidIndexMessage:[self entryCount] withRequiredIndex:index]; // Generate warning message for invalid index.
+	}
 }
 
 -(void)removeEntriesInRange:(NSRange)range
@@ -204,6 +224,12 @@
 		[res appendString:appending];
 	}
 	return res;
+}
+
+// Generate warning indicates invalid index.
+-(void)generateInvalidIndexMessage:(NSUInteger)maxIndex withRequiredIndex:(int)requiredIndex
+{
+	NSLog(@"Invalid index.\nentires length: %u\nrequested index: %d", maxIndex, requiredIndex); // Generate log message.
 }
 
 @end

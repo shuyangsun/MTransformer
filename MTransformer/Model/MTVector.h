@@ -101,8 +101,14 @@
  */
 -(MTVector *)getHomogeneousVector;
 
+/** 
+ @method Remove a certain entry at given index from vector.
+ @param index Index of entry to remove.
+ */
+-(void)removeEntryAtIndex: (int) index;
+
 /**
- @method Remove entries in certain range.
+ @method Remove entries in certain range from vector.
  @param range Range of entries to remove.
  */
 -(void)removeEntriesInRange: (NSRange) range;
