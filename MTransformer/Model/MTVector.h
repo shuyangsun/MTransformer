@@ -103,6 +103,17 @@
  */
 -(MTVector *)getHomogeneousVector;
 
+/**
+ If the current vector is homogeneous vector, chagne it to the normal form.
+ */
+-(void)toRegularVector;
+
+/**
+ If the current vector is homogeneous vector, get the normal form. (make a copy, then remove the last entry)
+ @return The homogeneous vector of current vector.
+ */
+-(MTVector *)getRegularVector;
+
 /** 
  Remove a certain entry at given index from vector.
  @param index Index of entry to remove.

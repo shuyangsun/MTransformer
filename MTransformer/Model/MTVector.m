@@ -8,6 +8,8 @@
 
 #import "MTVector.h"
 
+#import "MTEntry.h" // Import header file for MTEntry.
+
 #include "GlobalMacro.h" // Global macro definitions.
 
 @interface MTVector()
@@ -138,7 +140,9 @@
 -(void)removeLastEntry
 {
 	if ([self entryCount] > 1) // If there are two or more entries.
-		[self removeLastObject]; // Remove the last entry.
+		[self removeLastObject]; // Remove the last entry. (Also removes homogeneous entry!)
+	if (self.homogeneous == YES) // If this is a homogeneous vector:
+		self.homogeneous = NO; // Set homogeneous to NO.
 }
 
 // Add one entry with given float value to the end of vector.
@@ -162,6 +166,22 @@
 	MTVector *res = [self mutableCopy]; // Make a copy of current vector.
 	[res toHomogeneousVector]; // Make the copy homogeneous.
 	return res; // Return the result.
+}
+
+// If this vector is homogeneous vector, change it to the normal form.
+-(void)toRegularVector
+{
+	if (self.homogeneous == YES) { // If it is a homogeneous vector:
+		[self removeLastEntry]; // Remove the last entry. (Will automatically set homogeneous to NO in removeLastEntry method.)
+	}
+}
+
+// If this vector is homogeneous vector, get the regular vector.
+-(MTVector *)getRegularVector
+{
+	MTVector *res = [self mutableCopy]; // Create a mutable copy for this vector.
+	[res toRegularVector]; // Convert the copy to regular vector.
+	return res; // Return the result/
 }
 
 -(void)removeEntryAtIndex:(int)index
@@ -210,16 +230,6 @@
 	}
 }
 
-//************************ For 3D transformation ***************************//
-
-// Get the 2D projection vectors. Also remove the last entry if it is a homogeneous vector.
--(void)removeEntriesUnderTheFirstTwoRows
-{
-	if ([self entryCount] > 2) // If there are more than two entries:
-		[self removeObjectsInRange:NSMakeRange(2, [self entryCount] - 2)]; // Remove all entries under the first two rows.
-}
-//************************ For 3D transformation ***************************//
-
 // Overriding entryCount getter method.
 -(NSUInteger)entryCount
 {
@@ -254,11 +264,24 @@
 	return res; // Return the result.
 }
 
+//************************ For 3D transformation ***************************//
+
+// Get the 2D projection vectors. Also remove the last entry if it is a homogeneous vector.
+-(void)removeEntriesUnderTheFirstTwoRows
+{
+	if ([self entryCount] > 2) // If there are more than two entries:
+		[self removeObjectsInRange:NSMakeRange(2, [self entryCount] - 2)]; // Remove all entries under the first two rows.
+}
+//************************ For 3D transformation ***************************//
+
+//************************ Helper Methods ***************************//
+
 // Generate warning indicates invalid index.
 -(void)generateInvalidIndexMessage:(NSUInteger)maxIndex withRequiredIndex:(int)requiredIndex
 {
 	NSLog(@"Invalid index.\nentires length: %u\nrequested index: %d", maxIndex, requiredIndex); // Generate log message, containing max index and required index.
 }
+//************************ Helper Methods ***************************//
 
 @end
 
