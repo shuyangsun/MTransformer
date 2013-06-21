@@ -8,7 +8,8 @@
 
 #import "MTPoint.h"
 #import "MTVector.h"
-#include "GlobalMacro.h"
+
+#include "GlobalMacro.h" // Global macro definition.
 
 @interface MTPoint() // Class extension
 
@@ -93,9 +94,9 @@
 		[res appendString:@"("]; // Add opening parenthesis.
 		for (int i = 0; i < [self.vector entryCount]; ++i) {
 			if (i < [self.vector entryCount] - 1){ // If this is NOT the last entry
-				[res appendFormat:@"%.1f, ", [self.vector entryAsFloatAtIndex:i]]; // Append the float value and comma.
+				[res appendFormat:@"%.1f, ", [self.vector entryAtIndexAsFloat:i]]; // Append the float value and comma.
 			} else { // If this is the last entry
-				[res appendFormat:@"%.1f", [self.vector entryAsFloatAtIndex:i]]; // Append the float value.
+				[res appendFormat:@"%.1f", [self.vector entryAtIndexAsFloat:i]]; // Append the float value.
 			}
 		}
 		[res appendString:@")"]; // Add closing parenthesis.
