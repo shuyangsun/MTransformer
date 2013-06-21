@@ -36,6 +36,7 @@
 				[self addObject:@(ZERO)]; // Initialize with ZEROs.
 			}
 		}
+		self.homogeneous = NO;
 	}
 	return self;
 }
@@ -58,6 +59,7 @@
 			self = [self initWithNumberOfEntries:1]; // Init as a ZERO vector.
 			NSLog(@"No element in initialize array."); // Generate log message
 		}
+		self.homogeneous = NO;
 	}
 	return self;
 }
