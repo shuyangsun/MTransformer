@@ -12,7 +12,7 @@
 
 #include "GlobalMacro.h" // Global macro definitions.
 
-@interface MTVector()
+@interface MTVector() // Class extension
 
 /**
  @method A method generate invalid index warning message.
