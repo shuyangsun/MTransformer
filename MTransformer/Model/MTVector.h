@@ -35,7 +35,7 @@
  Initialize vector with certain number of entries, all entries are initialized with 0.
  @param numberOfEntries The number of entries need to be initialized in the vector, including 0 entries.
  */
--(id)initWithNumberOfEntries: (int) numberOfEntries;
+-(id)initWithNumberOfEntries: (NSUInteger) numberOfEntries;
 
 /**
  Initialize vector with an array contains all the values.
@@ -49,12 +49,18 @@
  */
 -(id)initWithFloatArray: (float *) fArr;
 
+/**
+ Get entry at index as a MTEntry object.
+ @param index The index of entry want to get.
+ */
+-(id)entryAtIndex:(NSUInteger)index;
+
 /** 
  Get the float value of entry at certain index as a float value.
  @param index Index of entry.
  @return The float value of entry.
  */
--(float)entryAtIndexAsFloat:(int)index;
+-(float)entryAtIndexAsFloat:(NSUInteger)index;
 
 /**
  Get a pointer to a float variable represents the first element of the array, the array is the entries' values. Store, the length in the pointer to len.
@@ -69,7 +75,7 @@
  @param fValue The float number to replace with.
  @return Whether the operation succeed or not. (If the index value is not valid, it will return false.)
  */
--(BOOL)replaceEntryAtIndex: (int) index withFloatValue: (float) fValue;
+-(BOOL)replaceEntryAtIndex: (NSUInteger) index withFloatValue: (float) fValue;
 
 /**
  Clear the entries to zero. (Change this vector to a zero vector).
@@ -80,7 +86,7 @@
  Replace current entry value at certain index with number 0.
  @param index The index of entry to replace.
  */
--(void)clearEntryAtIndexToZero: (int) index;
+-(void)clearEntryAtIndexToZero: (NSUInteger) index;
 
 /**
  Remove the first entry in the vector.
@@ -124,7 +130,7 @@
  Remove a certain entry at given index from vector.
  @param index Index of entry to remove.
  */
--(void)removeEntryAtIndex: (int) index;
+-(void)removeEntryAtIndex: (NSUInteger) index;
 
 /**
  Remove entries in certain range from vector.
@@ -157,5 +163,27 @@
 -(void)removeEntriesUnderTheFirstTwoRows;
 
 //************************ Methods ***************************//
+
+//************************ Linear Algebra Calculation ***************************//
+
+/** 
+ Multiply this vector by a scalar.
+ @param scalar The number to multiply.
+ */
+-(void)multiplyByNumber: (float) scalar;
+
+/**
+ Add this vector to another vector.
+ @param anotherVector The vector to add.
+ */
+-(void)addVector: (MTVector *) anotherVector;
+
+/** 
+ Substract this vector by another vector.
+ @param anotherVector The vector to substract.
+ */
+-(void)substractVector: (MTVector *) anotherVector;
+
+//************************ Linear Algebra Calculation ***************************//
 
 @end

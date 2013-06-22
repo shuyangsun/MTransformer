@@ -29,7 +29,7 @@
 @implementation MTVector
 
 // Initialize with a certain amount of entires, values are ZERO.
--(id)initWithNumberOfEntries:(int)numberOfEntries
+-(id)initWithNumberOfEntries:(NSUInteger)numberOfEntries
 {
 	self = [super init];
 	if (self) {
@@ -86,11 +86,17 @@
 	return [self initWithNumberOfEntries:1]; // Initialize with a ZERO vector.
 }
 
+// Get entry at index as a MTEntry object.
+-(id)entryAtIndex:(NSUInteger)index
+{
+	return [self objectAtIndex:index]; // Call NSMutableArray method.
+}
+
 // return entry value as float number.
--(float)entryAtIndexAsFloat:(int)index
+-(float)entryAtIndexAsFloat:(NSUInteger)index
 {
 	float res = ZERO; // Initialize result to value ZERO.
-	if (index >= 0 && index < [self entryCount]) { // If it is a valid index:
+	if (index < [self entryCount]) { // If it is a valid index:
 		res = [[self objectAtIndex:index] floatValue]; // Get the float value of entry at that index.
 	} else { // If index is invalid, generate log message.
 		[self generateInvalidIndexMessage:[self entryCount] withRequiredIndex:index]; // Generate warning message for invalid index.
@@ -117,10 +123,10 @@
 }
 
 // Change the value of entry at certain index, return operation succeed or not.
--(BOOL)replaceEntryAtIndex:(int)index withFloatValue:(float)fValue
+-(BOOL)replaceEntryAtIndex:(NSUInteger)index withFloatValue:(float)fValue
 {
 	BOOL res = NO; // Initialize the result to be NO, if succeed, change it to YES.
-	if (index >= 0 && index < [self entryCount]) { // If it's a valid index.
+	if (index < [self entryCount]) { // If it's a valid index.
 		[self replaceObjectAtIndex:index withObject:@(fValue)]; // Replace entry with new value.
 		res = YES; // Change the value of result to YES.
 	} else { // If it's not a valid index, generate log message and return false.
@@ -130,7 +136,7 @@
 }
 
 // Change the value of entry at certain index to ZERO.
--(void)clearEntryAtIndexToZero:(int)index
+-(void)clearEntryAtIndexToZero:(NSUInteger)index
 {
 	[self replaceEntryAtIndex:index withFloatValue:ZERO]; // Replace entry at index with value ZREO.
 }
@@ -198,9 +204,9 @@
 	return res; // Return the result/
 }
 
--(void)removeEntryAtIndex:(int)index
+-(void)removeEntryAtIndex:(NSUInteger)index
 {
-	if (index >= 0 && index < [self entryCount]) { // It it is a valid index number:
+	if (index < [self entryCount]) { // It it is a valid index number:
 		if ([self entryCount] - 1 > 0){ // If it has more than 1 entries:
 			[self removeObjectAtIndex:index]; // Remove this entry. (length should be one less.)
 		} else { // If it has less than 1 entry:
@@ -280,6 +286,34 @@
 	[res appendString:@")"]; // Add close parenthesize.
 	return res; // Return the result.
 }
+
+//************************ Linear Algebra Calculation ***************************//
+
+// Multiply this vector by a number.
+-(void)multiplyByNumber:(float)scalar
+{
+	for (size_t i = 0; i < (size_t)[self entryCount]; ++i) { // Loop through all entries.
+		[self replaceEntryAtIndex:i withFloatValue:([self entryAtIndexAsFloat:i] * scalar)]; // Replace with multiplied number.
+	}
+}
+
+// Add this vector to another vector.
+-(void)addVector:(MTVector *)anotherVector
+{
+	for (size_t i = 0; i < (size_t)[self entryCount]; ++i) { // Loop through all entries.
+		[self replaceEntryAtIndex:i withFloatValue:([self entryAtIndexAsFloat:i] + [anotherVector entryAtIndexAsFloat:i])]; // Replace with added number.
+	}
+}
+
+// Substract this vector by another vector.
+-(void)substractVector:(MTVector *)anotherVector
+{
+	for (size_t i = 0; i < (size_t)[self entryCount]; ++i) { // Loop through all entries.
+		[self replaceEntryAtIndex:i withFloatValue:([self entryAtIndexAsFloat:i] - [anotherVector entryAtIndexAsFloat:i])]; // Replace with substracted number.
+	}
+}
+
+//************************ Linear Algebra Calculation ***************************//
 
 //************************ For 3D transformation ***************************//
 
