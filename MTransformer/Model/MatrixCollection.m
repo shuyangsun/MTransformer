@@ -8,6 +8,10 @@
 
 #import "MatrixCollection.h"
 
+@interface MatrixCollection() // Class extension
+
+@end
+
 @implementation MatrixCollection
 
 @end

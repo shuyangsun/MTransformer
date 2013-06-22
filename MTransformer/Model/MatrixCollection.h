@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+
+/**
+ A class for getting pre-defined matrices. Including matrices required for projection.
+ */
 @interface MatrixCollection : NSObject
 
 @end
