@@ -14,15 +14,15 @@
 
 @interface MTVector() // Class extension
 
+/** Property indicating whether this vector is a homogeneous vector. (readonly in header file)*/
+@property (readwrite, nonatomic, getter = isHomogeneous) BOOL homogeneous; // Redefine as readwrite inside implementation file.
+
 /**
  @method A method generate invalid index warning message.
  @param maxIndex Maximun index value available.
  @param requiredIndex Required index value.
  */
 -(void)generateInvalidIndexMessage: (NSUInteger) maxIndex withRequiredIndex: (int) requiredIndex;
-
-/** Property indicating whether this vector is a homogeneous vector. (readonly in header file)*/
-@property (readwrite, nonatomic, getter = isHomogeneous) BOOL homogeneous; // Redefine as readwrite inside implementation file.
 
 @end
 
@@ -333,6 +333,26 @@
 	NSLog(@"Invalid index.\nentires length: %u\nrequested index: %d", maxIndex, requiredIndex); // Generate log message, containing max index and required index.
 }
 //************************ Helper Methods ***************************//
+
+//************************ Copy Protocol Methods ***************************//
+
+// Copy method for NSCopying protocol.
+-(id)copyWithZone:(NSZone *)zone
+{
+	MTVector *res = [super copyWithZone:zone]; // Call super(NSMutableArray)'s copy method.
+	res.homogeneous = self.homogeneous; // Set homogeneous.
+	return res;
+}
+
+// Mutable copy method for NSMutableCopy protocol.
+-(id)mutableCopyWithZone:(NSZone *)zone
+{
+	MTVector *res = [super mutableCopyWithZone:zone]; // Call super(NSMutableArray)'s mutableCopy method.
+	res.homogeneous = self.homogeneous; // Set homogeneous.
+	return res;
+}
+
+//************************ Copy Protocol Methods ***************************//
 
 @end
 

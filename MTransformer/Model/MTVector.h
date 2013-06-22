@@ -16,7 +16,7 @@
  Other init methods will generate a vector with #n 0 entires.
  */
 
-@interface MTVector : NSMutableArray
+@interface MTVector : NSMutableArray <NSCopying, NSMutableCopying> // Meet requirement of copying protocols.
 
 //************************ Properties ***************************//
 
