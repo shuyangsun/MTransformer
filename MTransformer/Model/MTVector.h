@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 /**
- @interface A class representing a vector.
+ A class representing a vector.
  A vector has a property called entries which holds the values of all the entries.
  Variables in entries should be NSNumbers (with float value).
  Designated initialization method will generate a 0 vector with 1 entry.

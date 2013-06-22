@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ A class representing entries in a vector. Super class is NSNumber.
+ */
 @interface MTEntry : NSNumber
 
 /** 

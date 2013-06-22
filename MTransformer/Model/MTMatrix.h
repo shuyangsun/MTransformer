@@ -10,6 +10,9 @@
 
 @class MTVector; // Class declaration for MTVector.
 
+/**
+ A class representing a matrix, contains a array of vectors.
+ */
 @interface MTMatrix : NSObject <NSCopying, NSMutableCopying> // Satisfied protocols.
 
 //************************ Properties ***************************//
