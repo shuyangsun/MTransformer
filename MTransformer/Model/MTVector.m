@@ -244,7 +244,7 @@
 	}
 }
 
-// Overriding entryCount getter method.
+// Overriding entryCount getter method. (The result includes homogeneous entry.)
 -(NSUInteger)entryCount
 {
 	return [self count]; // The only place where should use [self count] other places should be [self entryCount].
