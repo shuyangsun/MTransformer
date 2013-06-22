@@ -26,7 +26,7 @@
 
 /** 
  Initialize this matrix with given vectors.
- @param theVectors Vectors initializing matrix.-
+ @param theVectors Vectors initializing matrix.
  */
 -(id)initWithVectors: (NSArray *) theVectors;
 
@@ -58,18 +58,17 @@
 /** 
  Multiply this matrix by a vector, return YES if it's possible, NO otherwise. (After multiplication, this matrix will become a vector.)
  @param vector Vector to multiply.
- @param front Boolean value indicate whether the vector should be in the front of the matrix.
  @return If the multiplication is defined, multiply and return YES, NO otherwise.
  */
--(BOOL)multiplyVector: (MTVector *) vector inTheFront: (BOOL) front;
+-(MTVector *)multiplyVector: (MTVector *) vector;
 
 /**
  Multiply this matrix by another matrix, return YES if it's possible, NO otherwise.
- @param matrix Matrix to multiply.
+ @param anotherMatrix Matrix to multiply.
  @param front Boolean value indicate whether the other matrix should be in the front of this matrix.
  @return If the multiplication is defined, multiply and return YES, NO otherwise.
  */
--(BOOL)multiplyMatrix: (MTMatrix *) matrix inTheFront: (BOOL) front;
+-(BOOL)multiplyMatrix: (MTMatrix *) anotherMatrix inTheFront: (BOOL) front;
 
 //************************ Linear Algebra Calculation ***************************//
 
