@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class MTVector; // Class declaration for MTVector.
+
 @interface MTMatrix : NSObject <NSCopying, NSMutableCopying> // Satisfied protocols.
 
 //************************ Properties ***************************//
@@ -50,6 +52,26 @@
 -(MTMatrix *)getHomogeneousMatrix;
 
 //************************ Methods ***************************//
+
+//************************ Linear Algebra Calculation ***************************//
+
+/** 
+ Multiply this matrix by a vector, return YES if it's possible, NO otherwise. (After multiplication, this matrix will become a vector.)
+ @param vector Vector to multiply.
+ @param front Boolean value indicate whether the vector should be in the front of the matrix.
+ @return If the multiplication is defined, multiply and return YES, NO otherwise.
+ */
+-(BOOL)multiplyVector: (MTVector *) vector inTheFront: (BOOL) front;
+
+/**
+ Multiply this matrix by another matrix, return YES if it's possible, NO otherwise.
+ @param matrix Matrix to multiply.
+ @param front Boolean value indicate whether the other matrix should be in the front of this matrix.
+ @return If the multiplication is defined, multiply and return YES, NO otherwise.
+ */
+-(BOOL)multiplyMatrix: (MTMatrix *) matrix inTheFront: (BOOL) front;
+
+//************************ Linear Algebra Calculation ***************************//
 
 @end
 
