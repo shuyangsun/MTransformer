@@ -98,7 +98,7 @@
 	return res; // Return the result.
 }
 
-// Return an C float pointer to a float array.
+// Return an C float pointer to a float array. (including homogeneous entry!)
 -(void)entriesAsFloatArray: (float *) arr length: (NSUInteger *) len
 {
 	float *res = NULL; // Initialize res to NULL.
