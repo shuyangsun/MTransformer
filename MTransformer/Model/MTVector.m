@@ -33,7 +33,7 @@
 	if (self) {
 		if (numberOfEntries > 0) { // Check if number of entries is more than 0.
 			for (size_t i = 0; i < (size_t)numberOfEntries; ++i) { // Initialize entries with ZEROs.
-				[self addObject:@(ZERO)]; // Initialize with ZEROs.
+				[self.entries addObject:@(ZERO)]; // Initialize with ZEROs.
 			}
 		}
 		self.homogeneous = NO; // Initialize proerty homogeneous to NO.
@@ -49,10 +49,10 @@
 		if ([entriesOfVector count] > 0) { // If there is element in the array.
 			for (size_t i = 0; i < (size_t)[entriesOfVector count]; ++i) {
 				if ([[entriesOfVector objectAtIndex:i] isKindOfClass:[NSNumber class]]) { // If it is a NSNumber.
-					[self addObject:[entriesOfVector objectAtIndex:i]]; // Add the object to the entries property.
+					[self.entries addObject:[entriesOfVector objectAtIndex:i]]; // Add the object to the entries property.
 				} else { // If it is not a NSNumber.
-					[self addObject:@(ZERO)]; // Add ZERO to it. (to guarantee the number of entry)
-					NSLog(@"Object initializing vector is not a NSNumber.\nclass name: %@", [[self objectAtIndex:i] class]); // Generate log message.
+					[self.entries addObject:@(ZERO)]; // Add ZERO to it. (to guarantee the number of entry)
+					NSLog(@"Object initializing vector is not a NSNumber.\nclass name: %@", [[self.entries objectAtIndex:i] class]); // Generate log message.
 				}
 			}
 		} else { // If there is not any elements, generate log message, init it to a ZERO vector.
@@ -71,7 +71,7 @@
 	if (self) {
 		if (fArr != NULL) { // If given C style float array is not NULL:
 			for (size_t i = 0; i < (size_t)arrlen(fArr); ++i) { // Iterate through array.
-				[self addObject:[NSNumber numberWithFloat:*(fArr + i)]]; // Add entry to the list.
+				[self.entries addObject:[NSNumber numberWithFloat:*(fArr + i)]]; // Add entry to the list.
 			}
 		}
 	}
@@ -87,7 +87,7 @@
 // Get entry at index as a NSNumber object.
 -(id)entryAtIndex:(NSUInteger)index
 {
-	return [self objectAtIndex:index]; // Call NSMutableArray method.
+	return [self.entries objectAtIndex:index]; // Call NSMutableArray method.
 }
 
 // return entry value as float number.
@@ -95,7 +95,7 @@
 {
 	float res = ZERO; // Initialize result to value ZERO.
 	if (index < [self entryCount]) { // If it is a valid index:
-		res = [[self objectAtIndex:index] floatValue]; // Get the float value of entry at that index.
+		res = [[self.entries objectAtIndex:index] floatValue]; // Get the float value of entry at that index.
 	} else { // If index is invalid, generate log message.
 		[self generateInvalidIndexMessage:[self entryCount] withRequiredIndex:index]; // Generate warning message for invalid index.
 	}
@@ -107,8 +107,8 @@
 {
 	float *res = NULL; // Initialize res to NULL.
 	for (size_t i = 0; i < (size_t)[self entryCount]; ++i) { // Iterate through the entries:
-		if ([[self objectAtIndex:i] isKindOfClass:[NSNumber class]]) { // Check if it's a NSNumber.
-			*(res + i) = [[self objectAtIndex:i] floatValue]; // Set the value in float array to float value of entry.
+		if ([[self.entries objectAtIndex:i] isKindOfClass:[NSNumber class]]) { // Check if it's a NSNumber.
+			*(res + i) = [[self.entries objectAtIndex:i] floatValue]; // Set the value in float array to float value of entry.
 		} else { // If it's not an NSNumber, replace value with 0, generate log message.
 			*(res + i) = ZERO; // Assign the value ZERO.
 			NSLog(@"Invalid object in entires."); // Generate log message.
@@ -125,7 +125,7 @@
 {
 	BOOL res = NO; // Initialize the result to be NO, if succeed, change it to YES.
 	if (index < [self entryCount]) { // If it's a valid index.
-		[self replaceObjectAtIndex:index withObject:@(fValue)]; // Replace entry with new value.
+		[self.entries replaceObjectAtIndex:index withObject:@(fValue)]; // Replace entry with new value.
 		res = YES; // Change the value of result to YES.
 	} else { // If it's not a valid index, generate log message and return false.
 		[self generateInvalidIndexMessage:[self entryCount] withRequiredIndex:index]; // Generate warning message for invalid index.
@@ -151,14 +151,14 @@
 -(void)removeFirstEntry
 {
 	if ([self entryCount] > 1) // If there are two or more entries.
-		[self removeObjectAtIndex:0]; // Remove the first entry.
+		[self.entries removeObjectAtIndex:0]; // Remove the first entry.
 }
 
 // Remove the last entry in the vector. (if there are more than one entries)
 -(void)removeLastEntry
 {
 	if ([self entryCount] > 1) // If there are two or more entries.
-		[self removeLastObject]; // Remove the last entry. (Also removes homogeneous entry!)
+		[self.entries removeLastObject]; // Remove the last entry. (Also removes homogeneous entry!)
 	if (self.homogeneous == YES) // If this is a homogeneous vector:
 		self.homogeneous = NO; // Set homogeneous to NO.
 }
@@ -166,7 +166,7 @@
 // Add one entry with given float value to the end of vector.
 -(void)addEntryWithFloatValue:(float)fValue
 {
-	[self addObject:@(fValue)]; // Add a entry with float value to the end of vector.
+	[self.entries addObject:@(fValue)]; // Add a entry with float value to the end of vector.
 }
 
 // Convert this entry to it's homogeneous vector if it is not.
@@ -206,7 +206,7 @@
 {
 	if (index < [self entryCount]) { // It it is a valid index number:
 		if ([self entryCount] - 1 > 0){ // If it has more than 1 entries:
-			[self removeObjectAtIndex:index]; // Remove this entry. (length should be one less.)
+			[self.entries removeObjectAtIndex:index]; // Remove this entry. (length should be one less.)
 		} else { // If it has less than 1 entry:
 			NSLog(@"Cannot remove entry, vector length is not enough."); // Generate warning message indicate vector length is not enought to remove a entry.
 		}
@@ -218,14 +218,14 @@
 // Remove entries in certain range.
 -(void)removeEntriesInRange:(NSRange)range
 {
-	[self removeObjectsInRange:range]; // Remove objects in this range.
+	[self.entries removeObjectsInRange:range]; // Remove objects in this range.
 }
 
 // Return an array containing entries in certain range.
 -(NSArray *)entriesInRange: (NSRange) range
 {
 	NSIndexSet *rangeToGet = [NSIndexSet indexSetWithIndexesInRange:range]; // Create a index set of entries in the range.
-	return [self objectsAtIndexes:rangeToGet]; // Return entries in the index set.
+	return [self.entries objectsAtIndexes:rangeToGet]; // Return entries in the index set.
 }
 
 // Remove entries beside the given range.
@@ -241,17 +241,23 @@
 -(void)addEntries:(NSArray *)entriesToAdd
 {
 	if (self.homogeneous == NO){ // If it is NOT the homogeneous form, just add entries to the end of the vector.
-		[self addObjectsFromArray:entriesToAdd]; // Add entries to the end of the vector.
+		[self.entries addObjectsFromArray:entriesToAdd]; // Add entries to the end of the vector.
 	} else { // If it is the homogeneous form, insert entries above the last entry.
-		NSIndexSet *indexes = [NSIndexSet indexSetWithIndex:[self count] -1]; // Create a index set, contain only the last index of this vector.
-		[self insertObjects:entriesToAdd atIndexes:indexes]; // Add entries to the end of vector, above the last one.
+		NSIndexSet *indexes = [NSIndexSet indexSetWithIndex:[self entryCount] -1]; // Create a index set, contain only the last index of this vector.
+		[self.entries insertObjects:entriesToAdd atIndexes:indexes]; // Add entries to the end of vector, above the last one.
 	}
 }
 
 // Overriding entryCount getter method. (The result includes homogeneous entry.)
 -(NSUInteger)entryCount
 {
-	return [self count]; // The only place where should use [self count] other places should be [self entryCount].
+	return [self.entries count]; // Call the count method for entries.
+}
+// Overriding entries getter method using lazy instantiation.
+-(NSMutableArray *)entries
+{
+	if (_entries) _entries = [[NSMutableArray alloc] init]; // Lazy instantiation.
+	return _entries; // Return the property.
 }
 
 // Overriding dimension getter method.
@@ -259,7 +265,7 @@
 {
 	NSUInteger res = 0; // Create a result to return later, initialize it to 0.
 	for (size_t i = 0; i < (size_t)[self entryCount]; ++i) { // Iterate through the loop, find none ZERO vectors.
-		if ([[self objectAtIndex:i] isKindOfClass:[NSNumber class]] && [[self objectAtIndex:i] floatValue] != ZERO) { // If current entry is a NSNumber and is a none ZERO vector.
+		if ([[self.entries objectAtIndex:i] isKindOfClass:[NSNumber class]] && [[self.entries objectAtIndex:i] floatValue] != ZERO) { // If current entry is a NSNumber and is a none ZERO vector.
 			++res; // Add one to res.
 		}
 	}
@@ -274,7 +280,7 @@
 {
 	NSMutableString *res = [NSMutableString stringWithFormat:@"%uD vector: (", [self entryCount]]; // Description should contain the dimension of vector, and entries.
 	for (size_t i = 0; i < (size_t)[self entryCount]; ++i) { // Loop through all the entries:
-		NSMutableString *appending = [NSMutableString stringWithFormat:@"%.1f", [[self objectAtIndex:i] floatValue]]; // Append the value of entry.
+		NSMutableString *appending = [NSMutableString stringWithFormat:@"%.1f", [[self.entries objectAtIndex:i] floatValue]]; // Append the value of entry.
 		if (i < [self entryCount] - 1) { // If this is not the last element, add coma and space.
 			[appending appendString:@", "]; // Append comma and space.
 		}
@@ -319,7 +325,7 @@
 -(void)removeEntriesUnderTheFirstTwoRows
 {
 	if ([self entryCount] > 2) // If there are more than two entries:
-		[self removeObjectsInRange:NSMakeRange(2, [self entryCount] - 2)]; // Remove all entries under the first two rows.
+		[self.entries removeObjectsInRange:NSMakeRange(2, [self entryCount] - 2)]; // Remove all entries under the first two rows.
 }
 //************************ For 3D transformation ***************************//
 
@@ -337,7 +343,7 @@
 // Copy method for NSCopying protocol.
 -(id)copyWithZone:(NSZone *)zone
 {
-	MTVector *res = [super copyWithZone:zone]; // Call super(NSMutableArray)'s copy method.
+	MTVector *res = [[MTVector alloc] initWithEntriesArray:self.entries]; // Initialize with entires in itself.
 	res.homogeneous = self.homogeneous; // Set homogeneous.
 	return res;
 }
@@ -345,7 +351,7 @@
 // Mutable copy method for NSMutableCopy protocol.
 -(id)mutableCopyWithZone:(NSZone *)zone
 {
-	MTVector *res = [super mutableCopyWithZone:zone]; // Call super(NSMutableArray)'s mutableCopy method.
+	MTVector *res = [[MTVector alloc] initWithEntriesArray:self.entries]; // Initialize with entires in itself.
 	res.homogeneous = self.homogeneous; // Set homogeneous.
 	return res;
 }

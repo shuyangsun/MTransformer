@@ -16,10 +16,12 @@
  Other init methods will generate a vector with #n 0 entires.
  */
 
-@interface MTVector : NSMutableArray <NSCopying, NSMutableCopying> // Meet requirement of copying protocols.
+@interface MTVector : NSObject <NSCopying, NSMutableCopying> // Meet requirement of copying protocols.
 
 //************************ Properties ***************************//
 
+/** Property containning all the entries in this vector. */
+@property (strong, nonatomic) NSMutableArray *entries;
 /** Property representing number of entry in the vector, including 0 entries and homogeneous entry. (Simply returning [self count] inside method)*/
 @property (readonly, nonatomic) NSUInteger entryCount;
 /** Property representing dimension of entry, homogeneous entry doesn't count. (Returning number of none-ZERO entries) */
