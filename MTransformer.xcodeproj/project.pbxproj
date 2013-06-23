@@ -13,10 +13,10 @@
 		042BBCA71772A22F00844878 /* MTVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 042BBCA51772A22F00844878 /* MTVector.m */; };
 		045747271777927300F8AB8B /* GlobalMacro.c in Sources */ = {isa = PBXBuildFile; fileRef = 045747261777927300F8AB8B /* GlobalMacro.c */; };
 		045747281777927300F8AB8B /* GlobalMacro.c in Sources */ = {isa = PBXBuildFile; fileRef = 045747261777927300F8AB8B /* GlobalMacro.c */; };
+		0460C563177795E900E5B725 /* MTMatrixCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460C562177795E900E5B725 /* MTMatrixCollection.m */; };
+		0460C564177795E900E5B725 /* MTMatrixCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460C562177795E900E5B725 /* MTMatrixCollection.m */; };
 		0478C06F177494A400174C3C /* MTMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 0478C06E177494A400174C3C /* MTMatrix.m */; };
 		0478C070177494A400174C3C /* MTMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 0478C06E177494A400174C3C /* MTMatrix.m */; };
-		04C473E9177667F90053F352 /* MatrixCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C473E8177667F90053F352 /* MatrixCollection.m */; };
-		04C473EA177667F90053F352 /* MatrixCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C473E8177667F90053F352 /* MatrixCollection.m */; };
 		04ED3CB21772A1D700C1005F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ED3CB11772A1D700C1005F /* Foundation.framework */; };
 		04ED3CB41772A1D700C1005F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ED3CB31772A1D700C1005F /* CoreGraphics.framework */; };
 		04ED3CB61772A1D700C1005F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ED3CB51772A1D700C1005F /* UIKit.framework */; };
@@ -49,11 +49,11 @@
 		042BBCA41772A22F00844878 /* MTVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTVector.h; path = Model/MTVector.h; sourceTree = "<group>"; };
 		042BBCA51772A22F00844878 /* MTVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTVector.m; path = Model/MTVector.m; sourceTree = "<group>"; };
 		045747261777927300F8AB8B /* GlobalMacro.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = GlobalMacro.c; path = Model/GlobalMacro.c; sourceTree = "<group>"; };
+		0460C561177795E900E5B725 /* MTMatrixCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTMatrixCollection.h; path = Model/MTMatrixCollection.h; sourceTree = "<group>"; };
+		0460C562177795E900E5B725 /* MTMatrixCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTMatrixCollection.m; path = Model/MTMatrixCollection.m; sourceTree = "<group>"; };
 		0478C06B1774946C00174C3C /* GlobalMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalMacro.h; path = Model/GlobalMacro.h; sourceTree = "<group>"; };
 		0478C06D177494A400174C3C /* MTMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTMatrix.h; path = Model/MTMatrix.h; sourceTree = "<group>"; };
 		0478C06E177494A400174C3C /* MTMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTMatrix.m; path = Model/MTMatrix.m; sourceTree = "<group>"; };
-		04C473E7177667F90053F352 /* MatrixCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MatrixCollection.h; path = Model/MatrixCollection.h; sourceTree = "<group>"; };
-		04C473E8177667F90053F352 /* MatrixCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MatrixCollection.m; path = Model/MatrixCollection.m; sourceTree = "<group>"; };
 		04ED3CAE1772A1D700C1005F /* MTransformer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTransformer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04ED3CB11772A1D700C1005F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04ED3CB31772A1D700C1005F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -134,8 +134,8 @@
 			children = (
 				0478C06D177494A400174C3C /* MTMatrix.h */,
 				0478C06E177494A400174C3C /* MTMatrix.m */,
-				04C473E7177667F90053F352 /* MatrixCollection.h */,
-				04C473E8177667F90053F352 /* MatrixCollection.m */,
+				0460C561177795E900E5B725 /* MTMatrixCollection.h */,
+				0460C562177795E900E5B725 /* MTMatrixCollection.m */,
 			);
 			name = Matrix;
 			sourceTree = "<group>";
@@ -313,12 +313,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				04ED3CBE1772A1D700C1005F /* main.m in Sources */,
+				0460C563177795E900E5B725 /* MTMatrixCollection.m in Sources */,
 				045747271777927300F8AB8B /* GlobalMacro.c in Sources */,
 				042BBCA61772A22F00844878 /* MTVector.m in Sources */,
 				04ED3CC81772A1D700C1005F /* MTViewController.m in Sources */,
 				0478C06F177494A400174C3C /* MTMatrix.m in Sources */,
 				04ED3CC21772A1D700C1005F /* MTAppDelegate.m in Sources */,
-				04C473E9177667F90053F352 /* MatrixCollection.m in Sources */,
 				04007D1F177347B1005530E6 /* MTPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,8 +329,8 @@
 			files = (
 				04ED3CDD1772A1D700C1005F /* MTransformerTests.m in Sources */,
 				04007D20177347B1005530E6 /* MTPoint.m in Sources */,
-				04C473EA177667F90053F352 /* MatrixCollection.m in Sources */,
 				045747281777927300F8AB8B /* GlobalMacro.c in Sources */,
+				0460C564177795E900E5B725 /* MTMatrixCollection.m in Sources */,
 				042BBCA71772A22F00844878 /* MTVector.m in Sources */,
 				0478C070177494A400174C3C /* MTMatrix.m in Sources */,
 			);

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Shuyang Sun. All rights reserved.
 //
 
-#import "MatrixCollection.h"
+#import "MTMatrixCollection.h"
 
 #import "MTMatrix.h" // Import header file for MTMatrix
 // "GlobalMacro.h" imported in header file.

@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include "GlobalMacro.h"
 
+// C function makes a MTCStyleMatrix.
 MTCStyleMatrix MTMakeCStyleMatrix(int row, int col, float *fVals) {
 	MTCStyleMatrix res; // Create a MTCStyleMatrix.
 	res.row = row; // Assign row value.
