@@ -38,7 +38,8 @@
  @param fVals A C style array containning all the float values (row by row).
  @param rowCount The number of rows in the array.
  */
--(id)initWithFloatValues: (float *) fVals withRowNumber: (int) rowCount; // C involved.
+-(id)initWithFloatValues: (float *) fVals
+		   withRowNumber: (int) rowCount; // C involved.
 
 //************************ Initializers  ***************************//
  
@@ -86,7 +87,8 @@
  @param front Boolean value indicate whether the other matrix should be in the front of this matrix.
  @return If the multiplication is defined, multiply and return YES, NO otherwise.
  */
--(BOOL)multiplyMatrix: (MTMatrix *) anotherMatrix inTheFront: (BOOL) front;
+-(BOOL)multiplyMatrix: (MTMatrix *) anotherMatrix
+		   inTheFront: (BOOL) front;
 
 //************************ Linear Algebra Calculation ***************************//
 

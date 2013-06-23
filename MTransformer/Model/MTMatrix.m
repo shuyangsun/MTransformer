@@ -59,7 +59,8 @@
 }
 
 // Initialize with a two dimensional C style float array.
--(id)initWithFloatValues:(float *)fVals withRowNumber:(int) rowCount
+-(id)initWithFloatValues:(float *)fVals
+		   withRowNumber:(int) rowCount
 {
 	self = [super init];
 	if (self) {
@@ -135,7 +136,8 @@
 }
 
 // Multiply by a matrix, front indicate wether it should be in the front or after this matrix.
--(BOOL)multiplyMatrix:(MTMatrix *)anotherMatrix inTheFront:(BOOL)front
+-(BOOL)multiplyMatrix:(MTMatrix *)anotherMatrix
+		   inTheFront:(BOOL)front
 {
 	if (front) { // If the matrix multiplying is in the front of this matrix:
 		if ([[self.vectors objectAtIndex:0] entryCount] != [anotherMatrix.vectors count]) return NO; // If number of rows for this matrix doesn't equal to number of columns for the new matrix, multiplication is not defined. Return NO.
