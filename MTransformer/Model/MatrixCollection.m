@@ -43,9 +43,9 @@
 -(MTMatrix *)projectionTransformationMatrixWithDistanceAtZAxis: (float) d
 {
 	float fVals[4][4] =
-	   {1, 0,	0,	   0, // Keep x value.
-		0, 1,	0,	   0, // Keep y value.
-		0, 0,	0,	   0, // Clear z value. (projecting to 2D, so there is no z value)
+	   {1, 0,	 0,	    0, // Keep x value.
+		0, 1,	 0,	    0, // Keep y value.
+		0, 0,	 0,	    0, // Clear z value. (projecting to 2D, so there is no z value)
 		0, 0, -(1.0/d), 0}; // Set the scale parameter for final projection.
 
 	return [[MTMatrix alloc] initWithFloatValues: (float **)fVals]; // Return initialized matrix. (need to cast fVals to type (float **) )
