@@ -37,7 +37,7 @@ typedef struct MTCStyleMatrix {
 /**
  A C function create a MTCStyleMatrix with given row, column number and float array.
  */
-MTCStyleMatrix MTCStyleMatrixMake(NSUInteger row, NSUInteger col, float *fVals) {
+MTCStyleMatrix MTMakeCStyleMatrix(NSUInteger row, NSUInteger col, float *fVals) {
 	MTCStyleMatrix res; // Create a MTCStyleMatrix.
 	res.row = row; // Assign row value.
 	res.col = col; // Assign column value.
