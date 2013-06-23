@@ -49,7 +49,8 @@
 		0, 0, -(1.0/d), 0}; // Set the scale parameter for final projection.
 
 	return [[MTMatrix alloc] initWithFloatValues: fVals
-								   withRowNumber: SIZE_OF_TRANSFORMATION_MATRIX]; // Return initialized matrix.
+								   withRowNumber: SIZE_OF_TRANSFORMATION_MATRIX
+								 andColumnNumber: SIZE_OF_TRANSFORMATION_MATRIX]; // Return initialized matrix.
 }
 
 /**
@@ -71,7 +72,8 @@
 	    0, 0, -(1.0/d), 0}; // Set the scale parameter.
 
 	return [[MTMatrix alloc] initWithFloatValues: fVals
-								   withRowNumber: SIZE_OF_TRANSFORMATION_MATRIX]; // Return initialized matrix.
+								   withRowNumber: SIZE_OF_TRANSFORMATION_MATRIX
+								 andColumnNumber: SIZE_OF_TRANSFORMATION_MATRIX]; // Return initialized matrix.
 }
 
 /**
@@ -93,7 +95,8 @@
 		 0, 0,	0,	1}; // Keep the scale parameter for final projection.
 
 	return [[MTMatrix alloc] initWithFloatValues: fVals
-								   withRowNumber: SIZE_OF_TRANSFORMATION_MATRIX]; // Return initialized matrix.
+								   withRowNumber: SIZE_OF_TRANSFORMATION_MATRIX
+								 andColumnNumber: SIZE_OF_TRANSFORMATION_MATRIX]; // Return initialized matrix.
 }
 
 /**
@@ -117,21 +120,24 @@
 							 0, sin(r),	 cos(r), 0,
 							 0,	  0,	  0,	 1}; // Set values of the 2D float array.
 		res = [[MTMatrix alloc] initWithFloatValues: fVals
-									  withRowNumber: SIZE_OF_TRANSFORMATION_MATRIX]; // Initialize matrix with float values.
+									  withRowNumber: SIZE_OF_TRANSFORMATION_MATRIX
+									andColumnNumber: SIZE_OF_TRANSFORMATION_MATRIX]; // Initialize matrix with float values.
 	} else if (axis == Y) { // If it's rotating about Y axis:
 		float fVals[] = { cos(r), 0, sin(r), 0,
 								0,	  1,   0,	 0,
 							 -sin(r), 0, cos(r), 0,
 								0,	  0,   0,	 1}; // Set values of the 2D float array.
 		res = [[MTMatrix alloc] initWithFloatValues: fVals
-									  withRowNumber: SIZE_OF_TRANSFORMATION_MATRIX]; // Initialize matrix with float values.
+									  withRowNumber: SIZE_OF_TRANSFORMATION_MATRIX
+									andColumnNumber: SIZE_OF_TRANSFORMATION_MATRIX]; // Initialize matrix with float values.
 	} else if (axis == Z) { // If it's rorating about Z axis:
 		float fVals[] = {cos(r), -sin(r), 0, 0,
 							 sin(r),  cos(r), 0, 0,
 								0,		0,	  1, 0,
 								0,		0,	  0, 1}; // Set values of the 2D float array.
 		res = [[MTMatrix alloc] initWithFloatValues: fVals
-									  withRowNumber: SIZE_OF_TRANSFORMATION_MATRIX]; // Initialize matrix with float values.
+									  withRowNumber: SIZE_OF_TRANSFORMATION_MATRIX
+									andColumnNumber: SIZE_OF_TRANSFORMATION_MATRIX]; // Initialize matrix with float values.
 	}
 	return res; // Return the result.
 }
@@ -154,7 +160,8 @@
 						 0, 0,	0,	1}; // Keep the scale parameter for final projection.
 
 	return 	[[MTMatrix alloc] initWithFloatValues: fVals
-									withRowNumber: SIZE_OF_TRANSFORMATION_MATRIX]; // Initialize matrix with float values.
+									withRowNumber: SIZE_OF_TRANSFORMATION_MATRIX
+								  andColumnNumber: SIZE_OF_TRANSFORMATION_MATRIX]; // Initialize matrix with float values.
 }
 
 /**
