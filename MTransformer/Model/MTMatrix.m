@@ -61,12 +61,13 @@
 // Initialize with a two dimensional C style float array.
 -(id)initWithFloatValues:(float *)fVals
 		   withRowNumber:(int) rowCount
+		 andColumnNumber: (int) colCount;
 {
 	self = [super init];
 	if (self) {
 		self.homogeneous = NO; // Set homogeneous to NO.
 		size_t row = rowCount; // Get the row number.
-		size_t col = arrlen(fVals)/rowCount; // Get the colum number. (length/row)
+		size_t col = colCount; // Get the colum number.
 
 		for (size_t i = 0; i < col; ++i) { // Iterate over columns (vectors), the second index place [][*]:
 			float vecFloatVals[row]; // Create a float array, length is the row number (entry count).

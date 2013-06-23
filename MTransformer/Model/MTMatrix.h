@@ -37,9 +37,11 @@
  Initialize this matrix with given two dimensional array.
  @param fVals A C style array containning all the float values (row by row).
  @param rowCount The number of rows in the array.
+ @param colCount The number of columns in the array.
  */
 -(id)initWithFloatValues: (float *) fVals
-		   withRowNumber: (int) rowCount; // C involved.
+		   withRowNumber: (int) rowCount
+		 andColumnNumber: (int) colCount; // C involved.
 
 //************************ Initializers  ***************************//
  
