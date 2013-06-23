@@ -14,6 +14,7 @@
 
 #define arrlen(arr) (sizeof(arr)/sizeof(arr[0])) // Global macro definition, calculate length of a C style array.
 #define VECTORIZATION_SIZE 4 // Global macro definition, using LLVM 5 to optimize loops through vectorization.
+#define SIZE_OF_TRANSFORMATION_MATRIX 4 // Length of a 3D transformation matrix on each side. (should be 4 x 4)
 
 typedef enum {
 	X = 0x01, // 0b0000_0001
