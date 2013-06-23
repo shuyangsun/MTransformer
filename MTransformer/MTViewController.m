@@ -8,6 +8,11 @@
 
 #import "MTViewController.h"
 
+#import "MTMatrix.h"
+#import "MTVector.h"
+#import "MTEntry.h"
+#import "MatrixCollection.h"
+
 @interface MTViewController ()
 
 @end
@@ -17,6 +22,15 @@
 -(void)setup
 {
 	// Initialization code here...
+	float arr[2][2] = {1,2,
+					   3,4};
+	MTMatrix *matrix = [[MTMatrix alloc] initWithFloatValues:(float **)arr];
+
+	for (size_t i = 0; i < [matrix.vectors[0] entryCount]; ++i) {
+		for (size_t j = 0; j < [matrix.vectors count]; ++j) {
+			printf("%.1f ", [(MTEntry*)matrix.vectors[j][i] floatValue]);
+		}
+	}
 }
 
 -(void)awakeFromNib
