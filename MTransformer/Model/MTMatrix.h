@@ -58,6 +58,20 @@
 
 //************************ Linear Algebra Calculation ***************************//
 
+/**
+ Add this matrix to another one. Return NO if plus operation is not defined, YES if succeed.
+ @param anotherMatrix The matrix adding to this one.
+ @return Whether the plus operation if defined or not.
+ */
+-(BOOL)addMatrix: (MTMatrix *) anotherMatrix;
+
+/**
+ Substract another matrix by this one. Return NO if minus operation is not defined, YES if succeed.
+ @param anotherMatrix The matrix substracting by this one.
+ @return Whether the minus operation if defined or not.
+ */
+-(BOOL)substractMatrix: (MTMatrix *) anotherMatrix;
+
 /** 
  Multiply this matrix by a vector, return YES if it's possible, NO otherwise. (After multiplication, this matrix will become a vector.)
  @param vector Vector to multiply.

@@ -17,6 +17,12 @@
 /** Property indicating whether this matrix is a homogeneous matrix. (readonly in header file) */
 @property (readwrite, nonatomic, getter = isHomogeneous) BOOL homogeneous; // Change to readwrite in class extension.
 
+/** 
+ Generate a message indicating initialization failed.
+ @param errorReason The reason of initialization fail.
+ */
+-(void)generateMatrixInitializationFailedMessage: (NSString *) errorReason;
+
 @end
 
 @implementation MTMatrix
@@ -26,15 +32,21 @@
 {
 	self = [super init];
 	if (self) {
-		if ([theVectors count] > 0){ // If there is vector in theVectors, initialize it.
+		if ([theVectors count] > 0) { // If there is vector in theVectors, initialize it.
 			self.vectors = [theVectors mutableCopy]; // Assign theVectors to property vectors.
+			NSUInteger entryNumber = [self.vectors[0] entryCount]; // Record the entry number in the first vector, determine if all vectors has the same entry.
 
 			//************************ Determine if this matrix is a homogeneous matrix. ***************************//
 
 			self.homogeneous = YES; // Initialize property homogeneous to YES, if there is one vector which is not homogeneous vector, set to to NO.
 			for (int i = 0; i < [self.vectors count]; ++i) { // Iterat through vectors.
 				// If one of them is not homogeneous, the matrix is not homogeneous, break and set property homogeneous to NO.
-				if ([[self.vectors objectAtIndex:i] isHomogeneous] == NO) { // If anyone is not a homogeneous vector:
+				if ([self.vectors[i] entryCount] != entryNumber){ // If there is a vector has different number of entry, set self as nil, generate log message and end the method.
+					self = nil;
+					[self generateMatrixInitializationFailedMessage:@"vectors have different number of entries."];
+					return self;
+				}
+				if ([self.vectors[i] isHomogeneous] == NO) { // If anyone is not a homogeneous vector:
 					self.homogeneous = NO; // Set homogeneous to NO.
 					break; // Break out of the loop.
 				}
@@ -46,12 +58,12 @@
 	return self;
 }
 
-// Initialize with a two dimensional C style float array.
+// Initialize with a two dimensional C style float array. (Matrix CAN be initialized, because fVals is a 2D array, all vectors have the same number of entries)
 -(id)initWithFloatValues:(float **)fVals
 {
 	self = [super init];
 	if (self) {
-		self.homogeneous = NO;
+		self.homogeneous = NO; // Set homogeneous to NO.
 		for (size_t i = 0; i < (size_t)arrlen(fVals[0]); ++i) { // Iterate over columns (vectors), the second index place [][*]:
 			float vecFloatVals[arrlen(fVals)]; // Create a float array, length is the row number (entry number).
 			for (size_t j = 0; j < (size_t)arrlen(fVals); ++j) { // Iterate through this column of array.
@@ -149,6 +161,33 @@
 	}
 	return YES; // Multiplication succedd.
 }
+
+// Add another matrix
+-(BOOL)addMatrix:(MTMatrix *)anotherMatrix
+{
+	if ([self.vectors count] != [anotherMatrix.vectors count] || // If number columns are not the same or:
+		[self.vectors[0] entryCount] != [anotherMatrix.vectors[0] entryCount]) { // number of rows are not the same:
+		return NO; // Return NO and terminate the method.
+	}
+	for (size_t i = 0; i < [self.vectors count]; ++i) { // Iterate through all the vectors.
+		[self.vectors[i] addVector: anotherMatrix.vectors[i]]; // Add vectors in another matrix to this matrix.
+	}
+	return YES; // Return YES to indicate operation succeed.
+}
+
+// Substract another matrix
+-(BOOL)substractMatrix:(MTMatrix *)anotherMatrix
+{
+	if ([self.vectors count] != [anotherMatrix.vectors count] || // If number columns are not the same or:
+	   [self.vectors[0] entryCount] != [anotherMatrix.vectors[0] entryCount]) { // number of rows are not the same:
+		return NO; // Return NO and terminate the method.
+	}
+	for (size_t i = 0; i < [self.vectors count]; ++i) { // Iterate through all the vectors.
+		[self.vectors[i] substractVector: anotherMatrix.vectors[i]]; // Substract vectors in another matrix by this matrix.
+	}
+	return YES; // Return YES to indicate operation succeed.
+}
+
 //************************ Linear Algebra Calculation ***************************//
 
 //************************ Copy Protocol Methods ***************************//
@@ -171,5 +210,15 @@
 	return res;
 }
 //************************ Copy Protocol Methods ***************************//
+
+//************************ Helper Methods ***************************//
+
+// Generate error message.
+-(void)generateMatrixInitializationFailedMessage:(NSString *)errorReason
+{
+	NSLog(@"Matrix initialization failed: %@", errorReason); // Generate error message and reason.
+}
+
+//************************ Helper Methods ***************************//
 
 @end
