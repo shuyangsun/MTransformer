@@ -46,7 +46,7 @@
 	   {1, 0,	0,	   0, // Keep x value.
 		0, 1,	0,	   0, // Keep y value.
 		0, 0,	0,	   0, // Clear z value. (projecting to 2D, so there is no z value)
-		0, 0, -(1.0/d), 0}; // Set the scale parameter.
+		0, 0, -(1.0/d), 0}; // Set the scale parameter for final projection.
 
 	return [[MTMatrix alloc] initWithFloatValues: (float **)fVals]; // Return initialized matrix. (need to cast fVals to type (float **) )
 }
@@ -80,7 +80,7 @@
  | 0 0 0 1 |
 
  */
--(MTMatrix *)mtranslateTransformationMatrixWith_xValue: (float) h
+-(MTMatrix *)translateTransformationMatrixWith_xValue: (float) h
 											and_yValue: (float) k
 											and_zValue: (float) l
 {
@@ -88,9 +88,86 @@
 		{1, 0,	0,	h, // Change x value.
 		 0, 1,	0,	k, // Change y value.
 		 0, 0,	1,	l, // Change z value.
-		 0, 0,	0,	1}; // Keep the scale parameter.
+		 0, 0,	0,	1}; // Keep the scale parameter for final projection.
 
 	return [[MTMatrix alloc] initWithFloatValues: (float **)fVals]; // Return initialized matrix. (need to cast fVals to type (float **) )
+}
+
+/**
+
+ X: | 1	  0		  0	   0 |  Y: |  cos(⨚) 0 sin(⨚) 0 |  Z: | cos(⨚) -sin(⨚) 0 0 |
+	| 0 cos(⨚) -sin(⨚) 0 |	   |	0	 1   0	  0 |	  | sin(⨚)	cos(⨚) 0 0 |
+	| 0 sin(⨚)	cos(⨚) 0 |	   | -sin(⨚) 0 cos(⨚) 0 |	  |	  0		 0	   1 0 |
+	| 0	  0		  0	   1 |	   |	0	 0   0	  1 |	  |	  0		 0	   0 1 |
+
+ */
+-(MTMatrix *)rotationTransformationMatrixAboutAxis: (MT_ROTATION_AXIS) axis
+										   byAngle: (double) radian
+{
+	MTMatrix *res = nil; // Declare result, set to nil for now.
+	double r = radian; // Use r instead of radian.
+
+	// Cannot use switch statement, don't know why...
+	if (axis == X) { // If it's rorating about X axis:
+		float fVals[4][4] = {1,	  0,	  0,	 0,
+							 0, cos(r),	-sin(r), 0,
+							 0, sin(r),	 cos(r), 0,
+							 0,	  0,	  0,	 1}; // Set values of the 2D float array.
+		res = [[MTMatrix alloc] initWithFloatValues: (float **)fVals]; // Initialize matrix with float values, need to cast to type (float **).
+	} else if (axis == Y) { // If it's rotating about Y axis:
+		float fVals[4][4] = { cos(r), 0, sin(r), 0,
+								0,	  1,   0,	 0,
+							 -sin(r), 0, cos(r), 0,
+								0,	  0,   0,	 1}; // Set values of the 2D float array.
+		res = [[MTMatrix alloc] initWithFloatValues: (float **)fVals]; // Initialize matrix with float values, need to cast to type (float **).
+	} else if (axis == Z) { // If it's rorating about Z axis:
+		float fVals[4][4] = {cos(r), -sin(r), 0, 0,
+							 sin(r),  cos(r), 0, 0,
+								0,		0,	  1, 0,
+								0,		0,	  0, 1}; // Set values of the 2D float array.
+		res = [[MTMatrix alloc] initWithFloatValues: (float **)fVals]; // Initialize matrix with float values, need to cast to type (float **).
+	}
+	return res; // Return the result.
+}
+
+/**
+
+ | w 0 0 0 |
+ | 0 p 0 0 |
+ | 0 0 q 0 |
+ | 0 0 0 1 |
+
+ */
+-(MTMatrix *)scaleTransformationMatrixWithScalingPercentageOfX: (float) w
+														  andY: (float) p
+														  andZ: (float) q
+{
+	float fVals[4][4] = {w, 0,	0,	0, // Scale x-axis.
+						 0, p,	0,	0, // Scale y-axis.
+						 0, 0,	q,	0, // Scale z-axis.
+						 0, 0,	0,	1}; // Keep the scale parameter for final projection.
+
+	return [[MTMatrix alloc] initWithFloatValues: (float **)fVals]; // Return initialized matrix. (need to cast fVals to type (float **) )
+}
+
+/**
+ A matrix which scale all axises by given percentage.
+ Reuturn matrix:
+
+ | p 0 0 0 |
+ | 0 p 0 0 |
+ | 0 0 p 0 |
+ | 0 0 0 1 |
+
+ @param p The scaling percentage for all axises.
+ @return The matrix for scaling transformation.
+ */
+-(MTMatrix *)scaleTransformationMatrixForAllAxisesWithScalingPercentage: (float) p
+{
+	// Call another method to scale each one individually.
+	return [self scaleTransformationMatrixWithScalingPercentageOfX:p // Scale x-axis by p.
+															  andY:p // Scale y-axis by p.
+															  andZ:p]; // Scale z-axis by p.
 }
 
 @end
