@@ -164,6 +164,19 @@
  */
 -(void)removeEntriesUnderTheFirstTwoRows;
 
+/**
+ The same as entryAtIndex.
+ @param index The index of entry want to get.
+ */
+-(id)objectAtIndex: (NSUInteger) index;
+
+/**
+ The same as entryAtIndex.
+ @param index The index of entry want to get.
+ */
+-(id)objectAtIndexedSubscript: (NSUInteger) index;
+
+
 //************************ Methods ***************************//
 
 //************************ Linear Algebra Calculation ***************************//

@@ -260,7 +260,7 @@
 // Overriding entries getter method using lazy instantiation.
 -(NSMutableArray *)entries
 {
-	if (_entries) _entries = [[NSMutableArray alloc] init]; // Lazy instantiation.
+	if (!_entries) _entries = [[NSMutableArray alloc] init]; // Lazy instantiation.
 	return _entries; // Return the property.
 }
 
@@ -278,6 +278,8 @@
 	}
 	return res; // Return the result.
 }
+
+
 
 // Overriding description
 -(NSString *)description
@@ -319,6 +321,18 @@
 	for (size_t i = 0; i < (size_t)[self entryCount]; ++i) { // Loop through all entries.
 		[self replaceEntryAtIndex:i withFloatValue:([self entryAtIndexAsFloat:i] - [anotherVector entryAtIndexAsFloat:i])]; // Replace with substracted number.
 	}
+}
+
+// The same as entryAtIndex.
+-(id)objectAtIndex:(NSUInteger)index
+{
+	return [self.entries objectAtIndex:index];
+}
+
+// The same as entryAtIndex.
+-(id)objectAtIndexedSubscript:(NSUInteger)index
+{
+	return [self.entries objectAtIndexedSubscript:index];
 }
 
 //************************ Linear Algebra Calculation ***************************//
