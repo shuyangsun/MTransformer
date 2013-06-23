@@ -29,8 +29,6 @@
 		04ED3CD31772A1D700C1005F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ED3CB51772A1D700C1005F /* UIKit.framework */; };
 		04ED3CDB1772A1D700C1005F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04ED3CD91772A1D700C1005F /* InfoPlist.strings */; };
 		04ED3CDD1772A1D700C1005F /* MTransformerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED3CDC1772A1D700C1005F /* MTransformerTests.m */; };
-		04F2D0BC1775110600D21C04 /* MTEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F2D0BB1775110600D21C04 /* MTEntry.m */; };
-		04F2D0BD1775110600D21C04 /* MTEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F2D0BB1775110600D21C04 /* MTEntry.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,8 +70,6 @@
 		04ED3CD81772A1D700C1005F /* MTransformerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MTransformerTests-Info.plist"; sourceTree = "<group>"; };
 		04ED3CDA1772A1D700C1005F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		04ED3CDC1772A1D700C1005F /* MTransformerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTransformerTests.m; sourceTree = "<group>"; };
-		04F2D0BA1775110600D21C04 /* MTEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTEntry.h; path = Model/MTEntry.h; sourceTree = "<group>"; };
-		04F2D0BB1775110600D21C04 /* MTEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTEntry.m; path = Model/MTEntry.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				0478C06B1774946C00174C3C /* GlobalMacro.h */,
-				04F2D0B9177510EE00D21C04 /* Entry */,
 				042BBCA91772A23800844878 /* Vector */,
 				04007D1C17734796005530E6 /* Point */,
 				0478C06C1774948700174C3C /* Matrix */,
@@ -213,15 +208,6 @@
 				04ED3CD91772A1D700C1005F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		04F2D0B9177510EE00D21C04 /* Entry */ = {
-			isa = PBXGroup;
-			children = (
-				04F2D0BA1775110600D21C04 /* MTEntry.h */,
-				04F2D0BB1775110600D21C04 /* MTEntry.m */,
-			);
-			name = Entry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,7 +313,6 @@
 				04ED3CC81772A1D700C1005F /* MTViewController.m in Sources */,
 				0478C06F177494A400174C3C /* MTMatrix.m in Sources */,
 				04ED3CC21772A1D700C1005F /* MTAppDelegate.m in Sources */,
-				04F2D0BC1775110600D21C04 /* MTEntry.m in Sources */,
 				04C473E9177667F90053F352 /* MatrixCollection.m in Sources */,
 				04007D1F177347B1005530E6 /* MTPoint.m in Sources */,
 			);
@@ -341,7 +326,6 @@
 				04007D20177347B1005530E6 /* MTPoint.m in Sources */,
 				04C473EA177667F90053F352 /* MatrixCollection.m in Sources */,
 				042BBCA71772A22F00844878 /* MTVector.m in Sources */,
-				04F2D0BD1775110600D21C04 /* MTEntry.m in Sources */,
 				0478C070177494A400174C3C /* MTMatrix.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

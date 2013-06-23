@@ -10,7 +10,6 @@
 
 #import "MTMatrix.h"
 #import "MTVector.h"
-#import "MTEntry.h"
 #import "MatrixCollection.h"
 
 @interface MTViewController ()
@@ -22,14 +21,18 @@
 -(void)setup
 {
 	// Initialization code here...
-	float arr[2][2] = {1,2,
-					   3,4};
-	MTMatrix *matrix = [[MTMatrix alloc] initWithFloatValues:(float **)arr];
+	MTMatrix *matrix = [[MatrixCollection sharedCollection] translateTransformationMatrixWith_xValue:2
+																						  and_yValue:3
+																						  and_zValue:4];
 
+	NSMutableString *matrixDescription = [NSMutableString string];
 	for (size_t i = 0; i < [matrix.vectors[0] entryCount]; ++i) {
 		for (size_t j = 0; j < [matrix.vectors count]; ++j) {
-			printf("%.1f ", [(MTEntry*)matrix.vectors[j][i] floatValue]);
+			[matrixDescription appendString:[NSString stringWithFormat:@"%.1f ", [(NSNumber*)matrix.vectors[j][i] floatValue]]];
+			printf("%.1f ", [(NSNumber*)matrix.vectors[j][i] floatValue]);
 		}
+		[matrixDescription appendString:@"\n"];
+		putchar('\n');
 	}
 }
 
