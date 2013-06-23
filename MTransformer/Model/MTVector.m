@@ -81,7 +81,12 @@
 // Designated initializer.
 -(id)init
 {
-	return [self initWithNumberOfEntries:1]; // Initialize with a ZERO vector.
+	self = [super init];
+	if (self) {
+		self = [self initWithNumberOfEntries:1]; // Initialize with a ZERO entry.
+		[self removeLastEntry]; // Remove the zero entry.
+	}
+	return self; // Return itself.
 }
 
 // Get entry at index as a NSNumber object.
@@ -147,18 +152,17 @@
 	}
 }
 
-// Remove the first entry in the vector. (if there are more than one entries)
+// Remove the first entry in the vector.
 -(void)removeFirstEntry
 {
 	if ([self entryCount] > 1) // If there are two or more entries.
 		[self.entries removeObjectAtIndex:0]; // Remove the first entry.
 }
 
-// Remove the last entry in the vector. (if there are more than one entries)
+// Remove the last entry in the vector.
 -(void)removeLastEntry
 {
-	if ([self entryCount] > 1) // If there are two or more entries.
-		[self.entries removeLastObject]; // Remove the last entry. (Also removes homogeneous entry!)
+	[self.entries removeLastObject]; // Remove the last entry. (Also removes homogeneous entry!)
 	if (self.homogeneous == YES) // If this is a homogeneous vector:
 		self.homogeneous = NO; // Set homogeneous to NO.
 }
