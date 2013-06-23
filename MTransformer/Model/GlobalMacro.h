@@ -29,20 +29,14 @@ typedef enum {
  Typedefed matrix, containing row number, column number and float array.
  */
 typedef struct MTCStyleMatrix {
-	NSUInteger row; // Number of row.
-	NSUInteger col; // Number of column.
+	int row; // Number of row.
+	int col; // Number of column.
 	float *fVals; // Array containning all the float values.
 } MTCStyleMatrix;
 
 /**
  A C function create a MTCStyleMatrix with given row, column number and float array.
  */
-MTCStyleMatrix MTMakeCStyleMatrix(NSUInteger row, NSUInteger col, float *fVals) {
-	MTCStyleMatrix res; // Create a MTCStyleMatrix.
-	res.row = row; // Assign row value.
-	res.col = col; // Assign column value.
-	res.fVals = fVals; // Assign float array.
-	return res; // Return result.
-}
+MTCStyleMatrix MTMakeCStyleMatrix(int row, int col, float *fVals);
 
 #endif
