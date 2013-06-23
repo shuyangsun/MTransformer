@@ -15,4 +15,10 @@
 #define arrlen(arr) (sizeof(arr)/sizeof(arr[0])) // Global macro definition, calculate length of a C style array.
 #define VECTORIZATION_SIZE 4 // Global macro definition, using LLVM 5 to optimize loops through vectorization.
 
+typedef enum {
+	X = 0x01, // 0b0000_0001
+	Y = 0x02, // 0b0000_0010
+	Z = 0x04  // 0b0000_0100
+} ROTATION_AXIS; // typedefed enum, representing the axis of rotation.
+
 #endif
