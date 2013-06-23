@@ -70,13 +70,11 @@
 		size_t col = colCount; // Get the colum number.
 
 		for (size_t i = 0; i < col; ++i) { // Iterate over columns (vectors), the second index place [][*]:
-			float vecFloatVals[row]; // Create a float array, length is the row number (entry count).
+			MTVector *vec = [[MTVector alloc] init]; // Create the current vector.
 			for (size_t j = 0; j < row; ++j) { // Iterate through this column of array.
-				vecFloatVals[j] = fVals[i * row + j]; // Assign the value to the vector float array.
+				[vec addEntryWithFloatValue:fVals[j * row + i]]; // Add the current entry.
 			}
-			MTVector *vec = [[MTVector alloc] initWithFloatArray:vecFloatVals]; // Initialize current vector with float array.
 			[self.vectors addObject:vec]; // Add this vector to matrix.
-			vec = nil; // Release vec.
 		}
 	}
 	return self;
