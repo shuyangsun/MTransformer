@@ -58,16 +58,19 @@
 	return self;
 }
 
-// Initialize with a two dimensional C style float array. (Matrix CAN be initialized, because fVals is a 2D array, all vectors have the same number of entries)
--(id)initWithFloatValues:(float **)fVals
+// Initialize with a two dimensional C style float array.
+-(id)initWithFloatValues:(float *)fVals withRowNumber:(int) rowCount
 {
 	self = [super init];
 	if (self) {
 		self.homogeneous = NO; // Set homogeneous to NO.
-		for (size_t i = 0; i < (size_t)arrlen(fVals[0]); ++i) { // Iterate over columns (vectors), the second index place [][*]:
-			float vecFloatVals[arrlen(fVals)]; // Create a float array, length is the row number (entry number).
-			for (size_t j = 0; j < (size_t)arrlen(fVals); ++j) { // Iterate through this column of array.
-				vecFloatVals[j] = fVals[j][i]; // Assign the value to the vector float array.
+		size_t row = rowCount; // Get the row number.
+		size_t col = arrlen(fVals)/rowCount; // Get the colum number. (length/row)
+
+		for (size_t i = 0; i < col; ++i) { // Iterate over columns (vectors), the second index place [][*]:
+			float vecFloatVals[row]; // Create a float array, length is the row number (entry count).
+			for (size_t j = 0; j < row; ++j) { // Iterate through this column of array.
+				vecFloatVals[j] = fVals[i * row + j]; // Assign the value to the vector float array.
 			}
 			MTVector *vec = [[MTVector alloc] initWithFloatArray:vecFloatVals]; // Initialize current vector with float array.
 			[self.vectors addObject:vec]; // Add this vector to matrix.
