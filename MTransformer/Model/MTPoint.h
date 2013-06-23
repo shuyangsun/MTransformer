@@ -13,7 +13,7 @@
 /**
  A MTPoint object that holds a vector representing the posistion in the space, and other data such as the points it connects to, and the visit information for graph triversal.
  */
-@interface MTPoint : MTVector
+@interface MTPoint : MTVector // Super class is MTVector.
 
 //************************ Properties ***************************//
 
