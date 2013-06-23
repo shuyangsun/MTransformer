@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#include "GlobalMacro.h" // Include global macro to get MTCStyleMatrix.
+
 @class MTVector; // Class declaration for MTVector.
 
 /**
@@ -35,13 +37,9 @@
 
 /**
  Initialize this matrix with given two dimensional array.
- @param fVals A C style array containning all the float values (row by row).
- @param rowCount The number of rows in the array.
- @param colCount The number of columns in the array.
+ @param cStyleMatrix A C style matrix defined in header file "GlobalMacros".
  */
--(id)initWithFloatValues: (float *) fVals
-		   withRowNumber: (int) rowCount
-		 andColumnNumber: (int) colCount; // C involved.
+-(id)initWithFloatValues: (MTCStyleMatrix) cStyleMatrix;
 
 //************************ Initializers  ***************************//
  

@@ -59,20 +59,18 @@
 }
 
 // Initialize with a two dimensional C style float array.
--(id)initWithFloatValues:(float *)fVals
-		   withRowNumber:(int) rowCount
-		 andColumnNumber: (int) colCount;
+-(id)initWithFloatValues:(MTCStyleMatrix)cStyleMatrix
 {
 	self = [super init];
 	if (self) {
 		self.homogeneous = NO; // Set homogeneous to NO.
-		size_t row = rowCount; // Get the row number.
-		size_t col = colCount; // Get the colum number.
+		size_t row = cStyleMatrix.row; // Get the row number.
+		size_t col = cStyleMatrix.col; // Get the colum number.
 
 		for (size_t i = 0; i < col; ++i) { // Iterate over columns (vectors), the second index place [][*]:
 			MTVector *vec = [[MTVector alloc] init]; // Create the current vector.
 			for (size_t j = 0; j < row; ++j) { // Iterate through this column of array.
-				[vec addEntryWithFloatValue:fVals[j * row + i]]; // Add the current entry.
+				[vec addEntryWithFloatValue:cStyleMatrix.fVals[j * row + i]]; // Add the current entry.
 			}
 			[self.vectors addObject:vec]; // Add this vector to matrix.
 		}
