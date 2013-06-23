@@ -52,10 +52,14 @@
 	self = [super init];
 	if (self) {
 		self.homogeneous = NO;
-		for (size_t i = 0; i < (size_t)arrlen(fVals); ++i) { // Iterate over columns (vectors), the first index place [*][]:
-			MTVector *vec = [[MTVector alloc] initWithFloatArray:*(fVals + i)]; // Initialize current vector with float array.
+		for (size_t i = 0; i < (size_t)arrlen(fVals[0]); ++i) { // Iterate over columns (vectors), the second index place [][*]:
+			float vecFloatVals[arrlen(fVals)]; // Create a float array, length is the row number (entry number).
+			for (size_t j = 0; j < (size_t)arrlen(fVals); ++j) { // Iterate through this column of array.
+				vecFloatVals[j] = fVals[j][i]; // Assign the value to the vector float array.
+			}
+			MTVector *vec = [[MTVector alloc] initWithFloatArray:vecFloatVals]; // Initialize current vector with float array.
 			[self.vectors addObject:vec]; // Add this vector to matrix.
-			vec = nil; // Set vec to nil, release memory.
+			vec = nil; // Release vec.
 		}
 	}
 	return self;

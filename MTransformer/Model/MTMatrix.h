@@ -35,7 +35,7 @@
 
 /**
  Initialize this matrix with given two dimensional array.
- @param fVals A two dimensional C style float array used to initialize matrix. First index is column (index of vector), secone is row.
+ @param fVals A two dimensional C style float array used to initialize matrix. First index is row, seconde is column (index of vector).
  */
 -(id)initWithFloatValues: (float **) fVals; // C involved.
 
