@@ -19,6 +19,6 @@ typedef enum {
 	X = 0x01, // 0b0000_0001
 	Y = 0x02, // 0b0000_0010
 	Z = 0x04  // 0b0000_0100
-} ROTATION_AXIS; // typedefed enum, representing the axis of rotation.
+} ROTATION_AXIS; // typedefed enum, representing the axis of rotation. Bit fields operation involved.
 
 #endif
