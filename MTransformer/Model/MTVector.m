@@ -8,8 +8,6 @@
 
 #import "MTVector.h"
 
-#import "MTEntry.h" // Import header file for MTEntry.
-
 #include "GlobalMacro.h" // Global macro definitions.
 
 @interface MTVector() // Class extension
@@ -73,7 +71,7 @@
 	if (self) {
 		if (fArr != NULL) { // If given C style float array is not NULL:
 			for (size_t i = 0; i < (size_t)arrlen(fArr); ++i) { // Iterate through array.
-				[self addObject:[MTEntry entryWithFloat:*(fArr + i)]]; // Add entry to the list.
+				[self addObject:[NSNumber numberWithFloat:*(fArr + i)]]; // Add entry to the list.
 			}
 		}
 	}
@@ -86,7 +84,7 @@
 	return [self initWithNumberOfEntries:1]; // Initialize with a ZERO vector.
 }
 
-// Get entry at index as a MTEntry object.
+// Get entry at index as a NSNumber object.
 -(id)entryAtIndex:(NSUInteger)index
 {
 	return [self objectAtIndex:index]; // Call NSMutableArray method.

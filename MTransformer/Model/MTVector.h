@@ -50,7 +50,7 @@
 -(id)initWithFloatArray: (float *) fArr;
 
 /**
- Get entry at index as a MTEntry object.
+ Get entry at index as a NSNumber object.
  @param index The index of entry want to get.
  */
 -(id)entryAtIndex:(NSUInteger)index;
