@@ -9,8 +9,8 @@
 #ifndef MTransformer_MTransformer_Info_h
 #define MTransformer_MTransformer_Info_h
 
-#define ZERO 0 // Global macro ZERO, replaceing number "0" in vectors.
-#define ONE 1 // Global macro ONE, replaceing number "1" in vectors.
+#define ZERO ((float)0.0) // Global macro ZERO, replaceing number "0" in vectors.
+#define ONE ((float)1.0) // Global macro ONE, replaceing number "1" in vectors.
 
 #define arrlen(arr) (sizeof(arr)/sizeof(arr[0])) // Global macro definition, calculate length of a C style array.
 #define VECTORIZATION_SIZE 4 // Global macro definition, using LLVM 5 to optimize loops through vectorization.
