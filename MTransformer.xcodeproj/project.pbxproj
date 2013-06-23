@@ -11,6 +11,8 @@
 		04007D20177347B1005530E6 /* MTPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 04007D1E177347B1005530E6 /* MTPoint.m */; };
 		042BBCA61772A22F00844878 /* MTVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 042BBCA51772A22F00844878 /* MTVector.m */; };
 		042BBCA71772A22F00844878 /* MTVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 042BBCA51772A22F00844878 /* MTVector.m */; };
+		045747271777927300F8AB8B /* GlobalMacro.c in Sources */ = {isa = PBXBuildFile; fileRef = 045747261777927300F8AB8B /* GlobalMacro.c */; };
+		045747281777927300F8AB8B /* GlobalMacro.c in Sources */ = {isa = PBXBuildFile; fileRef = 045747261777927300F8AB8B /* GlobalMacro.c */; };
 		0478C06F177494A400174C3C /* MTMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 0478C06E177494A400174C3C /* MTMatrix.m */; };
 		0478C070177494A400174C3C /* MTMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 0478C06E177494A400174C3C /* MTMatrix.m */; };
 		04C473E9177667F90053F352 /* MatrixCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C473E8177667F90053F352 /* MatrixCollection.m */; };
@@ -46,6 +48,7 @@
 		04007D1E177347B1005530E6 /* MTPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTPoint.m; path = Model/MTPoint.m; sourceTree = "<group>"; };
 		042BBCA41772A22F00844878 /* MTVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTVector.h; path = Model/MTVector.h; sourceTree = "<group>"; };
 		042BBCA51772A22F00844878 /* MTVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTVector.m; path = Model/MTVector.m; sourceTree = "<group>"; };
+		045747261777927300F8AB8B /* GlobalMacro.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = GlobalMacro.c; path = Model/GlobalMacro.c; sourceTree = "<group>"; };
 		0478C06B1774946C00174C3C /* GlobalMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalMacro.h; path = Model/GlobalMacro.h; sourceTree = "<group>"; };
 		0478C06D177494A400174C3C /* MTMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTMatrix.h; path = Model/MTMatrix.h; sourceTree = "<group>"; };
 		0478C06E177494A400174C3C /* MTMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTMatrix.m; path = Model/MTMatrix.m; sourceTree = "<group>"; };
@@ -109,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				0478C06B1774946C00174C3C /* GlobalMacro.h */,
+				045747261777927300F8AB8B /* GlobalMacro.c */,
 				042BBCA91772A23800844878 /* Vector */,
 				04007D1C17734796005530E6 /* Point */,
 				0478C06C1774948700174C3C /* Matrix */,
@@ -309,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04ED3CBE1772A1D700C1005F /* main.m in Sources */,
+				045747271777927300F8AB8B /* GlobalMacro.c in Sources */,
 				042BBCA61772A22F00844878 /* MTVector.m in Sources */,
 				04ED3CC81772A1D700C1005F /* MTViewController.m in Sources */,
 				0478C06F177494A400174C3C /* MTMatrix.m in Sources */,
@@ -325,6 +330,7 @@
 				04ED3CDD1772A1D700C1005F /* MTransformerTests.m in Sources */,
 				04007D20177347B1005530E6 /* MTPoint.m in Sources */,
 				04C473EA177667F90053F352 /* MatrixCollection.m in Sources */,
+				045747281777927300F8AB8B /* GlobalMacro.c in Sources */,
 				042BBCA71772A22F00844878 /* MTVector.m in Sources */,
 				0478C070177494A400174C3C /* MTMatrix.m in Sources */,
 			);

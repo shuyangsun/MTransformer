@@ -9,8 +9,7 @@
 #import "MatrixCollection.h"
 
 #import "MTMatrix.h" // Import header file for MTMatrix
-
-#include "GlobalMacro.h" // Include global macros.
+// "GlobalMacro.h" imported in header file.
 
 @interface MatrixCollection() // Class extension
 
@@ -48,7 +47,7 @@
 		0, 0,	 0,	    0, // Clear z value. (projecting to 2D, so there is no z value)
 		0, 0, -(1.0/d), 0}; // Set the scale parameter for final projection.
 
-	return [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
+	return [[MTMatrix alloc] initWithFloatValues: MTMakeCStyleMatrix(SIZE_OF_TRANSFORMATION_MATRIX,
 																	 SIZE_OF_TRANSFORMATION_MATRIX,
 																	 fVals)]; // Return initialized matrix.
 }
@@ -68,10 +67,10 @@
 	float fVals[] =
 	   {1, 0, -(b/d),   0, // Chaneg x value.
 	    0, 1, -(c/d),   0, // Change y value.
-	    0, 0,	0,     0, // Keep z value.
+	    0, 0,	 0,     0, // Keep z value.
 	    0, 0, -(1.0/d), 0}; // Set the scale parameter.
 
-	return [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
+	return [[MTMatrix alloc] initWithFloatValues: MTMakeCStyleMatrix(SIZE_OF_TRANSFORMATION_MATRIX,
 																	 SIZE_OF_TRANSFORMATION_MATRIX,
 																	 fVals)]; // Return initialized matrix.
 }
@@ -85,16 +84,16 @@
 
  */
 -(MTMatrix *)translateTransformationMatrixWith_xValue: (float) h
-											and_yValue: (float) k
-											and_zValue: (float) l
+										   and_yValue: (float) k
+										   and_zValue: (float) l
 {
 	float fVals[] =
-		{1, 0,	0,	h, // Change x value.
-		 0, 1,	0,	k, // Change y value.
-		 0, 0,	1,	l, // Change z value.
-		 0, 0,	0,	1}; // Keep the scale parameter for final projection.
+	   {1, 0,	0,	h, // Change x value.
+		0, 1,	0,	k, // Change y value.
+		0, 0,	1,	l, // Change z value.
+		0, 0,	0,	1}; // Keep the scale parameter for final projection.
 
-	return [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
+	return [[MTMatrix alloc] initWithFloatValues: MTMakeCStyleMatrix(SIZE_OF_TRANSFORMATION_MATRIX,
 																	 SIZE_OF_TRANSFORMATION_MATRIX,
 																	 fVals)]; // Return initialized matrix.
 }
@@ -116,26 +115,26 @@
 	// Cannot use switch statement, don't know why...
 	if (axis == X) { // If it's rorating about X axis:
 		float fVals[] = {1,	  0,	  0,	 0,
-							 0, cos(r),	-sin(r), 0,
-							 0, sin(r),	 cos(r), 0,
-							 0,	  0,	  0,	 1}; // Set values of the 2D float array.
-		res = [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
-																			   SIZE_OF_TRANSFORMATION_MATRIX,
-																			   fVals)]; // Return initialized matrix.
+						 0, cos(r),	-sin(r), 0,
+						 0, sin(r),	 cos(r), 0,
+						 0,	  0,	  0,	 1}; // Set values of the 2D float array.
+		res = [[MTMatrix alloc] initWithFloatValues: MTMakeCStyleMatrix(SIZE_OF_TRANSFORMATION_MATRIX,
+																		SIZE_OF_TRANSFORMATION_MATRIX,
+																		fVals)]; // Return initialized matrix.
 	} else if (axis == Y) { // If it's rotating about Y axis:
 		float fVals[] = { cos(r), 0, sin(r), 0,
-								0,	  1,   0,	 0,
-							 -sin(r), 0, cos(r), 0,
-								0,	  0,   0,	 1}; // Set values of the 2D float array.
-		res = [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
+							0,	  1,   0,	 0,
+						 -sin(r), 0, cos(r), 0,
+							0,	  0,   0,	 1}; // Set values of the 2D float array.
+		res = [[MTMatrix alloc] initWithFloatValues: MTMakeCStyleMatrix(SIZE_OF_TRANSFORMATION_MATRIX,
 																		SIZE_OF_TRANSFORMATION_MATRIX,
 																		fVals)]; // Return initialized matrix.
 	} else if (axis == Z) { // If it's rorating about Z axis:
 		float fVals[] = {cos(r), -sin(r), 0, 0,
-							 sin(r),  cos(r), 0, 0,
-								0,		0,	  1, 0,
-								0,		0,	  0, 1}; // Set values of the 2D float array.
-		res = [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
+						 sin(r),  cos(r), 0, 0,
+						  0,		0,	  1, 0,
+						  0,		0,	  0, 1}; // Set values of the 2D float array.
+		res = [[MTMatrix alloc] initWithFloatValues: MTMakeCStyleMatrix(SIZE_OF_TRANSFORMATION_MATRIX,
 																		SIZE_OF_TRANSFORMATION_MATRIX,
 																		fVals)]; // Return initialized matrix.
 	}
@@ -155,13 +154,13 @@
 														  andZ: (float) q
 {
 	float fVals[] = {w, 0,	0,	0, // Scale x-axis.
-						 0, p,	0,	0, // Scale y-axis.
-						 0, 0,	q,	0, // Scale z-axis.
-						 0, 0,	0,	1}; // Keep the scale parameter for final projection.
+					 0, p,	0,	0, // Scale y-axis.
+					 0, 0,	q,	0, // Scale z-axis.
+					 0, 0,	0,	1}; // Keep the scale parameter for final projection.
 
-	return [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
-																	  SIZE_OF_TRANSFORMATION_MATRIX,
-																	  fVals)]; // Return initialized matrix.
+	return [[MTMatrix alloc] initWithFloatValues: MTMakeCStyleMatrix(SIZE_OF_TRANSFORMATION_MATRIX,
+																	 SIZE_OF_TRANSFORMATION_MATRIX,
+																	 fVals)]; // Return initialized matrix.
 }
 
 /**
