@@ -8,10 +8,6 @@
 
 #import "MTViewController.h"
 
-#import "MTMatrix.h"
-#import "MTVector.h"
-#import "MatrixCollection.h"
-
 @interface MTViewController ()
 
 @end
