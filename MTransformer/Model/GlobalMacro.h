@@ -16,10 +16,33 @@
 #define VECTORIZATION_SIZE 4 // Global macro definition, using LLVM 5 to optimize loops through vectorization.
 #define SIZE_OF_TRANSFORMATION_MATRIX 4 // Length of a 3D transformation matrix on each side. (should be 4 x 4)
 
+/**
+ Typedefed enum, representing the axis of rotation. Bit fields operation involved.
+ */
 typedef enum {
 	X = 0x01, // 0b0000_0001
 	Y = 0x02, // 0b0000_0010
 	Z = 0x04  // 0b0000_0100
-} MT_ROTATION_AXIS; // typedefed enum, representing the axis of rotation. Bit fields operation involved.
+} MT_ROTATION_AXIS;
+
+/**
+ Typedefed matrix, containing row number, column number and float array.
+ */
+typedef struct MTCStyleMatrix {
+	NSUInteger row; // Number of row.
+	NSUInteger col; // Number of column.
+	float *fVals; // Array containning all the float values.
+} MTCStyleMatrix;
+
+/**
+ A C function create a MTCStyleMatrix with given row, column number and float array.
+ */
+MTCStyleMatrix MTCStyleMatrixMake(NSUInteger row, NSUInteger col, float *fVals){
+	MTCStyleMatrix res; // Create a MTCStyleMatrix.
+	res.row = row; // Assign row value.
+	res.col = col; // Assign column value.
+	res.fVals = fVals; // Assign float array.
+	return res; // Return result.
+}
 
 #endif
