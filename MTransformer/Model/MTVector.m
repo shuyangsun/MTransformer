@@ -438,7 +438,8 @@
 //  User NSCoding protocol to create a deepcopy of this object.
 -(id)deepCopy
 {
-	return [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:self]]; // Use NSKeyedUnarchive and NSKeyedArchiver to create a deep copy.
+	return [NSKeyedUnarchiver unarchiveObjectWithData:
+			[NSKeyedArchiver archivedDataWithRootObject:self]]; // Use NSKeyedUnarchive and NSKeyedArchiver to create a deep copy.
 }
 
 //************************ Coding Protocol Methods ***************************//
