@@ -16,7 +16,7 @@
  Other init methods will generate a vector with #n 0 entires.
  */
 
-@interface MTVector : NSObject <NSCopying, NSMutableCopying> // Meet requirement of copying protocols.
+@interface MTVector : NSObject <NSCopying, NSMutableCopying, NSCoding> // Meet requirement of copying protocols, and coding protocol to do deep copy.
 
 //************************ Properties ***************************//
 

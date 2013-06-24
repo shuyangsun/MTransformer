@@ -376,5 +376,23 @@
 
 //************************ Copy Protocol Methods ***************************//
 
+//************************ Coding Protocol Methods ***************************//
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+	self.entries = [aDecoder decodeObjectForKey:@"MTVectorEntries"]; // Decode entries.
+	self.homogeneous = [aDecoder decodeBoolForKey:@"NTVectorHomogeneous"]; // Decode bool value homogeneous.
+	
+	return self; // Return the result.
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+	[aCoder encodeObject: self.entries forKey:@"MTVectorEntries"]; // Encode entries.
+	[aCoder encodeBool:self.homogeneous forKey:@"NTVectorHomogeneous"]; // Encode homogeneous.
+}
+
+//************************ Coding Protocol Methods ***************************//
+
 @end
 
