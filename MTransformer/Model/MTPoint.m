@@ -12,6 +12,9 @@
 
 @interface MTPoint() // Class extension
 
+/** Property indicating whether this vector is a homogeneous vector. (readonly in header file)*/
+@property (readwrite, nonatomic, getter = isHomogeneous) BOOL homogeneous; // Redefine as readwrite inside implementation file.
+
 @end
 
 @implementation MTPoint
@@ -110,6 +113,30 @@
 
 	return res;
 }
+
+//************************ Coding Protocol Methods ***************************//
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+	self.entries = [aDecoder decodeObjectForKey:@"MTPointEntries"]; // Decode entries.
+	self.homogeneous = [aDecoder decodeBoolForKey:@"MTPointHomogeneous"]; // Decode bool value homogeneous.
+	self.name = [aDecoder decodeObjectForKey:@"MTPointName"]; // Decode name.
+	self.pointsConnectingTo = [aDecoder decodeObjectForKey:@"MTPointPointsConnectingTo"]; // Decode pointsConnectingTo.
+	self.visited = [aDecoder decodeObjectForKey:@"MTPointVisited"]; Decode visited.
+
+	return self; // Return the result.
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+	[aCoder encodeObject: self.entries forKey:@"MTPointEntries"]; // Encode entries.
+	[aCoder encodeBool:self.homogeneous forKey:@"MTPointHomogeneous"]; // Encode homogeneous.
+	[aCoder encodeObject:self.name forKey:@"MTPointName"]; // Encode name.
+	[aCoder encodeObject:self.pointsConnectingTo forKey:@"MTPointPointsConnectingTo"]; // Encode pointsConnectingTo
+	[aCoder encodeBool:self.visited forKey:@"MTPointVisited"]; // Encode visited.
+}
+
+//************************ Coding Protocol Methods ***************************//
 
 @end
 
