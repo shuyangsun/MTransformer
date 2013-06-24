@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#include "GlobalMacro.h" // Include global macro to get MTCStyleMatrix.
+#import "GlobalMacro.h" // Include global macro to get MTCStyleMatrix.
 
 @class MTVector; // Class declaration for MTVector.
 
@@ -79,7 +79,7 @@
  */
 -(BOOL)substractMatrix: (MTMatrix *) anotherMatrix;
 
-/** 
+/**
  Multiply this matrix by a vector, return YES if it's possible, NO otherwise. (After multiplication, this matrix will become a vector.)
  @param vector Vector to multiply.
  @return If the multiplication is defined, multiply and return YES, NO otherwise.
@@ -97,8 +97,100 @@
 
 //************************ Linear Algebra Calculation ***************************//
 
+//*******************************************************************************//
 //************************ Tranformation & Projection ***************************//
+//*******************************************************************************//
+
+/**
+ Method return transformed 2 x n matrix.
+ @param axis Axis to project from.
+ @param d Distance of view point from given axis.
+ @return A transformed matrix ready for display on 2D graph through given axis.
+ */
+-(MTMatrix *)matrixByProjectOnPlaneThroughAxis: (MT_AXIS) axis withDistance: (float) d;
+
+/**
+ Method return transformed 2 x n matrix, vectors are coresponding points on plane formed by y-axis and z-axis.
+ @param d Distance of view point from x-axis.
+ @return A transformed matrix ready for display on 2D graph through x-axis.
+ */
+-(MTMatrix *)matrixByProjectOnPlaneThrough_xAxisWithDistance: (float) d;
+/**
+ Method return transformed 2 x n matrix, vectors are coresponding points on plane formed by x-axis and z-axis.
+ @param d Distance of view point from y-axis.
+ @return A transformed matrix ready for display on 2D graph through y-axis.
+ */
+-(MTMatrix *)matrixByProjectOnPlaneThrough_yAxisWithDistance: (float) d;
+/**
+ Method return transformed 2 x n matrix, vectors are coresponding points on plane formed by x-axis and y-axis.
+ @param d Distance of view point from z-axis.
+ @return A transformed matrix ready for display on 2D graph through z-axis.
+ */
+-(MTMatrix *)matrixByProjectOnPlaneThrough_zAxisWithDistance: (float) d;
+
+/**
+ Move matrix with a specific distance along given axis.
+ @param axis Axis to move.
+ @param d Distance to move.
+ @para
+ */
+-(void)moveAlongAxis: (MT_AXIS) axis withDistance: (float) d;
+/**
+ Move matrix along x-axis with a specific distance.
+ @param d Distance to move.
+ */
+-(void)moveAlong_xAxisWithDistance: (float) d;
+/**
+ Move matrix along y-axis with a specific distance.
+ @param d Distance to move.
+ */
+-(void)moveAlong_yAxisWithDistance: (float) d;
+/**
+ Move matrix along z-axis with a specific distance.
+ @param d Distance to move.
+ */
+-(void)moveAlong_zAxisWithDistance: (float) d;
+
+/**
+ Rotate the matrix about x-axis, with a given radian.
+ @param radian Radian to rotate.
+ */
+-(void)rotateAbout_xAxisWithAngle: (double) radian;
+/**
+ Rotate the matrix about y-axis, with a given radian.
+ @param radian Radian to rotate.
+ */
+-(void)rotateAbout_yAxisWithAngle: (double) radian;
+/**
+ Rotate the matrix about z-axis, with a given radian.
+ @param radian Radian to rotate.
+ */
+-(void)rotateAbout_zAxisWithAngle: (double) radian;
+
+/**
+ Scale the x-axis by a given percentage.
+ @param p Percentage to scale.
+ */
+-(void)scale_xAxisByPercentge: (float) p;
+/**
+ Scale the y-axis by a given percentage.
+ @param p Percentage to scale.
+ */
+-(void)scale_yAxisByPercentge: (float) p;
+/**
+ Scale the z-axis by a given percentage.
+ @param p Percentage to scale.
+ */
+-(void)scale_zAxisByPercentge: (float) p;
+/**
+ Scale the whole matrix by a given percentage.
+ @param p Percentage to scale.
+ */
+-(void)scale_allAxisesByPercentge: (float) p;
+
+//*******************************************************************************//
 //************************ Tranformation & Projection ***************************//
+//*******************************************************************************//
 
 @end
 

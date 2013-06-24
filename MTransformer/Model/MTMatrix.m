@@ -9,6 +9,7 @@
 #import "MTMatrix.h"
 
 #import "MTVector.h" // Import header file for MTVector.
+#import "MTMatrixCollection.h" // Import MTMatrixCollection for transformation & projection calculation.
 
 @interface MTMatrix() // Class extensions.
 
@@ -264,5 +265,182 @@
 }
 
 //************************ Helper Methods ***************************//
+
+//*******************************************************************************//
+//************************ Tranformation & Projection ***************************//
+//*******************************************************************************//
+
+// Project from given axis.
+-(MTMatrix *)matrixByProjectOnPlaneThroughAxis:(MT_AXIS)axis withDistance:(float)d
+{
+	MTMatrix *res = [self deepCopy]; // Create a deep copy of this matrix.
+	MT3DPoint point; // The point projecting from.
+	switch (axis) { // Switch between axises.
+		case X: // If it's x-axis:
+			point = MT3DPointMake(d, 0, 0); // x-axis point.
+			break;
+		case Y: // If it's x-axis:
+			point = MT3DPointMake(0, d, 0); // y-axis point.
+			break;
+		case Z: // If it's x-axis:
+			point = MT3DPointMake(0, 0, d); // z-axis point.
+			break;
+		default: // If none of above is the case:
+			point = MT3DPointMake(0, 0, d); // Set the default to z-axis point.
+			break;
+	}
+	[res multiplyMatrix:[[MTMatrixCollection sharedCollection] projectionTransformationMatrixFromPoint: point] // Multiply the matrix by projection matrix.
+			 inTheFront:YES]; // Put the matrix in the front.
+	for (size_t i = 0; i < [res.vectors count]; ++i) { // Iterate through all vectors:
+		[res.vectors[i] projectingTo2DPlaneFromAxis:axis]; // Project vectors.
+	}
+	return res; // Return the result.
+}
+
+// Project on y, z plane.
+-(MTMatrix *)matrixByProjectOnPlaneThrough_xAxisWithDistance: (float) d
+{
+	MTMatrix *res = [self deepCopy]; // Create a deep copy of this matrix.
+	[res multiplyMatrix:[[MTMatrixCollection sharedCollection] projectionTransformationMatrixFromPoint:MT3DPointMake(d, 0, 0)] // Multiply the matrix by projection matrix.
+			 inTheFront:YES]; // Put the matrix in the front.
+	for (size_t i = 0; i < [res.vectors count]; ++i) { // Iterate through all vectors:
+		[res.vectors[i] projectingTo2DPlaneFromXAxis]; // Project vectors.
+	}
+	return res; // Return the result.
+}
+
+// Project on x, z plane.
+-(MTMatrix *)matrixByProjectOnPlaneThrough_yAxisWithDistance: (float) d
+{
+	MTMatrix *res = [self deepCopy]; // Create a deep copy of this matrix.
+	[res multiplyMatrix:[[MTMatrixCollection sharedCollection] projectionTransformationMatrixFromPoint:MT3DPointMake(0, d, 0)] // Multiply the matrix by projection matrix.
+			 inTheFront:YES]; // Put the matrix in the front.
+	for (size_t i = 0; i < [res.vectors count]; ++i) { // Iterate through all vectors:
+		[res.vectors[i] projectingTo2DPlaneFromYAxis]; // Project vectors.
+	}
+	return res; // Return the result.
+}
+
+// Project on x, y plane.
+-(MTMatrix *)matrixByProjectOnPlaneThrough_zAxisWithDistance: (float) d
+{
+	MTMatrix *res = [self deepCopy]; // Create a deep copy of this matrix.
+	[res multiplyMatrix:[[MTMatrixCollection sharedCollection] projectionTransformationMatrixFromPoint:MT3DPointMake(0, 0, d)] // Multiply the matrix by projection matrix.
+			 inTheFront:YES]; // Put the matrix in the front.
+	for (size_t i = 0; i < [res.vectors count]; ++i) { // Iterate through all vectors:
+		[res.vectors[i] projectingTo2DPlaneFromZAxis]; // Project vectors.
+	}
+	return res; // Return the result.
+}
+
+// Move matrix with a specific distance along given axis.
+-(void)moveAlongAxis: (MT_AXIS) axis withDistance: (float) d
+{
+	switch (axis) { // Switch between axises.
+		case X: // If it's x-axis:
+			[self moveAlong_xAxisWithDistance:d]; // Move along x-axis.
+			break;
+		case Y: // If it's y-axis:
+			[self moveAlong_yAxisWithDistance:d]; // Move along y-axis.
+			break;
+		case Z: // If it's z-axis:
+			[self moveAlong_zAxisWithDistance:d]; // Move along z-axis.
+			break;
+		default: // Det default to z-axis.
+			[self moveAlong_zAxisWithDistance:d]; // Move along z-axis.
+			break;
+	}
+}
+
+// Move matrix along x-axis with a specific distance.
+-(void)moveAlong_xAxisWithDistance: (float) d
+{
+	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] translateTransformationMatrixWith_xValue:d // Move d along x-axis.
+																							  and_yValue:0 // Keep y.
+																							  and_zValue:0] // Keep z.
+			  inTheFront:YES]; // Put the matrix in the front.
+}
+
+// Move matrix along y-axis with a specific distance.
+-(void)moveAlong_yAxisWithDistance: (float) d
+{
+	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] translateTransformationMatrixWith_xValue:0 // Keep x.
+																							  and_yValue:d // Move d along y-axis.
+																							  and_zValue:0] // Keep z.
+			  inTheFront:YES]; // Put the matrix in the front.
+}
+
+// Move matrix along z-axis with a specific distance.
+-(void)moveAlong_zAxisWithDistance: (float) d
+{
+	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] translateTransformationMatrixWith_xValue:0 // Keep z.
+																							  and_yValue:0 // Keep y.
+																							  and_zValue:d] // Move d along x-axis.
+			  inTheFront:YES]; // Put the matrix in the front.
+}
+
+// Rotate the matrix about x-axis, with a given radian.
+-(void)rotateAbout_xAxisWithAngle: (double) radian
+{
+	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] rotationTransformationMatrixAboutAxis:X // Set axis to x.
+																							  byAngle:radian] // Multiply the matrix by roation matrix.
+			  inTheFront:YES]; // Put the matrix in the front.
+}
+
+// Rotate the matrix about y-axis, with a given radian.
+-(void)rotateAbout_yAxisWithAngle: (double) radian
+{
+	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] rotationTransformationMatrixAboutAxis:Y // Set axis to y.
+																							  byAngle:radian] // Multiply the matrix by roation matrix.
+			  inTheFront:YES]; // Put the matrix in the front.
+}
+
+// Rotate the matrix about z-axis, with a given radian.
+-(void)rotateAbout_zAxisWithAngle: (double) radian
+{
+	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] rotationTransformationMatrixAboutAxis:Z // Set axis to z.
+																							  byAngle:radian] // Multiply the matrix by roation matrix.
+			  inTheFront:YES]; // Put the matrix in the front.
+}
+
+// Scale the x-axis by a given percentage.
+-(void)scale_xAxisByPercentge: (float) p
+{
+	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] scaleTransformationMatrixWithScalingPercentageOfX:p // Scale x-axis.
+																											 andY:0 // Keep y.
+																											 andZ:0] // Keep z.
+			  inTheFront:YES]; // Put the matrix in the front.
+}
+
+// Scale the y-axis by a given percentage.
+-(void)scale_yAxisByPercentge: (float) p
+{
+	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] scaleTransformationMatrixWithScalingPercentageOfX:0 // Keep x.
+																											 andY:p // Scale y-axis.
+																											 andZ:0] // Keep z.
+			  inTheFront:YES]; // Put the matrix in the front.
+}
+
+// Scale the z-axis by a given percentage.
+-(void)scale_zAxisByPercentge: (float) p
+{
+	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] scaleTransformationMatrixWithScalingPercentageOfX:0 // Keep x.
+																											 andY:0 // Keep y.
+																											 andZ:p] // Scale z-axis.
+			  inTheFront:YES]; // Put the matrix in the front.
+}
+
+// Scale the whole matrix by a given percentage.
+-(void)scale_allAxisesByPercentge: (float) p
+{
+	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] scaleTransformationMatrixWithScalingPercentageOfX:p // Scale z-axis.
+																											 andY:p // Scale y-axis.
+																											 andZ:p] // Scale z-axis.
+			  inTheFront:YES]; // Put the matrix in the front.
+}
+
+//*******************************************************************************//
+//************************ Tranformation & Projection ***************************//
+//*******************************************************************************//
 
 @end
