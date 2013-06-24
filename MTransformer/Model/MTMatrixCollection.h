@@ -44,7 +44,7 @@
 -(MTMatrix *)projectionTransformationMatrixFromPoint: (MT3DPoint) point;
 
 /**
- A matrix perform the transformation
+ A matrix perform the translation.
  Returns matrix:
 
  | 1 0 0 h |
