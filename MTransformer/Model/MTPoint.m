@@ -12,9 +12,6 @@
 
 @interface MTPoint() // Class extension
 
-/** Property indicating whether this vector is a homogeneous vector. (readonly in header file)*/
-@property (readwrite, nonatomic, getter = isHomogeneous) BOOL homogeneous; // Redefine as readwrite inside implementation file.
-
 @end
 
 @implementation MTPoint
