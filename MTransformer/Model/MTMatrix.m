@@ -91,7 +91,7 @@
 // Convert all vectors in matrx to homogeneous vectors.
 -(void)toHomogeneousMatrix
 {
-	[self.vectors performSelector:@selector(toHomogeneousVector)]; // Convert all the vectors to homogeneous vector.
+	[self.vectors makeObjectsPerformSelector: @selector(toHomogeneousVector)]; // Convert all the vectors to homogeneous vector.
 }
 
 // Get the homogeneous matrix of this matrix.
@@ -274,6 +274,7 @@
 -(MTMatrix *)matrixByProjectOnPlaneThroughAxis:(MT_AXIS)axis withDistance:(float)d
 {
 	MTMatrix *res = [self deepCopy]; // Create a deep copy of this matrix.
+	if (res.homogeneous == NO) [res toHomogeneousMatrix]; // If it's not a homogeneous matrix, change it to homogeneous matrix.
 	MT3DPoint point; // The point projecting from.
 	switch (axis) { // Switch between axises.
 		case X: // If it's x-axis:
@@ -301,6 +302,7 @@
 -(MTMatrix *)matrixByProjectOnPlaneThrough_xAxisWithDistance: (float) d
 {
 	MTMatrix *res = [self deepCopy]; // Create a deep copy of this matrix.
+		if (res.homogeneous == NO) [res toHomogeneousMatrix]; // If it's not a homogeneous matrix, change it to homogeneous matrix.
 	[res multiplyMatrix:[[MTMatrixCollection sharedCollection] projectionTransformationMatrixFromPoint:MT3DPointMake(d, 0, 0)] // Multiply the matrix by projection matrix.
 			 inTheFront:YES]; // Put the matrix in the front.
 	for (size_t i = 0; i < [res.vectors count]; ++i) { // Iterate through all vectors:
@@ -313,6 +315,7 @@
 -(MTMatrix *)matrixByProjectOnPlaneThrough_yAxisWithDistance: (float) d
 {
 	MTMatrix *res = [self deepCopy]; // Create a deep copy of this matrix.
+		if (res.homogeneous == NO) [res toHomogeneousMatrix]; // If it's not a homogeneous matrix, change it to homogeneous matrix.
 	[res multiplyMatrix:[[MTMatrixCollection sharedCollection] projectionTransformationMatrixFromPoint:MT3DPointMake(0, d, 0)] // Multiply the matrix by projection matrix.
 			 inTheFront:YES]; // Put the matrix in the front.
 	for (size_t i = 0; i < [res.vectors count]; ++i) { // Iterate through all vectors:
@@ -325,6 +328,7 @@
 -(MTMatrix *)matrixByProjectOnPlaneThrough_zAxisWithDistance: (float) d
 {
 	MTMatrix *res = [self deepCopy]; // Create a deep copy of this matrix.
+		if (res.homogeneous == NO) [res toHomogeneousMatrix]; // If it's not a homogeneous matrix, change it to homogeneous matrix.
 	[res multiplyMatrix:[[MTMatrixCollection sharedCollection] projectionTransformationMatrixFromPoint:MT3DPointMake(0, 0, d)] // Multiply the matrix by projection matrix.
 			 inTheFront:YES]; // Put the matrix in the front.
 	for (size_t i = 0; i < [res.vectors count]; ++i) { // Iterate through all vectors:
@@ -336,6 +340,7 @@
 // Move matrix with a specific distance along given axis.
 -(void)moveAlongAxis: (MT_AXIS) axis withDistance: (float) d
 {
+	if (self.homogeneous == NO) [self toHomogeneousMatrix]; // If it's not a homogeneous matrix, change it to homogeneous matrix.
 	switch (axis) { // Switch between axises.
 		case X: // If it's x-axis:
 			[self moveAlong_xAxisWithDistance:d]; // Move along x-axis.
@@ -355,6 +360,7 @@
 // Move matrix along x-axis with a specific distance.
 -(void)moveAlong_xAxisWithDistance: (float) d
 {
+	if (self.homogeneous == NO) [self toHomogeneousMatrix]; // If it's not a homogeneous matrix, change it to homogeneous matrix.
 	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] translateTransformationMatrixWith_xValue:d // Move d along x-axis.
 																							  and_yValue:0 // Keep y.
 																							  and_zValue:0] // Keep z.
@@ -364,6 +370,7 @@
 // Move matrix along y-axis with a specific distance.
 -(void)moveAlong_yAxisWithDistance: (float) d
 {
+	if (self.homogeneous == NO) [self toHomogeneousMatrix]; // If it's not a homogeneous matrix, change it to homogeneous matrix.
 	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] translateTransformationMatrixWith_xValue:0 // Keep x.
 																							  and_yValue:d // Move d along y-axis.
 																							  and_zValue:0] // Keep z.
@@ -373,6 +380,7 @@
 // Move matrix along z-axis with a specific distance.
 -(void)moveAlong_zAxisWithDistance: (float) d
 {
+	if (self.homogeneous == NO) [self toHomogeneousMatrix]; // If it's not a homogeneous matrix, change it to homogeneous matrix.
 	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] translateTransformationMatrixWith_xValue:0 // Keep z.
 																							  and_yValue:0 // Keep y.
 																							  and_zValue:d] // Move d along x-axis.
@@ -382,6 +390,7 @@
 // Rotate the matrix about x-axis, with a given radian.
 -(void)rotateAbout_xAxisWithAngle: (double) radian
 {
+	if (self.homogeneous == NO) [self toHomogeneousMatrix]; // If it's not a homogeneous matrix, change it to homogeneous matrix.
 	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] rotationTransformationMatrixAboutAxis:X // Set axis to x.
 																							  byAngle:radian] // Multiply the matrix by roation matrix.
 			  inTheFront:YES]; // Put the matrix in the front.
@@ -390,6 +399,7 @@
 // Rotate the matrix about y-axis, with a given radian.
 -(void)rotateAbout_yAxisWithAngle: (double) radian
 {
+	if (self.homogeneous == NO) [self toHomogeneousMatrix]; // If it's not a homogeneous matrix, change it to homogeneous matrix.
 	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] rotationTransformationMatrixAboutAxis:Y // Set axis to y.
 																							  byAngle:radian] // Multiply the matrix by roation matrix.
 			  inTheFront:YES]; // Put the matrix in the front.
@@ -398,6 +408,7 @@
 // Rotate the matrix about z-axis, with a given radian.
 -(void)rotateAbout_zAxisWithAngle: (double) radian
 {
+	if (self.homogeneous == NO) [self toHomogeneousMatrix]; // If it's not a homogeneous matrix, change it to homogeneous matrix.
 	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] rotationTransformationMatrixAboutAxis:Z // Set axis to z.
 																							  byAngle:radian] // Multiply the matrix by roation matrix.
 			  inTheFront:YES]; // Put the matrix in the front.
@@ -406,6 +417,7 @@
 // Scale the x-axis by a given percentage.
 -(void)scale_xAxisByPercentge: (float) p
 {
+	if (self.homogeneous == NO) [self toHomogeneousMatrix]; // If it's not a homogeneous matrix, change it to homogeneous matrix.
 	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] scaleTransformationMatrixWithScalingPercentageOfX:p // Scale x-axis.
 																											 andY:0 // Keep y.
 																											 andZ:0] // Keep z.
@@ -415,6 +427,7 @@
 // Scale the y-axis by a given percentage.
 -(void)scale_yAxisByPercentge: (float) p
 {
+	if (self.homogeneous == NO) [self toHomogeneousMatrix]; // If it's not a homogeneous matrix, change it to homogeneous matrix.
 	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] scaleTransformationMatrixWithScalingPercentageOfX:0 // Keep x.
 																											 andY:p // Scale y-axis.
 																											 andZ:0] // Keep z.
@@ -424,6 +437,7 @@
 // Scale the z-axis by a given percentage.
 -(void)scale_zAxisByPercentge: (float) p
 {
+	if (self.homogeneous == NO) [self toHomogeneousMatrix]; // If it's not a homogeneous matrix, change it to homogeneous matrix.
 	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] scaleTransformationMatrixWithScalingPercentageOfX:0 // Keep x.
 																											 andY:0 // Keep y.
 																											 andZ:p] // Scale z-axis.
@@ -433,6 +447,7 @@
 // Scale the whole matrix by a given percentage.
 -(void)scale_allAxisesByPercentge: (float) p
 {
+	if (self.homogeneous == NO) [self toHomogeneousMatrix]; // If it's not a homogeneous matrix, change it to homogeneous matrix.
 	[self multiplyMatrix:[[MTMatrixCollection sharedCollection] scaleTransformationMatrixWithScalingPercentageOfX:p // Scale z-axis.
 																											 andY:p // Scale y-axis.
 																											 andZ:p] // Scale z-axis.
