@@ -197,7 +197,7 @@
 		for (size_t col = 0 ; col < (size_t)[self.vectors count]; ++col) { // Iterate through columns.
 			[res appendFormat:@"%.1f ", [self.vectors[col][row] floatValue]]; // Append the float value and a space.
 		}
-		[res appendString:@" |"]; // Append @" |" at the end of each row.
+		[res appendString:@"|"]; // Append @"|" at the end of each row.
 		[res appendString:@"\n"]; // Append new line character.
 	}
 	return res; // Return the string.
