@@ -140,6 +140,16 @@
 			name = Matrix;
 			sourceTree = "<group>";
 		};
+		04865DA417781446005BF0BF /* ViewsAndControllers */ = {
+			isa = PBXGroup;
+			children = (
+				04ED3CC31772A1D700C1005F /* Main.storyboard */,
+				04ED3CC61772A1D700C1005F /* MTViewController.h */,
+				04ED3CC71772A1D700C1005F /* MTViewController.m */,
+			);
+			name = ViewsAndControllers;
+			sourceTree = "<group>";
+		};
 		04ED3CA51772A1D700C1005F = {
 			isa = PBXGroup;
 			children = (
@@ -173,11 +183,7 @@
 		04ED3CB71772A1D700C1005F /* MTransformer */ = {
 			isa = PBXGroup;
 			children = (
-				04ED3CC01772A1D700C1005F /* MTAppDelegate.h */,
-				04ED3CC11772A1D700C1005F /* MTAppDelegate.m */,
-				04ED3CC31772A1D700C1005F /* Main.storyboard */,
-				04ED3CC61772A1D700C1005F /* MTViewController.h */,
-				04ED3CC71772A1D700C1005F /* MTViewController.m */,
+				04865DA417781446005BF0BF /* ViewsAndControllers */,
 				042BBCA81772A23100844878 /* Model */,
 				04ED3CC91772A1D700C1005F /* Images.xcassets */,
 				04ED3CB81772A1D700C1005F /* Supporting Files */,
@@ -188,6 +194,8 @@
 		04ED3CB81772A1D700C1005F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				04ED3CC01772A1D700C1005F /* MTAppDelegate.h */,
+				04ED3CC11772A1D700C1005F /* MTAppDelegate.m */,
 				04ED3CB91772A1D700C1005F /* MTransformer-Info.plist */,
 				04ED3CBA1772A1D700C1005F /* InfoPlist.strings */,
 				04ED3CBD1772A1D700C1005F /* main.m */,
@@ -431,7 +439,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_OPTIMIZATION_LEVEL = fast;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
