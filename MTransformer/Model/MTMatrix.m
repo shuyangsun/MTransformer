@@ -92,6 +92,7 @@
 -(void)toHomogeneousMatrix
 {
 	[self.vectors makeObjectsPerformSelector: @selector(toHomogeneousVector)]; // Convert all the vectors to homogeneous vector.
+	self.homogeneous = YES; // Set the homogeneous to YES.
 }
 
 // Get the homogeneous matrix of this matrix.
@@ -196,9 +197,9 @@
 {
 	NSMutableString *res = [NSMutableString string]; // Create a mutable stirng to represent result.
 	for (size_t row = 0; row < (size_t)[self.vectors[0] entryCount]; ++row) { // Iterate through rows.
-		[res appendString:@"| "]; // Append @"| " at the beginning of each row.
+		[res appendString:@"|  "]; // Append @"|  " at the beginning of each row.
 		for (size_t col = 0 ; col < (size_t)[self.vectors count]; ++col) { // Iterate through columns.
-			[res appendFormat:@"%.1f ", [self.vectors[col][row] floatValue]]; // Append the float value and a space.
+			[res appendFormat:@"%-5.1f ", [self.vectors[col][row] floatValue]]; // Append the float value and a space. The float display one number after decimal point, number is 5 width.
 		}
 		[res appendString:@"|"]; // Append @"|" at the end of each row.
 		[res appendString:@"\n"]; // Append new line character.
