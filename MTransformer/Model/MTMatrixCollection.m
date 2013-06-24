@@ -33,37 +33,17 @@
 
 /**
 
- | 1 0   0  0 |
- | 0 1   0  0 |
- | 0 0   0  0 |
- | 0 0 -1/d 0 |
-
- */
--(MTMatrix *)projectionTransformationMatrixWithDistanceAtZAxis: (float) d
-{
-	float fVals[] =
-	   {1, 0,	 0,	    0, // Keep x value.
-		0, 1,	 0,	    0, // Keep y value.
-		0, 0,	 0,	    0, // Clear z value. (projecting to 2D, so there is no z value)
-		0, 0, -(1.0/d), 0}; // Set the scale parameter for final projection.
-
-	return [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
-																	 SIZE_OF_TRANSFORMATION_MATRIX,
-																	 fVals)]; // Return initialized matrix.
-}
-
-/**
-
  | 1 0 -b/d 0 |
  | 0 1 -c/d 0 |
  | 0 0   0  0 |
  | 0 0 -1/d 0 |
 
  */
--(MTMatrix *)projectionTransformationMatrixFromX: (float) b
-											andY: (float) c
-											andD: (float) d
+-(MTMatrix *)projectionTransformationMatrixFromPoint: (MT3DPoint) point
 {
+	float b = point.x; // Assign x to b.
+	float c = point.y; // Assign y to c.
+	float d = point.z; // Assign z to d.
 	float fVals[] =
 	   {1, 0, -(b/d),   0, // Chaneg x value.
 	    0, 1, -(c/d),   0, // Change y value.

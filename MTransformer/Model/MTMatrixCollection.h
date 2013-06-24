@@ -30,20 +30,6 @@
 //************************ Methods ***************************//
 
 /**
- A matrix to project 3D graph from point (0, 0, d).
- Returns matrix:
-
- | 1 0   0  0 |
- | 0 1   0  0 |
- | 0 0   0  0 |
- | 0 0 -1/d 0 |
-
- @param d distance from the view point to projection plane.
- @return The matrix for projection transformation.
- */
--(MTMatrix *)projectionTransformationMatrixWithDistanceAtZAxis: (float) d;
-
-/**
  A matrix to project 3D graph from point (b, c, d).
  Returns matrix:
 
@@ -52,14 +38,10 @@
  | 0 0   0  0 |
  | 0 0 -1/d 0 |
 
- @param b x value of view point.
- @param c y value of view point.
- @param d z value of view point.
+ @param point The values are (b, c, d).
  @return The matrix for projection transformation.
  */
--(MTMatrix *)projectionTransformationMatrixFromX: (float) b
-											andY: (float) c
-											andD: (float) d;
+-(MTMatrix *)projectionTransformationMatrixFromPoint: (MT3DPoint) point;
 
 /**
  A matrix perform the transformation
