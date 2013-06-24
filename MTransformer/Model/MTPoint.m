@@ -116,6 +116,7 @@
 
 //************************ Coding Protocol Methods ***************************//
 
+// Decoder:
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
 	self.entries = [aDecoder decodeObjectForKey:@"MTPointEntries"]; // Decode entries.
@@ -127,6 +128,7 @@
 	return self; // Return the result.
 }
 
+// Encoder:
 -(void)encodeWithCoder:(NSCoder *)aCoder
 {
 	[aCoder encodeObject: self.entries forKey:@"MTPointEntries"]; // Encode entries.
