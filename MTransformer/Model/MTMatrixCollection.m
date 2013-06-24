@@ -47,7 +47,7 @@
 		0, 0,	 0,	    0, // Clear z value. (projecting to 2D, so there is no z value)
 		0, 0, -(1.0/d), 0}; // Set the scale parameter for final projection.
 
-	return [[MTMatrix alloc] initWithFloatValues: MTMakeCStyleMatrix(SIZE_OF_TRANSFORMATION_MATRIX,
+	return [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
 																	 SIZE_OF_TRANSFORMATION_MATRIX,
 																	 fVals)]; // Return initialized matrix.
 }
@@ -70,7 +70,7 @@
 	    0, 0,	 0,     0, // Keep z value.
 	    0, 0, -(1.0/d), 0}; // Set the scale parameter.
 
-	return [[MTMatrix alloc] initWithFloatValues: MTMakeCStyleMatrix(SIZE_OF_TRANSFORMATION_MATRIX,
+	return [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
 																	 SIZE_OF_TRANSFORMATION_MATRIX,
 																	 fVals)]; // Return initialized matrix.
 }
@@ -93,7 +93,7 @@
 		0, 0,	1,	l, // Change z value.
 		0, 0,	0,	1}; // Keep the scale parameter for final projection.
 
-	return [[MTMatrix alloc] initWithFloatValues: MTMakeCStyleMatrix(SIZE_OF_TRANSFORMATION_MATRIX,
+	return [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
 																	 SIZE_OF_TRANSFORMATION_MATRIX,
 																	 fVals)]; // Return initialized matrix.
 }
@@ -118,7 +118,7 @@
 						 0, cos(r),	-sin(r), 0,
 						 0, sin(r),	 cos(r), 0,
 						 0,	  0,	  0,	 1}; // Set values of the 2D float array.
-		res = [[MTMatrix alloc] initWithFloatValues: MTMakeCStyleMatrix(SIZE_OF_TRANSFORMATION_MATRIX,
+		res = [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
 																		SIZE_OF_TRANSFORMATION_MATRIX,
 																		fVals)]; // Return initialized matrix.
 	} else if (axis == Y) { // If it's rotating about Y axis:
@@ -126,7 +126,7 @@
 							0,	  1,   0,	 0,
 						 -sin(r), 0, cos(r), 0,
 							0,	  0,   0,	 1}; // Set values of the 2D float array.
-		res = [[MTMatrix alloc] initWithFloatValues: MTMakeCStyleMatrix(SIZE_OF_TRANSFORMATION_MATRIX,
+		res = [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
 																		SIZE_OF_TRANSFORMATION_MATRIX,
 																		fVals)]; // Return initialized matrix.
 	} else if (axis == Z) { // If it's rorating about Z axis:
@@ -134,7 +134,7 @@
 						 sin(r),  cos(r), 0, 0,
 						  0,		0,	  1, 0,
 						  0,		0,	  0, 1}; // Set values of the 2D float array.
-		res = [[MTMatrix alloc] initWithFloatValues: MTMakeCStyleMatrix(SIZE_OF_TRANSFORMATION_MATRIX,
+		res = [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
 																		SIZE_OF_TRANSFORMATION_MATRIX,
 																		fVals)]; // Return initialized matrix.
 	}
@@ -158,7 +158,7 @@
 					 0, 0,	q,	0, // Scale z-axis.
 					 0, 0,	0,	1}; // Keep the scale parameter for final projection.
 
-	return [[MTMatrix alloc] initWithFloatValues: MTMakeCStyleMatrix(SIZE_OF_TRANSFORMATION_MATRIX,
+	return [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
 																	 SIZE_OF_TRANSFORMATION_MATRIX,
 																	 fVals)]; // Return initialized matrix.
 }
