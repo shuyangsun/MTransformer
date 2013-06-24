@@ -23,7 +23,7 @@ typedef enum {
 	X = 0x01, // 0b0000_0001
 	Y = 0x02, // 0b0000_0010
 	Z = 0x04  // 0b0000_0100
-} MT_ROTATION_AXIS;
+} MT_AXIS;
 
 /**
  Typedefed matrix, containing row number, column number and float array.
