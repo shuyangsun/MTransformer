@@ -15,7 +15,7 @@
 /**
  A class representing a matrix, contains a array of vectors.
  */
-@interface MTMatrix : NSObject <NSCopying, NSMutableCopying> // Satisfied protocols.
+@interface MTMatrix : NSObject <NSCopying, NSMutableCopying, NSCoding> // Satisfied protocols.
 
 //************************ Properties ***************************//
 

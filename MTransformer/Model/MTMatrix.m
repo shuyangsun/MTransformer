@@ -117,15 +117,15 @@
 		return nil; // Return nil to end the method.
 	}
 	MTMatrix *multipliedMatrix = [self mutableCopy]; // Make a copy of current matrix.
-	for (size_t i = 0; i < (size_t)[self.vectors count]; ++i) { // Loop through vectors.
-		[[self.vectors objectAtIndex:i] multiplyByNumber:[vector entryAtIndexAsFloat:i]]; // Multiply the ith vector in this matrix with the ith entry in the new vector.
+	for (size_t i = 0; i < (size_t)[multipliedMatrix.vectors count]; ++i) { // Loop through vectors.
+		[multipliedMatrix.vectors[i] multiplyByNumber:[vector entryAtIndexAsFloat:i]]; // Multiply the ith vector in this matrix with the ith entry in the new vector.
 	}
-	MTVector *res = [[MTVector alloc] initWithNumberOfEntries:[[self.vectors objectAtIndex:0] entryCount]]; // Create a result with the same number entris. (all entries are ZEROs now)
-	for (size_t i = 0; i < [self.vectors count]; ++i) { // Loop through the vectors.
-		[res addVector:[self.vectors objectAtIndex:i]]; // Add all vectors together.
+	MTVector *res = [[MTVector alloc] initWithNumberOfEntries:[[multipliedMatrix.vectors objectAtIndex:0] entryCount]]; // Create a result with the same number entris. (all entries are ZEROs now)
+	for (size_t i = 0; i < [multipliedMatrix.vectors count]; ++i) { // Loop through the vectors.
+		[res addVector:[multipliedMatrix.vectors objectAtIndex:i]]; // Add all vectors together.
 	}
 
-	[multipliedMatrix.vectors removeObjectAtIndex:0]; // Remove the first vector.
+	[multipliedMatrix.vectors removeObjectAtIndex:0]; // Remove the first vector, release memory.
 	multipliedMatrix = nil; // Release the multiplied matrix.
 	return res; // Multply succeed, return the result.
 }
@@ -225,6 +225,26 @@
 	return res;
 }
 //************************ Copy Protocol Methods ***************************//
+
+//************************ Coding Protocol Methods ***************************//
+
+// Decoder:
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+	self.vectors = [aDecoder decodeObjectForKey:@"MTMatrixVectors"]; // Decode vectors.
+	self.homogeneous = [aDecoder decodeBoolForKey:@"MTMatrixHomogeneous"]; // Decode homogeneous.
+
+	return self; // Return itself.
+}
+
+// Encoder:
+-(void)encodeWithCoder:(NSCoder *)aCoder
+{
+	[aCoder encodeObject:self.vectors forKey:@"MTMatrixVectors"]; // Encode vectors.
+	[aCoder encodeBool:self.homogeneous forKey:@"MTMatrixHomogeneous"]; // Encode homogeneous.
+}
+
+//************************ Coding Protocol Methods ***************************//
 
 //************************ Helper Methods ***************************//
 
