@@ -12,9 +12,6 @@
 
 @interface MTVector() // Class extension
 
-/** Property indicating whether this vector is a homogeneous vector. (readonly in header file)*/
-@property (readwrite, nonatomic, getter = isHomogeneous) BOOL homogeneous; // Redefine as readwrite inside implementation file.
-
 /**
  @method A method generate invalid index warning message.
  @param maxIndex Maximun index value available.
@@ -155,8 +152,12 @@
 // Remove the first entry in the vector.
 -(void)removeFirstEntry
 {
-	if ([self entryCount] > 1) // If there are two or more entries.
+	if ([self entryCount] > 0) { // If there are one or more entries.
 		[self.entries removeObjectAtIndex:0]; // Remove the first entry.
+	}
+	if ([self entryCount] == 0 && self.homogeneous == YES) { // If it is a homogeneous entry:
+		self.homogeneous = !self.homogeneous; // Toggle homogeneous.
+	}
 }
 
 // Remove the last entry in the vector.
@@ -337,15 +338,55 @@
 
 //************************ Linear Algebra Calculation ***************************//
 
-//************************ For 3D transformation ***************************//
+//************************ Tranformation & Projection ***************************//
 
-// Get the 2D projection vectors. Also remove the last entry if it is a homogeneous vector.
--(void)removeEntriesUnderTheFirstTwoRows
+// Determine which plane is projecting on, then convert this vector to the apropreate vector.
+-(void)projectingTo2DPlaneFromAxis:(MT_AXIS)axis
 {
-	if ([self entryCount] > 2) // If there are more than two entries:
-		[self.entries removeObjectsInRange:NSMakeRange(2, [self entryCount] - 2)]; // Remove all entries under the first two rows.
+	if (self.homogeneous == NO) { // If it is not a homogeneous vector:
+		NSLog(@"Cannot complete projection convertion for vector, this is not a homogeneous vector."); // Generate log message.
+		return; // End method.
+	}
+	for (size_t row = 0; row < [self entryCount] - 1; ++row) { // Loop through all the array except the last homogeneous array.
+		[self replaceEntryAtIndex:row withFloatValue:[self entryAtIndexAsFloat:row]/[[self.entries lastObject] floatValue]]; // Divide all the entries by the last homogeneous entry.
+	}
+
+	[self toRegularVector]; // Convert it to regular vector (remove last entry, set homogeneous to NO).
+	switch (axis) {
+		case X:
+			[self removeEntryAtIndex:0]; // Remove x-axis entry.
+			break;
+		case Y:
+			[self removeEntryAtIndex:1]; // Remove y-axis entry.
+			break;
+		case Z:
+			[self removeEntryAtIndex:2]; // Remove z-axis entry.
+			break;
+		default: // If none of above is the case:
+			NSLog(@"Axis is not in the list, cannot complete projection for vector."); // Generate log message.
+			break;
+	}
 }
-//************************ For 3D transformation ***************************//
+
+// Project this vector to 2D from x-axis.
+-(void)projectingTo2DPlaneFromXAxis
+{
+	[self projectingTo2DPlaneFromAxis:X]; // Call another method.
+}
+
+// Project this vector to 2D from y-axis.
+-(void)projectingTo2DPlaneFromYAxis
+{
+	[self projectingTo2DPlaneFromAxis:Y]; // Call another method.
+}
+
+// Project this vector to 2D from z-axis.
+-(void)projectingTo2DPlaneFromZAxis
+{
+	[self projectingTo2DPlaneFromAxis:Z]; // Call another method.
+}
+
+//************************ Tranformation & Projection ***************************//
 
 //************************ Helper Methods ***************************//
 
@@ -392,6 +433,12 @@
 {
 	[aCoder encodeObject: self.entries forKey:@"MTVectorEntries"]; // Encode entries.
 	[aCoder encodeBool:self.homogeneous forKey:@"MTVectorHomogeneous"]; // Encode homogeneous.
+}
+
+//  User NSCoding protocol to create a deepcopy of this object.
+-(id)deepCopy
+{
+	return [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:self]]; // Use NSKeyedUnarchive and NSKeyedArchiver to create a deep copy.
 }
 
 //************************ Coding Protocol Methods ***************************//

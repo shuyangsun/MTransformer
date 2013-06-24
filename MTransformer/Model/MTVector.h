@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "GlobalMacro.h" // Import GlobalMacro.h to get MT_AXIS
+
 /**
  A class representing a vector.
  A vector has a property called entries which holds the values of all the entries.
@@ -27,7 +29,7 @@
 /** Property representing dimension of entry, homogeneous entry doesn't count. (Returning number of none-ZERO entries) */
 @property (readonly, nonatomic) NSUInteger dimension;
 /** Property indicating whether this vector is a homogeneous vector. */
-@property (readonly, nonatomic, getter = isHomogeneous) BOOL homogeneous;
+@property (nonatomic, getter = isHomogeneous) BOOL homogeneous;
 
 //************************ Properties ***************************//
 
@@ -160,11 +162,6 @@
 -(void)addEntries: (NSArray *) entriesToAdd;
 
 /**
- Remove entries under the first two row.
- */
--(void)removeEntriesUnderTheFirstTwoRows;
-
-/**
  The same as entryAtIndex.
  @param index The index of entry want to get.
  */
@@ -176,6 +173,10 @@
  */
 -(id)objectAtIndexedSubscript: (NSUInteger) index;
 
+/**
+ User NSCoding protocol to create a deepcopy of this object.
+ */
+-(id)deepCopy;
 
 //************************ Methods ***************************//
 
@@ -200,5 +201,30 @@
 -(void)substractVector: (MTVector *) anotherVector;
 
 //************************ Linear Algebra Calculation ***************************//
+
+//************************ Tranformation & Projection ***************************//
+
+/**
+ Determine which plane is projecting on, then convert this vector to the apropreate vector.
+ @param axis The axis projecting through. (i.e. if we want to project one plane x and y, the axis should be z)
+ */
+-(void)projectingTo2DPlaneFromAxis: (MT_AXIS) axis;
+
+/**
+ Project this vector to 2D from x-axis.
+ */
+-(void)projectingTo2DPlaneFromXAxis;
+
+/**
+ Project this vector to 2D from y-axis.
+ */
+-(void)projectingTo2DPlaneFromYAxis;
+
+/**
+ Project this vector to 2D from z-axis.
+ */
+-(void)projectingTo2DPlaneFromZAxis;
+
+//************************ Tranformation & Projection ***************************//
 
 @end
