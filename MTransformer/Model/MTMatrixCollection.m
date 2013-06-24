@@ -11,16 +11,16 @@
 #import "MTMatrix.h" // Import header file for MTMatrix
 // "GlobalMacro.h" imported in header file.
 
-@interface MatrixCollection() // Class extension
+@interface MTMatrixCollection() // Class extension
 
 @end
 
-@implementation MatrixCollection
+@implementation MTMatrixCollection
 
 // Return the unique sharedCollection of matrix collection.
 +(id)sharedCollection
 {
-	static MatrixCollection *res = nil; // Set the result to be static and nil.
+	static MTMatrixCollection *res = nil; // Set the result to be static and nil.
 	if (!res) res = [[super allocWithZone:nil] init]; // If not initialized, initialize it.
 	return res; // Return the res.
 }
@@ -28,7 +28,7 @@
 // Override allocWithZone method to return the sharedCollection, becomes a dummy method.
 +(id)allocWithZone:(struct _NSZone *)zone
 {
-	return [MatrixCollection sharedCollection]; // Return the shared collection.
+	return [MTMatrixCollection sharedCollection]; // Return the shared collection.
 }
 
 /**
