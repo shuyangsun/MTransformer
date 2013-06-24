@@ -92,7 +92,7 @@
  @param radian The radian of angle want to rotate.
  @return The matrix for rotation transformation.
  */
--(MTMatrix *)rotationTransformationMatrixAboutAxis: (MT_ROTATION_AXIS) axis
+-(MTMatrix *)rotationTransformationMatrixAboutAxis: (MT_AXIS) axis
 										   byAngle: (double) radian;
 
 

@@ -106,7 +106,7 @@
 	| 0	  0		  0	   1 |	   |	0	 0   0	  1 |	  |	  0		 0	   0 1 |
 
  */
--(MTMatrix *)rotationTransformationMatrixAboutAxis: (MT_ROTATION_AXIS) axis
+-(MTMatrix *)rotationTransformationMatrixAboutAxis: (MT_AXIS) axis
 										   byAngle: (double) radian
 {
 	MTMatrix *res = nil; // Declare result, set to nil for now.
