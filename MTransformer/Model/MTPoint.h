@@ -58,6 +58,11 @@
  */
 -(NSArray *)pointsConnectingToAsArray;
 
+/**
+ User NSCoding protocol to create a deepcopy of this object.
+ */
+-(id)deepCopy;
+
 //************************ Methods ***************************//
 
 

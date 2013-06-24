@@ -56,6 +56,11 @@
  */
 -(MTMatrix *)getHomogeneousMatrix;
 
+/**
+ User NSCoding protocol to create a deepcopy of this object.
+ */
+-(id)deepCopy;
+
 //************************ Methods ***************************//
 
 //************************ Linear Algebra Calculation ***************************//
@@ -91,6 +96,9 @@
 		   inTheFront: (BOOL) front;
 
 //************************ Linear Algebra Calculation ***************************//
+
+//************************ Tranformation & Projection ***************************//
+//************************ Tranformation & Projection ***************************//
 
 @end
 
