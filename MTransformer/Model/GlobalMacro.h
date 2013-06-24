@@ -35,6 +35,11 @@ typedef struct MTCStyleMatrix {
 } MTCStyleMatrix;
 
 /**
+ A C function create a MTCStyleMatrix with given row, column number and float array.
+ */
+MTCStyleMatrix MTCStyleMatrixMake(int row, int col, float *fVals);
+
+/**
  Typedefed point in 3D.
  */
 typedef struct MT3DPoint{
@@ -42,6 +47,13 @@ typedef struct MT3DPoint{
 	float y; // y-axis value.
 	float z; // z-axis value.
 } MT3DPoint;
+
+/**
+ A C function create a MT3DPoint.
+ */
+MT3DPoint MT3DPointMake(float x, float y, float z);
+
+
 
 /**
  Typedefed point in 2D.
@@ -52,8 +64,8 @@ typedef struct MT2DPoint{
 } MT2DPoint;
 
 /**
- A C function create a MTCStyleMatrix with given row, column number and float array.
+ A C function create a MT2DPoint.
  */
-MTCStyleMatrix MTCStyleMatrixMake(int row, int col, float *fVals);
+MT2DPoint MT2DPointMake(float a, float b);
 
 #endif
