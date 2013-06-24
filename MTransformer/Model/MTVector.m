@@ -381,7 +381,7 @@
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
 	self.entries = [aDecoder decodeObjectForKey:@"MTVectorEntries"]; // Decode entries.
-	self.homogeneous = [aDecoder decodeBoolForKey:@"NTVectorHomogeneous"]; // Decode bool value homogeneous.
+	self.homogeneous = [aDecoder decodeBoolForKey:@"MTVectorHomogeneous"]; // Decode bool value homogeneous.
 	
 	return self; // Return the result.
 }
@@ -389,7 +389,7 @@
 -(void)encodeWithCoder:(NSCoder *)aCoder
 {
 	[aCoder encodeObject: self.entries forKey:@"MTVectorEntries"]; // Encode entries.
-	[aCoder encodeBool:self.homogeneous forKey:@"NTVectorHomogeneous"]; // Encode homogeneous.
+	[aCoder encodeBool:self.homogeneous forKey:@"MTVectorHomogeneous"]; // Encode homogeneous.
 }
 
 //************************ Coding Protocol Methods ***************************//
