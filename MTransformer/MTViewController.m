@@ -8,6 +8,8 @@
 
 #import "MTViewController.h"
 
+#import "GlobalMacro.h"
+
 @interface MTViewController ()
 
 @end

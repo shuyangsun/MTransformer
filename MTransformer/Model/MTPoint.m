@@ -8,7 +8,7 @@
 
 #import "MTPoint.h"
 
-#include "GlobalMacro.h" // Global macro definitions.
+#import "GlobalMacro.h" // Global macro definitions.
 
 @interface MTPoint() // Class extension
 

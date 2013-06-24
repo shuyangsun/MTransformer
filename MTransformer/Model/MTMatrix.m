@@ -10,8 +10,6 @@
 
 #import "MTVector.h" // Import header file for MTVector.
 
-#include "GlobalMacro.h" // Global macro definitions.
-
 @interface MTMatrix() // Class extensions.
 
 /** Property indicating whether this matrix is a homogeneous matrix. (readonly in header file) */

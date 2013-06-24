@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#include "GlobalMacro.h" // Include global macros.
+#import "GlobalMacro.h" // Include global macros.
 
 @class MTMatrix; // Define class MTMatrix.
 
