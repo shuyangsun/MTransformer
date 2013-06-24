@@ -122,7 +122,7 @@
 	self.homogeneous = [aDecoder decodeBoolForKey:@"MTPointHomogeneous"]; // Decode bool value homogeneous.
 	self.name = [aDecoder decodeObjectForKey:@"MTPointName"]; // Decode name.
 	self.pointsConnectingTo = [aDecoder decodeObjectForKey:@"MTPointPointsConnectingTo"]; // Decode pointsConnectingTo.
-	self.visited = [aDecoder decodeBoolrKey:@"MTPointVisited"]; //Decode visited.
+	self.visited = [aDecoder decodeBoolForKey:@"MTPointVisited"]; //Decode visited.
 
 	return self; // Return the result.
 }
