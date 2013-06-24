@@ -116,7 +116,9 @@
 	if ([vector entryCount] != [self.vectors count]) { // If the multipliation is not defined, return nil.
 		return nil; // Return nil to end the method.
 	}
-	MTMatrix *multipliedMatrix = [self mutableCopy]; // Make a copy of current matrix.
+	MTMatrix *multipliedMatrix = [NSKeyedUnarchiver unarchiveObjectWithData:
+								  [NSKeyedArchiver archivedDataWithRootObject:self]]; // Make a copy of current matrix.
+	
 	for (size_t i = 0; i < (size_t)[multipliedMatrix.vectors count]; ++i) { // Loop through vectors.
 		[multipliedMatrix.vectors[i] multiplyByNumber:[vector entryAtIndexAsFloat:i]]; // Multiply the ith vector in this matrix with the ith entry in the new vector.
 	}
