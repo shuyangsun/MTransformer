@@ -188,6 +188,21 @@
 	return YES; // Return YES to indicate operation succeed.
 }
 
+// Override description for matrix.
+-(NSString *)description
+{
+	NSMutableString *res = [NSMutableString string]; // Create a mutable stirng to represent result.
+	for (size_t row = 0; row < (size_t)[self.vectors[0] entryCount]; ++row) { // Iterate through rows.
+		[res appendString:@"| "]; // Append @"| " at the beginning of each row.
+		for (size_t col = 0 ; col < (size_t)[self.vectors count]; ++col) { // Iterate through columns.
+			[res appendFormat:@"%.1f ", [self.vectors[col][row] floatValue]]; // Append the float value and a space.
+		}
+		[res appendString:@" |"]; // Append @" |" at the end of each row.
+		[res appendString:@"\n"]; // Append new line character.
+	}
+	return res; // Return the string.
+}
+
 //************************ Linear Algebra Calculation ***************************//
 
 //************************ Copy Protocol Methods ***************************//
