@@ -48,7 +48,7 @@
 	   {1, 0, -(b/d),   0, // Chaneg x value.
 	    0, 1, -(c/d),   0, // Change y value.
 	    0, 0,	 0,     0, // Keep z value.
-	    0, 0, -(1.0/d), 0}; // Set the scale parameter.
+	    0, 0, -(1/d), 0}; // Set the scale parameter.
 
 	return [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
 																	 SIZE_OF_TRANSFORMATION_MATRIX,
