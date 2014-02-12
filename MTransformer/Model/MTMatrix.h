@@ -10,7 +10,7 @@
 
 #import "GlobalMacro.h" // Include global macro to get MTCStyleMatrix.
 
-@class MTVector; // Class declaration for MTVector.
+@class MTPoint; // Class declaration for MTPoint.
 
 /**
  A class representing a matrix, contains a array of vectors.
@@ -23,7 +23,7 @@
 @property (strong, nonatomic) NSMutableArray *vectors;
 
 /** Property indicating whether this matrix is a homogeneous matrix. */
-@property (readonly, nonatomic, getter = isHomogeneous) BOOL homogeneous;
+@property (nonatomic, getter = isHomogeneous) BOOL homogeneous;
 
 //************************ Properties ***************************//
 
@@ -40,6 +40,14 @@
  @param cStyleMatrix A C style matrix defined in header file "GlobalMacros".
  */
 -(id)initWithFloatValues: (MTCStyleMatrix) cStyleMatrix;
+
+/**
+ Initialize this matrix with given two dimensional array. The vectors are MTPoints. \n
+ The names of points will be captilized A, B, C...
+ @param cStyleMatrix A C style matrix defined in header file "GlobalMacros".
+ @param connectionData A 2D array holding the connection data. (Either 0 or 1)
+ */
+-(id)initWithFloatValues:(MTCStyleMatrix)cStyleMatrix andPointsConnectionData: (char *)connectionData;
 
 //************************ Initializers  ***************************//
  
@@ -80,11 +88,13 @@
 -(BOOL)substractMatrix: (MTMatrix *) anotherMatrix;
 
 /**
- Multiply this matrix by a vector, return YES if it's possible, NO otherwise. (After multiplication, this matrix will become a vector.)
+ Multiply this matrix by a vector, return YES if it's possible, NO otherwise. (After multiplication, this matrix will become a vector.) \n
+ WARNING! It change the original vector!
  @param vector Vector to multiply.
- @return If the multiplication is defined, multiply and return YES, NO otherwise.
+ @param front If true, replace the value in the vector, if false, replace the value in the matrix.
+ @param vecIndex The index of vector multiplying in current matrix.
  */
--(MTVector *)multiplyVector: (MTVector *) vector;
+-(void)multiplyVector: (MTPoint *) vector inTheFront: (BOOL) front atVector: (int) vecIndex;
 
 /**
  Multiply this matrix by another matrix, return YES if it's possible, NO otherwise.
@@ -105,34 +115,39 @@
  Method return transformed 2 x n matrix.
  @param axis Axis to project from.
  @param d Distance of view point from given axis.
+ @param handleOutOfRange Whether it should handle point out of range exception.
  @return A transformed matrix ready for display on 2D graph through given axis.
  */
--(MTMatrix *)matrixByProjectOnPlaneThroughAxis: (MT_AXIS) axis withDistance: (float) d;
+-(MTMatrix *)matrixByProjectOnPlaneThroughAxis: (MT_AXIS) axis
+								  withDistance: (float) d
+							  handleOutOfRange: (BOOL) handleOutOfRange;
 
 /**
  Method return transformed 2 x n matrix, vectors are coresponding points on plane formed by y-axis and z-axis.
  @param d Distance of view point from x-axis.
+ @param handleOutOfRange Whether it should handle point out of range exception.
  @return A transformed matrix ready for display on 2D graph through x-axis.
  */
--(MTMatrix *)matrixByProjectOnPlaneThrough_xAxisWithDistance: (float) d;
+-(MTMatrix *)matrixByProjectOnPlaneThrough_xAxisWithDistance: (float) d handleOutOfRange: (BOOL) handleOutOfRange;
 /**
  Method return transformed 2 x n matrix, vectors are coresponding points on plane formed by x-axis and z-axis.
  @param d Distance of view point from y-axis.
+ @param handleOutOfRange Whether it should handle point out of range exception.
  @return A transformed matrix ready for display on 2D graph through y-axis.
  */
--(MTMatrix *)matrixByProjectOnPlaneThrough_yAxisWithDistance: (float) d;
+-(MTMatrix *)matrixByProjectOnPlaneThrough_yAxisWithDistance: (float) d handleOutOfRange: (BOOL) handleOutOfRange;
 /**
  Method return transformed 2 x n matrix, vectors are coresponding points on plane formed by x-axis and y-axis.
  @param d Distance of view point from z-axis.
+ @param handleOutOfRange Whether it should handle point out of range exception.
  @return A transformed matrix ready for display on 2D graph through z-axis.
  */
--(MTMatrix *)matrixByProjectOnPlaneThrough_zAxisWithDistance: (float) d;
+-(MTMatrix *)matrixByProjectOnPlaneThrough_zAxisWithDistance: (float) d handleOutOfRange: (BOOL) handleOutOfRange;
 
 /**
  Move matrix with a specific distance along given axis.
  @param axis Axis to move.
  @param d Distance to move.
- @para
  */
 -(void)moveAlongAxis: (MT_AXIS) axis withDistance: (float) d;
 /**

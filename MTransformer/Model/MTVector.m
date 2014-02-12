@@ -72,6 +72,7 @@
 			}
 		}
 	}
+	self.homogeneous = NO; // Initialize homogegeous.
 	return self; // Return self.
 }
 
@@ -83,6 +84,7 @@
 		self = [self initWithNumberOfEntries:1]; // Initialize with a ZERO entry.
 		[self removeLastEntry]; // Remove the zero entry.
 	}
+	self.homogeneous = NO; // Initialize homogegeous.
 	return self; // Return itself.
 }
 
@@ -186,7 +188,7 @@
 // Return homogeneouse vector of this vector.
 -(MTVector *)getHomogeneousVector
 {
-	MTVector *res = [self mutableCopy]; // Make a copy of current vector.
+	MTVector *res = [self deepCopy]; // Make a copy of current vector.
 	[res toHomogeneousVector]; // Make the copy homogeneous.
 	return res; // Return the result.
 }
@@ -194,9 +196,7 @@
 // If this vector is homogeneous vector, change it to the normal form.
 -(void)toRegularVector
 {
-	if (self.homogeneous == YES) { // If it is a homogeneous vector:
-		[self removeLastEntry]; // Remove the last entry. (Will automatically set homogeneous to NO in removeLastEntry method.)
-	}
+	[self removeLastEntry]; // Remove the last entry. (Will automatically set homogeneous to NO in removeLastEntry method.)
 }
 
 // If this vector is homogeneous vector, get the regular vector.
@@ -210,7 +210,7 @@
 -(void)removeEntryAtIndex:(NSUInteger)index
 {
 	if (index < [self entryCount]) { // It it is a valid index number:
-		if ([self entryCount] - 1 > 0){ // If it has more than 1 entries:
+		if ([self entryCount] > 1){ // If it has more than 1 entries:
 			[self.entries removeObjectAtIndex:index]; // Remove this entry. (length should be one less.)
 		} else { // If it has less than 1 entry:
 			NSLog(@"Cannot remove entry, vector length is not enough."); // Generate warning message indicate vector length is not enought to remove a entry.
@@ -280,7 +280,13 @@
 	return res; // Return the result.
 }
 
-
+// Get the CGPoint version of this vector
+-(CGPoint)get2DPoint
+{
+	float x = ([self entryAtIndexAsFloat:0] - [self entryAtIndexAsFloat:0] ? 0:[self entryAtIndexAsFloat:0]); // If it's NAN, assign it to 0.
+	float y = ([self entryAtIndexAsFloat:1] - [self entryAtIndexAsFloat:1] ? 0:[self entryAtIndexAsFloat:1]); // If it's NAN, assign it to 0.
+	return CGPointMake(x, y); // Get the first and second value in the vector.
+}
 
 // Overriding description
 -(NSString *)description
@@ -343,29 +349,15 @@
 // Determine which plane is projecting on, then convert this vector to the apropreate vector.
 -(void)projectingTo2DPlaneFromAxis:(MT_AXIS)axis
 {
-	if (self.homogeneous == NO) { // If it is not a homogeneous vector:
-		NSLog(@"Cannot complete projection convertion for vector, this is not a homogeneous vector."); // Generate log message.
-		return; // End method.
-	}
 	for (size_t row = 0; row < [self entryCount] - 1; ++row) { // Loop through all the array except the last homogeneous array.
-		[self replaceEntryAtIndex:row withFloatValue:[self entryAtIndexAsFloat:row]/[[self.entries lastObject] floatValue]]; // Divide all the entries by the last homogeneous entry.
+		float homogeneousValue = [self entryAtIndexAsFloat:[self entryCount] - 1]; // The value of last entry.
+		if (homogeneousValue <= 0) homogeneousValue = DISTANCE_ERROR; // If the homogeneous value is zero, make it small enough to project to inifinity.
+		float newFloatValue = [self entryAtIndexAsFloat:row]/homogeneousValue; // The float value after diving the last entry.
+		[self replaceEntryAtIndex:row withFloatValue:newFloatValue]; // Divide all the entries by the last homogeneous entry.
 	}
 
 	[self toRegularVector]; // Convert it to regular vector (remove last entry, set homogeneous to NO).
-	switch (axis) {
-		case X:
-			[self removeEntryAtIndex:0]; // Remove x-axis entry.
-			break;
-		case Y:
-			[self removeEntryAtIndex:1]; // Remove y-axis entry.
-			break;
-		case Z:
-			[self removeEntryAtIndex:2]; // Remove z-axis entry.
-			break;
-		default: // If none of above is the case:
-			NSLog(@"Axis is not in the list, cannot complete projection for vector."); // Generate log message.
-			break;
-	}
+	[self removeEntryAtIndex:2]; // Always gonna remove the third entry.
 }
 
 // Project this vector to 2D from x-axis.
@@ -422,9 +414,11 @@
 // Decoder:
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
-	self.entries = [aDecoder decodeObjectForKey:@"MTVectorEntries"]; // Decode entries.
-	self.homogeneous = [aDecoder decodeBoolForKey:@"MTVectorHomogeneous"]; // Decode bool value homogeneous.
-	
+	self = [super init];
+	if (self) {
+		self.entries = [aDecoder decodeObjectForKey:@"MTVectorEntries"]; // Decode entries.
+		self.homogeneous = [aDecoder decodeBoolForKey:@"MTVectorHomogeneous"]; // Decode bool value homogeneous.
+	}
 	return self; // Return the result.
 }
 

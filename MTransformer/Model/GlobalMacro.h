@@ -15,14 +15,24 @@
 #define arrlen(arr) (sizeof(arr)/sizeof(arr[0])) // Global macro definition, calculate length of a C style array.
 #define VECTORIZATION_SIZE 4 // Global macro definition, using LLVM 5 to optimize loops through vectorization.
 #define SIZE_OF_TRANSFORMATION_MATRIX 4 // Length of a 3D transformation matrix on each side. (should be 4 x 4)
+#define DISTANCE_ERROR 0.0001f // The error of distance for handling out of range problem.
+#define TOOLBAR_HEIGHT 44 // The height of tool bar.
+#define	SLEEP_TIME_FOR_ORIENTATION 5000 // Sleep time for changing orientation layout.
+
+#define SETTINGS_DICTIONARY_NAME @"MTRANSFORMER_SETTINGS" // The dictionary name to get settings user defaults.
+#define SETTINGS_AXIS_LABEL @"MTRANSFORMER_SETTINGS_AXIS_LABEL"
+#define SETTINGS_SCALE_SINGLE_AXIS @"MTRANSFORMER_SETTINGS_SCALE_SINGLE_AXIS"
+#define SETTINGS_SHAKE_TO_RESET @"MTRANSFORMER_SETTINGS_SHAKE_TO_RESET"
+#define SETTINGS_POINTS_INFORMATION	@"MTRANSFORMER_SETTINGS_POINTS_INFORMATION"
+#define SETTINGS_MODEL_INDEX @"MTRANSFORMER_SETTINGS_MODEL_INDEX"
 
 /**
  Typedefed enum, representing the axis of rotation. Bit fields operation involved.
  */
 typedef enum {
-	X = 0x01, // 0b0000_0001
-	Y = 0x02, // 0b0000_0010
-	Z = 0x04  // 0b0000_0100
+	X = 0,
+	Y = 1,
+	Z = 2
 } MT_AXIS;
 
 /**
@@ -67,5 +77,10 @@ typedef struct MT2DPoint{
  A C function create a MT2DPoint.
  */
 MT2DPoint MT2DPointMake(float a, float b);
+
+/**
+ C funtion get indexes of other two enties in this vector.
+ */
+char *indexesOfotherTwoEntries(char entry);
 
 #endif

@@ -36,6 +36,12 @@
  */
 -(id)initWithName: (NSString *)theName;
 
+/**
+ @method Get a point with a name.
+ @param theName Name of the point.
+ */
++(id)pointWithName: (NSString *)theName;
+
 //************************ Initializers  ***************************//
 
 //************************ Methods ***************************//
@@ -46,11 +52,28 @@
  */
 -(void)connectToPoint: (MTPoint *) point;
 
+/**
+ @method Disconnect this point from another point, takes only one argument. Also disconnect the other point from itself.
+ @param point Point disconnecting from.
+ */
+-(void)disconnectFromPoint: (MTPoint *) point;
+
 /** 
- @method Connect this point to multiple points, takes a NSArray as argument. Also connect other points to itself.
+ @method Connect this point to multiple points, takes an id as argument. Also connect other points to itself.
  @param points Points this point connecting to. (Should be a collection)
  */
 -(void)connectToPoints: (id) points; // WARNING! points should be a collection!
+
+/**
+ @method Disconnect this point from multiple points, takes an id as argument. Also disconnect other points from itself.
+ @param points Points this point is disconnecting from. (Should be a collection)
+ */
+-(void)disconnectFromPoints: (id) points; // WARNING! points should be a collection!
+
+/**
+ @method Disconnect this point from all points connected. Also disconnect other points from itself.
+ */
+-(void)disconnectFromAllPoints; // WARNING! points should be a collection!
 
 /** 
  @method Get the array version of pointsConnectingToProperty.

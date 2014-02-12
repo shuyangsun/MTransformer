@@ -32,6 +32,27 @@
 }
 
 /**
+ Return a 4x4 identiry matrix
+
+ | 1 0 0 0 |
+ | 0 1 0 0 |
+ | 0 0 1 0 |
+ | 0 0 0 1 |
+ */
+-(MTMatrix *)identityMatrix_4x4
+{
+	float fVals[] =
+	{1, 0, 0, 0,
+	 0, 1, 0, 0,
+	 0, 0, 1, 0,
+	 0, 0, 0, 1};
+	
+	MTMatrix *res = [[MTMatrix alloc] initWithFloatValues:MTCStyleMatrixMake(4, 4, fVals)];
+	res.homogeneous = YES;
+	return res;
+}
+
+/**
 
  | 1 0 -b/d 0 |
  | 0 1 -c/d 0 |
@@ -39,20 +60,76 @@
  | 0 0 -1/d 0 |
 
  */
--(MTMatrix *)projectionTransformationMatrixFromPoint: (MT3DPoint) point
+-(MTMatrix *)projectionTransformationMatrixFromPoint: (MT3DPoint) point fromAxis: (MT_AXIS) axis
 {
-	float b = point.x; // Assign x to b.
-	float c = point.y; // Assign y to c.
-	float d = point.z; // Assign z to d.
-	float fVals[] =
-	   {1, 0, -(b/d),   0, // Chaneg x value.
-	    0, 1, -(c/d),   0, // Change y value.
-	    0, 0,	 0,     0, // Keep z value.
-	    0, 0, -(1/d), 0}; // Set the scale parameter.
+	float b = 0.0f;
+	float c = 0.0f;
+	float d = 0.0f;
+	switch (axis) {
+		case Z:
+			b = point.x;
+			c = point.y;
+			d = point.z;
+			float fVals1[] =
+			{1, 0, -(b/d), 0, // Chaneg x value.
+			0, 1, -(c/d), 0, // Change y value.
+			0, 0,	 0,   0, // Keep z value.
+			0, 0, -(1/d), 1}; // Set the scale parameter.
 
-	return [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
-																	 SIZE_OF_TRANSFORMATION_MATRIX,
-																	 fVals)]; // Return initialized matrix.
+			return [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
+																			 SIZE_OF_TRANSFORMATION_MATRIX,
+																			 fVals1)]; // Return initialized matrix.
+			break;
+		case Y:
+			b = point.z;
+			c = point.x;
+			d = point.y;
+			float fVals2[] =
+			{0, -(b/d), 1, 0, // Chaneg x value.
+			 1, -(c/d), 0, 0, // Change y value.
+			 0,	  0,	0, 0, // Keep z value.
+			 0, -(1/d), 0, 1}; // Set the scale parameter.
+
+			return [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
+																			 SIZE_OF_TRANSFORMATION_MATRIX,
+																			 fVals2)]; // Return initialized matrix.
+			break;
+		case X:
+			b = point.y;
+			c = point.z;
+			d = point.x;
+			float fVals3[] =
+			{-(b/d), 1, 0, 0, // Chaneg x value.
+			 -(c/d), 0, 1, 0, // Change y value.
+				0,	 0,	0, 0, // Keep z value.
+			 -(1/d), 0, 0, 1}; // Set the scale parameter.
+
+			return [[MTMatrix alloc] initWithFloatValues: MTCStyleMatrixMake(SIZE_OF_TRANSFORMATION_MATRIX,
+																			 SIZE_OF_TRANSFORMATION_MATRIX,
+																			 fVals3)]; // Return initialized matrix.
+			break;
+		default:
+			break;
+	}
+	return nil; // Never gonna happen!!!
+}
+
+// Dummy method.
+-(MTMatrix *)projectionTransformationMatrixTo_xAxisFromPoint:(MT3DPoint)point
+{
+	return [self projectionTransformationMatrixFromPoint:point fromAxis:X];
+}
+
+// Dummy method.
+-(MTMatrix *)projectionTransformationMatrixTo_yAxisFromPoint:(MT3DPoint)point
+{
+	return [self projectionTransformationMatrixFromPoint:point fromAxis:Y];
+}
+
+// Dummy method.
+-(MTMatrix *)projectionTransformationMatrixTo_zAxisFromPoint:(MT3DPoint)point
+{
+	return [self projectionTransformationMatrixFromPoint:point fromAxis:Z];
 }
 
 /**

@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include "GlobalMacro.h"
 
+#include <stdlib.h>
+
 // C function makes a MTCStyleMatrix.
 MTCStyleMatrix MTCStyleMatrixMake(int row, int col, float *fVals) {
 	MTCStyleMatrix res; // Create a MTCStyleMatrix.
@@ -35,4 +37,29 @@ MT2DPoint MT2DPointMake(float a, float b)
 	res.a = a; // Assign a value.
 	res.b = b; // Assign b value.
 	return res; // Return the result.
+}
+
+// Get indexes of other two entries.
+char *indexesOfotherTwoEntries(char entry)
+{
+	char *res = malloc(1); // Create a result.
+	switch (entry) { // Swith between entry values.
+		case X: // If it's x:
+			*res = 1; // Y
+			*(res + 1) = 2; // Z
+			break;
+		case Y: // If it's y:
+			*res = 0; // X
+			*(res + 1) = 2; // Z
+			break;
+		case Z: // If it's z:
+			*res = 0; // X
+			*(res + 1) = 1; // Y
+			break;
+		default: // Set default to z.
+			*res = 0; // X
+			*(res + 1) = 1; // Y
+			break;
+	}
+	return res;
 }

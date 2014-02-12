@@ -9,21 +9,31 @@
 /* Begin PBXBuildFile section */
 		04007D1F177347B1005530E6 /* MTPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 04007D1E177347B1005530E6 /* MTPoint.m */; };
 		04007D20177347B1005530E6 /* MTPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 04007D1E177347B1005530E6 /* MTPoint.m */; };
+		04224C3A177B92A30064393B /* MTThreeDModelCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 04224C39177B92A30064393B /* MTThreeDModelCollection.m */; };
+		04224C3B177B92A30064393B /* MTThreeDModelCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 04224C39177B92A30064393B /* MTThreeDModelCollection.m */; };
 		042BBCA61772A22F00844878 /* MTVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 042BBCA51772A22F00844878 /* MTVector.m */; };
 		042BBCA71772A22F00844878 /* MTVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 042BBCA51772A22F00844878 /* MTVector.m */; };
 		045747271777927300F8AB8B /* GlobalMacro.c in Sources */ = {isa = PBXBuildFile; fileRef = 045747261777927300F8AB8B /* GlobalMacro.c */; };
 		045747281777927300F8AB8B /* GlobalMacro.c in Sources */ = {isa = PBXBuildFile; fileRef = 045747261777927300F8AB8B /* GlobalMacro.c */; };
+		045C8EB817813CF900014B12 /* MTModelChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C8EB717813CF900014B12 /* MTModelChooseViewController.m */; };
+		045C8EB917813CF900014B12 /* MTModelChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 045C8EB717813CF900014B12 /* MTModelChooseViewController.m */; };
+		045F073C177A4FE9004BDB59 /* MTGraphDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045F073B177A4FE9004BDB59 /* MTGraphDisplayView.m */; };
+		045F073D177A4FE9004BDB59 /* MTGraphDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 045F073B177A4FE9004BDB59 /* MTGraphDisplayView.m */; };
+		045F0744177A6066004BDB59 /* MTThreeDModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045F0743177A6066004BDB59 /* MTThreeDModel.m */; };
+		045F0745177A6066004BDB59 /* MTThreeDModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 045F0743177A6066004BDB59 /* MTThreeDModel.m */; };
 		0460C563177795E900E5B725 /* MTMatrixCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460C562177795E900E5B725 /* MTMatrixCollection.m */; };
 		0460C564177795E900E5B725 /* MTMatrixCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460C562177795E900E5B725 /* MTMatrixCollection.m */; };
 		0478C06F177494A400174C3C /* MTMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 0478C06E177494A400174C3C /* MTMatrix.m */; };
 		0478C070177494A400174C3C /* MTMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 0478C06E177494A400174C3C /* MTMatrix.m */; };
+		04D5C7A3177E8AD9006132AD /* MTSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D5C7A2177E8AD9006132AD /* MTSettingsTableViewController.m */; };
+		04D5C7A4177E8AD9006132AD /* MTSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D5C7A2177E8AD9006132AD /* MTSettingsTableViewController.m */; };
 		04ED3CB21772A1D700C1005F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ED3CB11772A1D700C1005F /* Foundation.framework */; };
 		04ED3CB41772A1D700C1005F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ED3CB31772A1D700C1005F /* CoreGraphics.framework */; };
 		04ED3CB61772A1D700C1005F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ED3CB51772A1D700C1005F /* UIKit.framework */; };
 		04ED3CBC1772A1D700C1005F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04ED3CBA1772A1D700C1005F /* InfoPlist.strings */; };
 		04ED3CBE1772A1D700C1005F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED3CBD1772A1D700C1005F /* main.m */; };
 		04ED3CC21772A1D700C1005F /* MTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED3CC11772A1D700C1005F /* MTAppDelegate.m */; };
-		04ED3CC51772A1D700C1005F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04ED3CC31772A1D700C1005F /* Main.storyboard */; };
+		04ED3CC51772A1D700C1005F /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04ED3CC31772A1D700C1005F /* iPhone.storyboard */; };
 		04ED3CC81772A1D700C1005F /* MTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED3CC71772A1D700C1005F /* MTViewController.m */; };
 		04ED3CCA1772A1D700C1005F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04ED3CC91772A1D700C1005F /* Images.xcassets */; };
 		04ED3CD11772A1D700C1005F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ED3CD01772A1D700C1005F /* XCTest.framework */; };
@@ -31,6 +41,8 @@
 		04ED3CD31772A1D700C1005F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ED3CB51772A1D700C1005F /* UIKit.framework */; };
 		04ED3CDB1772A1D700C1005F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04ED3CD91772A1D700C1005F /* InfoPlist.strings */; };
 		04ED3CDD1772A1D700C1005F /* MTransformerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED3CDC1772A1D700C1005F /* MTransformerTests.m */; };
+		04FBAF5117875CD300BD572B /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FBAF4F17875CD300BD572B /* iPad.storyboard */; };
+		04FBAF5217875CD300BD572B /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FBAF4F17875CD300BD572B /* iPad.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,14 +58,24 @@
 /* Begin PBXFileReference section */
 		04007D1D177347B1005530E6 /* MTPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTPoint.h; path = Model/MTPoint.h; sourceTree = "<group>"; };
 		04007D1E177347B1005530E6 /* MTPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTPoint.m; path = Model/MTPoint.m; sourceTree = "<group>"; };
+		04224C38177B92A30064393B /* MTThreeDModelCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTThreeDModelCollection.h; path = Model/MTThreeDModelCollection.h; sourceTree = "<group>"; };
+		04224C39177B92A30064393B /* MTThreeDModelCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTThreeDModelCollection.m; path = Model/MTThreeDModelCollection.m; sourceTree = "<group>"; };
 		042BBCA41772A22F00844878 /* MTVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTVector.h; path = Model/MTVector.h; sourceTree = "<group>"; };
 		042BBCA51772A22F00844878 /* MTVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTVector.m; path = Model/MTVector.m; sourceTree = "<group>"; };
 		045747261777927300F8AB8B /* GlobalMacro.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = GlobalMacro.c; path = Model/GlobalMacro.c; sourceTree = "<group>"; };
+		045C8EB617813CF900014B12 /* MTModelChooseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTModelChooseViewController.h; sourceTree = "<group>"; };
+		045C8EB717813CF900014B12 /* MTModelChooseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTModelChooseViewController.m; sourceTree = "<group>"; };
+		045F073A177A4FE9004BDB59 /* MTGraphDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTGraphDisplayView.h; path = View/MTGraphDisplayView.h; sourceTree = "<group>"; };
+		045F073B177A4FE9004BDB59 /* MTGraphDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTGraphDisplayView.m; path = View/MTGraphDisplayView.m; sourceTree = "<group>"; };
+		045F0742177A6066004BDB59 /* MTThreeDModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTThreeDModel.h; path = Model/MTThreeDModel.h; sourceTree = "<group>"; };
+		045F0743177A6066004BDB59 /* MTThreeDModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTThreeDModel.m; path = Model/MTThreeDModel.m; sourceTree = "<group>"; };
 		0460C561177795E900E5B725 /* MTMatrixCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTMatrixCollection.h; path = Model/MTMatrixCollection.h; sourceTree = "<group>"; };
 		0460C562177795E900E5B725 /* MTMatrixCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTMatrixCollection.m; path = Model/MTMatrixCollection.m; sourceTree = "<group>"; };
 		0478C06B1774946C00174C3C /* GlobalMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalMacro.h; path = Model/GlobalMacro.h; sourceTree = "<group>"; };
 		0478C06D177494A400174C3C /* MTMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTMatrix.h; path = Model/MTMatrix.h; sourceTree = "<group>"; };
 		0478C06E177494A400174C3C /* MTMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTMatrix.m; path = Model/MTMatrix.m; sourceTree = "<group>"; };
+		04D5C7A1177E8AD9006132AD /* MTSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSettingsTableViewController.h; sourceTree = "<group>"; };
+		04D5C7A2177E8AD9006132AD /* MTSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSettingsTableViewController.m; sourceTree = "<group>"; };
 		04ED3CAE1772A1D700C1005F /* MTransformer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTransformer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04ED3CB11772A1D700C1005F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04ED3CB31772A1D700C1005F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -64,7 +86,7 @@
 		04ED3CBF1772A1D700C1005F /* MTransformer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MTransformer-Prefix.pch"; sourceTree = "<group>"; };
 		04ED3CC01772A1D700C1005F /* MTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTAppDelegate.h; sourceTree = "<group>"; };
 		04ED3CC11772A1D700C1005F /* MTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTAppDelegate.m; sourceTree = "<group>"; };
-		04ED3CC41772A1D700C1005F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		04ED3CC41772A1D700C1005F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/iPhone.storyboard; sourceTree = "<group>"; };
 		04ED3CC61772A1D700C1005F /* MTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTViewController.h; sourceTree = "<group>"; };
 		04ED3CC71772A1D700C1005F /* MTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTViewController.m; sourceTree = "<group>"; };
 		04ED3CC91772A1D700C1005F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -73,6 +95,7 @@
 		04ED3CD81772A1D700C1005F /* MTransformerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MTransformerTests-Info.plist"; sourceTree = "<group>"; };
 		04ED3CDA1772A1D700C1005F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		04ED3CDC1772A1D700C1005F /* MTransformerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTransformerTests.m; sourceTree = "<group>"; };
+		04FBAF5017875CD300BD572B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = MTransformer/Base.lproj/iPad.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,11 +134,10 @@
 		042BBCA81772A23100844878 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0478C06B1774946C00174C3C /* GlobalMacro.h */,
-				045747261777927300F8AB8B /* GlobalMacro.c */,
-				042BBCA91772A23800844878 /* Vector */,
 				04007D1C17734796005530E6 /* Point */,
+				042BBCA91772A23800844878 /* Vector */,
 				0478C06C1774948700174C3C /* Matrix */,
+				045F0739177A4D4A004BDB59 /* 3D Model */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -127,6 +149,39 @@
 				042BBCA51772A22F00844878 /* MTVector.m */,
 			);
 			name = Vector;
+			sourceTree = "<group>";
+		};
+		045F0732177A4C14004BDB59 /* Custom ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04ED3CC61772A1D700C1005F /* MTViewController.h */,
+				04ED3CC71772A1D700C1005F /* MTViewController.m */,
+				04D5C7A1177E8AD9006132AD /* MTSettingsTableViewController.h */,
+				04D5C7A2177E8AD9006132AD /* MTSettingsTableViewController.m */,
+				045C8EB617813CF900014B12 /* MTModelChooseViewController.h */,
+				045C8EB717813CF900014B12 /* MTModelChooseViewController.m */,
+			);
+			name = "Custom ViewController";
+			sourceTree = "<group>";
+		};
+		045F0734177A4C4E004BDB59 /* Custom View */ = {
+			isa = PBXGroup;
+			children = (
+				045F073A177A4FE9004BDB59 /* MTGraphDisplayView.h */,
+				045F073B177A4FE9004BDB59 /* MTGraphDisplayView.m */,
+			);
+			name = "Custom View";
+			sourceTree = "<group>";
+		};
+		045F0739177A4D4A004BDB59 /* 3D Model */ = {
+			isa = PBXGroup;
+			children = (
+				045F0742177A6066004BDB59 /* MTThreeDModel.h */,
+				045F0743177A6066004BDB59 /* MTThreeDModel.m */,
+				04224C38177B92A30064393B /* MTThreeDModelCollection.h */,
+				04224C39177B92A30064393B /* MTThreeDModelCollection.m */,
+			);
+			name = "3D Model";
 			sourceTree = "<group>";
 		};
 		0478C06C1774948700174C3C /* Matrix */ = {
@@ -143,9 +198,14 @@
 		04865DA417781446005BF0BF /* ViewsAndControllers */ = {
 			isa = PBXGroup;
 			children = (
-				04ED3CC31772A1D700C1005F /* Main.storyboard */,
-				04ED3CC61772A1D700C1005F /* MTViewController.h */,
-				04ED3CC71772A1D700C1005F /* MTViewController.m */,
+				0478C06B1774946C00174C3C /* GlobalMacro.h */,
+				045747261777927300F8AB8B /* GlobalMacro.c */,
+				04ED3CC01772A1D700C1005F /* MTAppDelegate.h */,
+				04ED3CC11772A1D700C1005F /* MTAppDelegate.m */,
+				04ED3CC31772A1D700C1005F /* iPhone.storyboard */,
+				04FBAF4F17875CD300BD572B /* iPad.storyboard */,
+				045F0732177A4C14004BDB59 /* Custom ViewController */,
+				045F0734177A4C4E004BDB59 /* Custom View */,
 			);
 			name = ViewsAndControllers;
 			sourceTree = "<group>";
@@ -194,8 +254,6 @@
 		04ED3CB81772A1D700C1005F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				04ED3CC01772A1D700C1005F /* MTAppDelegate.h */,
-				04ED3CC11772A1D700C1005F /* MTAppDelegate.m */,
 				04ED3CB91772A1D700C1005F /* MTransformer-Info.plist */,
 				04ED3CBA1772A1D700C1005F /* InfoPlist.strings */,
 				04ED3CBD1772A1D700C1005F /* main.m */,
@@ -299,9 +357,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04FBAF5117875CD300BD572B /* iPad.storyboard in Resources */,
 				04ED3CCA1772A1D700C1005F /* Images.xcassets in Resources */,
 				04ED3CBC1772A1D700C1005F /* InfoPlist.strings in Resources */,
-				04ED3CC51772A1D700C1005F /* Main.storyboard in Resources */,
+				04ED3CC51772A1D700C1005F /* iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +368,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04FBAF5217875CD300BD572B /* iPad.storyboard in Resources */,
 				04ED3CDB1772A1D700C1005F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,13 +381,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				04ED3CBE1772A1D700C1005F /* main.m in Sources */,
+				04224C3A177B92A30064393B /* MTThreeDModelCollection.m in Sources */,
 				0460C563177795E900E5B725 /* MTMatrixCollection.m in Sources */,
+				045F0744177A6066004BDB59 /* MTThreeDModel.m in Sources */,
 				045747271777927300F8AB8B /* GlobalMacro.c in Sources */,
 				042BBCA61772A22F00844878 /* MTVector.m in Sources */,
+				045C8EB817813CF900014B12 /* MTModelChooseViewController.m in Sources */,
 				04ED3CC81772A1D700C1005F /* MTViewController.m in Sources */,
 				0478C06F177494A400174C3C /* MTMatrix.m in Sources */,
 				04ED3CC21772A1D700C1005F /* MTAppDelegate.m in Sources */,
+				045F073C177A4FE9004BDB59 /* MTGraphDisplayView.m in Sources */,
 				04007D1F177347B1005530E6 /* MTPoint.m in Sources */,
+				04D5C7A3177E8AD9006132AD /* MTSettingsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,11 +400,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				045C8EB917813CF900014B12 /* MTModelChooseViewController.m in Sources */,
+				04224C3B177B92A30064393B /* MTThreeDModelCollection.m in Sources */,
+				045F0745177A6066004BDB59 /* MTThreeDModel.m in Sources */,
 				04ED3CDD1772A1D700C1005F /* MTransformerTests.m in Sources */,
 				04007D20177347B1005530E6 /* MTPoint.m in Sources */,
 				045747281777927300F8AB8B /* GlobalMacro.c in Sources */,
 				0460C564177795E900E5B725 /* MTMatrixCollection.m in Sources */,
 				042BBCA71772A22F00844878 /* MTVector.m in Sources */,
+				04D5C7A4177E8AD9006132AD /* MTSettingsTableViewController.m in Sources */,
+				045F073D177A4FE9004BDB59 /* MTGraphDisplayView.m in Sources */,
 				0478C070177494A400174C3C /* MTMatrix.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,12 +433,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		04ED3CC31772A1D700C1005F /* Main.storyboard */ = {
+		04ED3CC31772A1D700C1005F /* iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				04ED3CC41772A1D700C1005F /* Base */,
 			);
-			name = Main.storyboard;
+			name = iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 		04ED3CD91772A1D700C1005F /* InfoPlist.strings */ = {
@@ -377,6 +447,15 @@
 				04ED3CDA1772A1D700C1005F /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		04FBAF4F17875CD300BD572B /* iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04FBAF5017875CD300BD572B /* Base */,
+			);
+			name = iPad.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -459,7 +538,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MTransformer/MTransformer-Prefix.pch";
 				INFOPLIST_FILE = "MTransformer/MTransformer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -472,7 +553,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MTransformer/MTransformer-Prefix.pch";
 				INFOPLIST_FILE = "MTransformer/MTransformer-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

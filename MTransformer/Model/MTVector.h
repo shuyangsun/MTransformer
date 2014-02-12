@@ -174,6 +174,11 @@
 -(id)objectAtIndexedSubscript: (NSUInteger) index;
 
 /**
+ Get the CGPoint version of this vector
+ */
+-(CGPoint) get2DPoint;
+
+/**
  User NSCoding protocol to create a deepcopy of this object.
  */
 -(id)deepCopy;

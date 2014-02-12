@@ -28,21 +28,39 @@
 	return self;
 }
 
+// Get a point with specific name.
++(id)pointWithName:(NSString *)theName
+{
+	return [[MTPoint alloc] initWithName:theName]; // Call the other initializer method.
+}
+
 // Designated initializer.
 - (id)init
 {
     return [self initWithName:@"N/A"]; // Return a Point with default name @"N/A"
 }
 
+// Overriding getter method for x.
+-(float)z
+{
+	if ([self entryCount] >= 3) { // If there are or more than 3 entries:
+		return [self entryAtIndexAsFloat:2]; // Return the third entry.
+	}
+	return NAN; // Return NAN if there are no z.
+}
+
 // Connect to single point.
 -(void)connectToPoint:(MTPoint *)point
 {
-	if ([self.pointsConnectingTo containsObject:point] == NO) { // If it doens't contain this point.
-		[self.pointsConnectingTo addObject:point]; // Add it to the set.
-		if ([point.pointsConnectingTo containsObject:self] == NO) { // If the point want to connect to isn't connecting to this point, make the connection.
-			[point.pointsConnectingTo addObject:self]; // Add it to the set.
-		}
-	}
+	[self.pointsConnectingTo addObject:point]; // Add it to the set.
+	[point.pointsConnectingTo addObject:self]; // Add itself to pointsConnectingTo of point.
+}
+
+// Disconnect from a point
+-(void)disconnectFromPoint:(MTPoint *)point
+{
+	[self.pointsConnectingTo removeObject:point]; // Remove it from the set.
+	[point.pointsConnectingTo removeObject:self]; // Remove itself from pointsConnectingTo of point.
 }
 
 // Connect to multiple points.
@@ -53,6 +71,22 @@
 	while (p = [enumerator nextObject]) { // While there are objects in enumerator, iterate through it.
 		[self connectToPoint:p]; // Call method connectToPoint:
 	}
+}
+
+// Disconnect from multiple points.
+-(void)disconnectFromPoints:(id)points
+{
+	NSEnumerator *enumerator = [points objectEnumerator]; // Create a enumerator for points.
+	MTPoint *p;
+	while (p = [enumerator nextObject]) { // While there are objects in enumerator, iterate through it.
+		[self disconnectFromPoint:p]; // Call method disconnectToPoint:
+	}
+}
+
+// Disconnect from all points, dummy method.
+-(void)disconnectFromAllPoints
+{
+	[self disconnectFromPoints:[self pointsConnectingTo]]; // Call another method.
 }
 
 // Return points connecting to as an array.
@@ -78,14 +112,16 @@
 // Overriding description.
 -(NSString *)description
 {
-	NSMutableString *res = [NSMutableString stringWithFormat:@"point %@: ", self.name]; // The result string to return later.
+	NSMutableString *res = [NSMutableString stringWithFormat:@"%@: ", self.name]; // The result string to return later.
 
 	//************************** Appending Vector Information *****************************//
 	if (self.entryCount > 0){ // If there are entries in this point, add the point position.
 		[res appendString:@"("]; // Add opening parenthesis.
-		for (int i = 0; i < [self entryCount]; ++i) {
-			if (i < [self entryCount] - 1){ // If this is NOT the last entry
-				[res appendFormat:@"%.1f, ", [self entryAtIndexAsFloat:i]]; // Append the float value and comma.
+		size_t entryNumber = [self entryCount]; // Get the number to loop through
+		if (self.homogeneous == YES) --entryNumber; // If it's a homogeneous number, we don't want to append that information.
+		for (int i = 0; i < entryNumber; ++i) {
+			if (i < entryNumber - 1){ // If this is NOT the last entry
+				[res appendFormat:@"%5.1f, ", [self entryAtIndexAsFloat:i]]; // Append the float value and comma.
 			} else { // If this is the last entry
 				[res appendFormat:@"%.1f", [self entryAtIndexAsFloat:i]]; // Append the float value.
 			}
@@ -95,17 +131,17 @@
 	//************************** Appending Vector Information *****************************//
 
 	//************************ Points Connecting To Information ***************************//
-	if ([self.pointsConnectingTo count] > 0){ // If there are points it is connecting to.
-		[res appendString:@" "]; // Append a space.
-		[res appendString:@"Connects To: "]; // Uncomment this line to show string @"Connects To: " before displaying points name.
-		NSEnumerator *enumerator = [self.pointsConnectingTo objectEnumerator]; // Create a enumertor to enumerate the points.
-		MTPoint *p;
-		while (p = [enumerator nextObject]) { // While there is a point in the enumerator
-			[res appendFormat:@"%@, ", p.name]; // Append the name of the point.
-		}
-		NSRange lastTwoChars = NSMakeRange([res length] - 2, 2); // Range of the last two chars: @", )"
-		[res deleteCharactersInRange:lastTwoChars]; // Delete the last two chars, because this is the end of points list.
-	}
+//	if ([self.pointsConnectingTo count] > 0){ // If there are points it is connecting to.
+//		[res appendString:@" "]; // Append a space.
+//		[res appendString:@"Connects To: "]; // Uncomment this line to show string @"Connects To: " before displaying points name.
+//		NSEnumerator *enumerator = [self.pointsConnectingTo objectEnumerator]; // Create a enumertor to enumerate the points.
+//		MTPoint *p;
+//		while (p = [enumerator nextObject]) { // While there is a point in the enumerator
+//			[res appendFormat:@"%@, ", p.name]; // Append the name of the point.
+//		}
+//		NSRange lastTwoChars = NSMakeRange([res length] - 2, 2); // Range of the last two chars: @", )"
+//		[res deleteCharactersInRange:lastTwoChars]; // Delete the last two chars, because this is the end of points list.
+//	}
 	//************************ Points Connecting To Information ***************************//
 
 	return res;
@@ -116,12 +152,14 @@
 // Decoder:
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
-	self.entries = [aDecoder decodeObjectForKey:@"MTPointEntries"]; // Decode entries.
-	self.homogeneous = [aDecoder decodeBoolForKey:@"MTPointHomogeneous"]; // Decode bool value homogeneous.
-	self.name = [aDecoder decodeObjectForKey:@"MTPointName"]; // Decode name.
-	self.pointsConnectingTo = [aDecoder decodeObjectForKey:@"MTPointPointsConnectingTo"]; // Decode pointsConnectingTo.
-	self.visited = [aDecoder decodeBoolForKey:@"MTPointVisited"]; //Decode visited.
-
+	self = [super init];
+	if (self) {
+		self.entries = [aDecoder decodeObjectForKey:@"MTPointEntries"]; // Decode entries.
+		self.homogeneous = [aDecoder decodeBoolForKey:@"MTPointHomogeneous"]; // Decode bool value homogeneous.
+		self.name = [aDecoder decodeObjectForKey:@"MTPointName"]; // Decode name.
+		self.pointsConnectingTo = [aDecoder decodeObjectForKey:@"MTPointPointsConnectingTo"]; // Decode pointsConnectingTo.
+		self.visited = [aDecoder decodeBoolForKey:@"MTPointVisited"]; //Decode visited.
+	}
 	return self; // Return the result.
 }
 

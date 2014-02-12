@@ -30,6 +30,16 @@
 //************************ Methods ***************************//
 
 /**
+ Return a 4x4 identiry matrix
+
+ | 1 0 0 0 |
+ | 0 1 0 0 |
+ | 0 0 1 0 |
+ | 0 0 0 1 |
+*/
+-(MTMatrix *)identityMatrix_4x4;
+
+/**
  A matrix to project 3D graph from point (b, c, d).
  Returns matrix:
 
@@ -39,9 +49,14 @@
  | 0 0 -1/d 0 |
 
  @param point The values are (b, c, d).
+ @param The axis projecting to.
  @return The matrix for projection transformation.
  */
--(MTMatrix *)projectionTransformationMatrixFromPoint: (MT3DPoint) point;
+-(MTMatrix *)projectionTransformationMatrixFromPoint: (MT3DPoint) point fromAxis: (MT_AXIS) axis;
+
+-(MTMatrix *)projectionTransformationMatrixTo_xAxisFromPoint: (MT3DPoint) point;
+-(MTMatrix *)projectionTransformationMatrixTo_yAxisFromPoint: (MT3DPoint) point;
+-(MTMatrix *)projectionTransformationMatrixTo_zAxisFromPoint: (MT3DPoint) point;
 
 /**
  A matrix perform the translation.
